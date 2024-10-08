@@ -17,6 +17,14 @@ Route::get('lang/{locale}', function ($locale) {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/products', 'ProductController@index')->name('products');
+
+//Route::get('/customers', 'CustomerController@index')->name('customers');
+
+Route::get('/customers', function () {
+    return view('livewire.customer.index');
+})->name('customers');
+
 
 Route::get('/profile', 'ProfileController@index')->name('profile');
 Route::put('/profile', 'ProfileController@update')->name('profile.update');

@@ -1,4 +1,3 @@
-<!-- resources/views/layouts/left-side-menu.blade.php -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
@@ -6,25 +5,38 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fa-regular fa-gem" style="color: #ffffff;"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Diamend</div>
+        <div class="sidebar-brand-text mx-3">DIAMEND</div>
     </a>
 
-    <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
-    <!-- Nav Item - Dashboard -->
+    <!-- Admin Items -->
     <li class="nav-item {{ Nav::isRoute('home') }}">
         <a class="nav-link" href="{{ route('home') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>{{ __('general.dashboard') }}</span></a>
     </li>
 
+    <li class="nav-item {{ Nav::isRoute('products') }}">
+        <a class="nav-link" href="{{ route('products') }}">
+            <i class="fa-solid fa-diamond"></i>
+            <span>{{ __('general.products') }}</span></a>
+    </li>
+
+    <li class="nav-item {{ Nav::isRoute('customers') }}">
+        <a class="nav-link" href="{{ route('customers') }}">
+            <i class="fa-solid fa-users"></i>
+            <span>{{ __('general.customers') }}</span></a>
+    </li>
+
+    <!-- End of Admin Items -->
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        {{ __('Settings') }}
+        {{ __('general.settings') }}
     </div>
 
     <!-- Nav Item - Profile -->

@@ -11,6 +11,11 @@ return [
     'home' => 'Anasayfa',
     'profile_details' => 'Profil Detayları',
     'settings' => 'Ayarlar',
+    'remember_me' => 'Beni Hatırla',
+    'create_an_account' => 'Hesap Oluştur',
+    'products' => 'Ürünler',
+    'customers' => 'Müşteriler',
+
 
     'input' => [
         'email' => 'E-posta',

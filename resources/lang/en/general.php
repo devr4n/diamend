@@ -11,6 +11,10 @@ return [
     'home' => 'Home',
     'profile_details' => 'Profile Details',
     'settings' => 'Settings',
+    'remember_me' => 'Remember Me',
+    'create_an_account' => 'Create an Account',
+    'products' => 'Products',
+    'customers' => 'Customers',
 
     'input' => [
         'email' => 'Email',
