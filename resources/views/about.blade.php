@@ -18,13 +18,8 @@
 
                     <div class="row">
                         <div class="col-lg-12">
-                            <h5 class="font-weight-bold">Laravel SB Admin 2</h5>
-                            <p>SB Admin 2 for Laravel.</p>
+                            <h5 class="font-weight-bold">Diamend</h5>
                             <p>Recommend to install this preset on a project that you are starting from scratch, otherwise your project's design might break.</p>
-                            <p>If you found this project useful, then please consider giving it a ⭐</p>
-                            <a href="https://github.com/aleckrh/laravel-sb-admin-2" target="_blank" class="btn btn-github">
-                                <i class="fab fa-github fa-fw"></i> Go to repository
-                            </a>
                         </div>
                     </div>
 

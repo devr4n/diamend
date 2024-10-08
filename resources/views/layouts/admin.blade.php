@@ -10,7 +10,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Diamend') }}</title>
 
     <!-- Fonts -->
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
@@ -34,7 +34,7 @@
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fa-regular fa-gem" style="color: #ffffff;"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">Diamend</div>
+            <div class="sidebar-brand-text mx-3">DIAMEND</div>
         </a>
 
         <!-- Divider -->
@@ -44,7 +44,7 @@
         <li class="nav-item {{ Nav::isRoute('home') }}">
             <a class="nav-link" href="{{ route('home') }}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>{{ __('Dashboard') }}</span></a>
+                <span>{{ __('general.dashboard') }}</span></a>
         </li>
 
         <!-- Divider -->
@@ -52,14 +52,14 @@
 
         <!-- Heading -->
         <div class="sidebar-heading">
-            {{ __('Settings') }}
+            {{ __('general.settings') }}
         </div>
 
         <!-- Nav Item - Profile -->
         <li class="nav-item {{ Nav::isRoute('profile') }}">
             <a class="nav-link" href="{{ route('profile') }}">
                 <i class="fas fa-fw fa-user"></i>
-                <span>{{ __('Profile') }}</span>
+                <span>{{ __('general.profile') }}</span>
             </a>
         </li>
 
@@ -67,7 +67,7 @@
         <li class="nav-item {{ Nav::isRoute('about') }}">
             <a class="nav-link" href="{{ route('about') }}">
                 <i class="fas fa-fw fa-hands-helping"></i>
-                <span>{{ __('About') }}</span>
+                <span>{{ __('general.about') }}</span>
             </a>
         </li>
 
@@ -129,6 +129,19 @@
                                 </div>
                             </form>
                         </div>
+                    </li>
+
+                    <!-- Nav Item - Language Switcher -->
+                    <li class="nav-item dropdown no-arrow mx-1">
+                        <a class="nav-link dropdown-toggle" href="{{ route('changeLanguage', app()->getLocale() === 'tr' ? 'en' : 'tr') }}" id="languageSwitcher" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span class="ml-2">
+                        @if (app()->getLocale() === 'tr')
+                                🇬🇧
+                            @else
+                                🇹🇷
+                            @endif
+                        </span>
+                        </a>
                     </li>
 
                     <!-- Nav Item - Alerts -->
@@ -248,11 +261,11 @@
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                             <a class="dropdown-item" href="{{ route('profile') }}">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                {{ __('Profile') }}
+                                {{ __('general.profile') }}
                             </a>
                             <a class="dropdown-item" href="javascript:void(0)">
                                 <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                {{ __('Settings') }}
+                                {{ __('general.settings') }}
                             </a>
                             <a class="dropdown-item" href="javascript:void(0)">
                                 <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -261,7 +274,7 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                {{ __('Logout') }}
+                                {{ __('general.logout') }}
                             </a>
                         </div>
                     </li>
@@ -286,7 +299,7 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; <a href="https://github.com/aleckrh" target="_blank">Aleckrh</a> {{ now()->year }}</span>
+                    <span>Copyright &copy; Diamend {{ now()->year }}</span>
                 </div>
             </div>
         </footer>

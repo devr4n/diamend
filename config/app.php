@@ -80,7 +80,14 @@ return [
     |
     */
 
-    'locale' => env('APP_LOCALE', 'en'),
+//    'locale' => env('APP_LOCALE', 'tr'),
+
+    'locale' => env('APP_LOCALE', 'tr'),
+    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'tr'),
+    'locales' => [
+        'tr' => 'Türkçe',
+        'en' => 'English',
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +100,7 @@ return [
     |
     */
 
-    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
+    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'tr'),
 
     /*
     |--------------------------------------------------------------------------
