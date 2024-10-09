@@ -5,6 +5,8 @@ return [
     'profile' => 'Profile',
     'logout' => 'Logout',
     'login' => 'Login',
+    'welcome_back' => 'Welcome Back',
+    'logged_out' => 'Logged Out',
     'register' => 'Register',
     'about' => 'About',
     'contact' => 'Contact',
@@ -22,6 +24,7 @@ return [
         'update' => 'Update',
         'delete' => 'Delete',
         'cancel' => 'Cancel',
+        'select' => 'Please Select',
     ],
 
     'input' => [
@@ -50,5 +53,11 @@ return [
         'add_new_customer' => 'Add New Customer',
         'edit_customer' => 'Edit Customer ID : ',
         'customer_information' => 'You can create a new customer or update the information by filling out the form.',
+
+
+        'product_list' => 'Product List',
+        'add_new_product' => 'Add New Product',
+        'edit_product' => 'Product ID : ',
+        'product_information' => 'You can create a product or update information by filling out the form.',
     ],
 ];

@@ -23,7 +23,7 @@
     <div class="card shadow mb-4">
 
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">{{ __('general.title.add_new_customer') }}
+            <h6 class="m-0 font-weight-bold text-primary">{{ __('general.title.add_new_product') }}
         </div>
 
         <div class="card-body">
@@ -33,27 +33,62 @@
 
                 <input type="hidden" name="_method" value="PUT">
 
-                <h6 class="heading-small text-muted mb-4">{{ __('general.title.customer_information') }}</h6>
+                <h6 class="heading-small text-muted mb-4">{{ __('general.title.product_information') }}</h6>
 
                 <div class="pl-lg-4">
 
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-4">
                             <div class="form-group focused">
-                                <label class="form-control-label" for="name">
-                                    {{ __('general.input.name') }} <span class="small text-danger">*</span>
+                                <label class="form-control-label" for="customer">
+                                    {{ __('customer.customer') }} <span class="small text-danger">*</span>
                                 </label>
-                                <input type="text" id="name" class="form-control" name="name"
-                                       placeholder="{{ __('general.input.name') }}" required>
+                                <select id="customer" class="form-control select2" name="customer" required>
+                                    <option value="">{{ __('general.form.select') }}</option>
+                                    {{--                                    @foreach($customers as $customer)--}}
+                                    {{--                                        <option value="{{ $customer->id }}">{{ $customer->name }}</option>--}}
+                                    {{--                                    @endforeach--}}
+                                </select>
                             </div>
                         </div>
-                        <div class="col-lg-6">
+
+                        <div class="col-lg-4">
                             <div class="form-group focused">
-                                <label class="form-control-label" for="surname">
-                                    {{ __('general.input.surname') }} <span class="small text-danger">*</span>
+                                <label class="form-control-label" for="operation_type">
+                                    {{ __('customer.operation') }} <span class="small text-danger">*</span>
                                 </label>
-                                <input type="text" id="surname" class="form-control" name="surname"
-                                       placeholder="{{ __('general.input.surname') }}" required>
+                                <select id="customer" class="form-control select2" name="operation_type" required>
+                                    <option value="">{{ __('general.form.select') }}</option>
+                                    {{--                                    @foreach($customers as $customer)--}}
+                                    {{--                                        <option value="{{ $customer->id }}">{{ $customer->name }}</option>--}}
+                                    {{--                                    @endforeach--}}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="form-group focused">
+                                <label class="form-control-label" for="product_type">
+                                    {{ __('customer.product_type') }} <span class="small text-danger">*</span>
+                                </label>
+                                <select id="customer" class="form-control select2" name="product_type" required>
+                                    <option value="">{{ __('general.form.select') }}</option>
+                                    {{--                                    @foreach($customers as $customer)--}}
+                                    {{--                                        <option value="{{ $customer->id }}">{{ $customer->name }}</option>--}}
+                                    {{--                                    @endforeach--}}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label class="form-control-label" for="description">
+                                    {{ __('customer.description') }} <span class="small text-danger">*</span>
+                                </label>
+                                <textarea id="address" class="form-control textAreaMultiline" name="description" maxlength="100"
+                                          placeholder="4 Gümüş Kolye Sipariş \n3 Altin Bileklik Tamir" required></textarea>
                             </div>
                         </div>
                     </div>
@@ -120,3 +155,10 @@
 
 </div>
 
+<script>
+    var textAreas = document.getElementsByTagName('textarea');
+
+    Array.prototype.forEach.call(textAreas, function(elem) {
+        elem.placeholder = elem.placeholder.replace(/\\n/g, '\n');
+    });
+</script>

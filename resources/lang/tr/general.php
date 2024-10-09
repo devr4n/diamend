@@ -5,6 +5,8 @@ return [
     'profile' => 'Profil',
     'logout' => 'Çıkış',
     'login' => 'Giriş',
+    'welcome_back' => 'Tekrar Hoşgeldin',
+    'logged_out' => 'Çıkış Yapıldı',
     'register' => 'Kayıt',
     'about' => 'Hakkında',
     'contact' => 'İletişim',
@@ -22,6 +24,7 @@ return [
         'update' => 'Güncelle',
         'delete' => 'Sil',
         'cancel' => 'İptal',
+        'select' => 'Lütfen Seçiniz',
     ],
 
 
@@ -52,8 +55,9 @@ return [
         'edit_customer' => 'Müşteri ID : ',
         'customer_information' => 'Formu doldurarak müşteri oluşturabilir veya bilgileri güncelleyebilirsiniz.',
 
-
-
-
+        'product_list' => 'Ürün Listesi',
+        'add_new_product' => 'Yeni Ürün Ekle',
+        'edit_product' => 'Ürün ID : ',
+        'product_information' => 'Formu doldurarak ürün oluşturabilir veya bilgileri güncelleyebilirsiniz.',
     ],
 ];
