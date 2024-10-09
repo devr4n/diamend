@@ -18,7 +18,8 @@
         "livewire/livewire": "^3.5",
         "symfony/http-client": "^6.1",
         "symfony/mailgun-mailer": "^6.1",
-        "symfony/postmark-mailer": "^6.1"
+        "symfony/postmark-mailer": "^6.1",
+        "yajra/laravel-datatables": "^11.0"
     },
     "require-dev": {
         "spatie/laravel-ignition": "^2.0",

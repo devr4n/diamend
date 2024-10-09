@@ -16,12 +16,26 @@ return [
     'products' => 'Ürünler',
     'customers' => 'Müşteriler',
 
+    'form' => [
+        'submit' => 'Gönder',
+        'save' => 'Kaydet',
+        'update' => 'Güncelle',
+        'delete' => 'Sil',
+        'cancel' => 'İptal',
+    ],
+
 
     'input' => [
+        'name' => 'Ad',
+        'surname' => 'Soyad',
+        'phone' => 'Tel No',
+        'address' => 'Adres',
+        'photo' => 'Fotoğraf',
         'email' => 'E-posta',
         'password' => 'Şifre',
         'password_confirmation' => 'Şifre Tekrarı',
-        'name' => 'Ad',
+
+
         'remember_me' => 'Beni Hatırla',
         'forgot_password' => 'Şifremi Unuttum?',
         'reset_password' => 'Şifre Sıfırla',
@@ -30,5 +44,16 @@ return [
         'old_password' => 'Eski Şifre',
         'new_password' => 'Yeni Şifre',
         'new_password_confirmation' => 'Yeni Şifre Tekrarı',
+    ],
+
+    'title' => [
+        'customer_list' => 'Müşteri Listesi',
+        'add_new_customer' => 'Yeni Müşteri Ekle',
+        'edit_customer' => 'Müşteri ID : ',
+        'customer_information' => 'Formu doldurarak müşteri oluşturabilir veya bilgileri güncelleyebilirsiniz.',
+
+
+
+
     ],
 ];
