@@ -25,4 +25,9 @@ class Product extends Model
         'material_weight', // material weight gram
         'status', // [pending,completed]
     ];
+
+    public function materialTypes()
+    {
+        return $this->belongsToMany(MaterialType::class)->withPivot('material_weight')->withTimestamps();
+    }
 }
