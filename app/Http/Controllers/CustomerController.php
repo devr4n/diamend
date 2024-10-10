@@ -11,7 +11,8 @@ class CustomerController extends Controller
 {
     public function index()
     {
-        return view('customers.index');
+        $mode = 'list';
+        return view('customers.index', compact('mode'));
     }
 
     public function data(Request $request)
