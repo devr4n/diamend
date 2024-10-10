@@ -8,6 +8,8 @@
 
         @include('livewire.customer-crud')
 
+        @include('customers.customers-datatable')
+
     </div>
 
 @endsection

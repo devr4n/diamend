@@ -27,6 +27,12 @@ return [
         'select' => 'Lütfen Seçiniz',
     ],
 
+    'auth' => [
+        'failed' => 'Bu kimlik bilgileri kayıtlarımızla uyuşmuyor.',
+        'password' => 'Sağlanan şifre yanlış.',
+        'throttle' => 'Çok fazla giriş denemesi. Lütfen daha sonra tekrar deneyin.',
+    ],
+
 
     'input' => [
         'name' => 'Ad',

@@ -26,7 +26,7 @@ return new class extends Migration
             $table->unsignedBigInteger('status_id')->unsigned();
 
             $table->foreign('customer_id')->references('id')->on('customers')->cascadeOnDelete();
-            $table->foreign('operation_id')->references('id')->on('operations')->cascadeOnDelete();
+            $table->foreign('operation_id')->references('id')->on('operation_types')->cascadeOnDelete();
             $table->foreign('product_type_id')->references('id')->on('product_types')->cascadeOnDelete();
             $table->foreign('material_type_id')->references('id')->on('material_types')->cascadeOnDelete();
 
