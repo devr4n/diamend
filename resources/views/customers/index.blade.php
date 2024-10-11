@@ -7,12 +7,16 @@
         <div class="card-header py-3 d-flex justify-content-between align-items-center">
             <h6 class="m-0 font-weight-bold text-primary">{{ $pageTitle }}</h6>
             <div class="text-right">
-                <input type="button"
-                       class="btn btn-primary btn-list" value="{{ __('general.title.customer_list') }}"
-                       onclick="Livewire.dispatch('changeViewMode', 'list')"/>
-                <input type="button"
-                       class="btn btn-primary btn-create" value="{{ __('general.title.add_new_customer') }}"
-                       onclick="Livewire.dispatch('changeViewMode', 'create')"/>
+                @if($mode !== 'list')
+                    <input type="button"
+                           class="btn btn-primary btn-list btn-sm" value="{{ __('general.title.customer_list') }}"
+                           onclick="Livewire.dispatch('changeViewMode', 'list')"/>
+                @endif
+                @if($mode !== 'create')
+                    <input type="button"
+                           class="btn btn-primary btn-create btn-sm" value="{{ __('general.title.add_new_customer') }}"
+                           onclick="Livewire.dispatch('changeViewMode', 'create')"/>
+                @endif
             </div>
         </div>
 

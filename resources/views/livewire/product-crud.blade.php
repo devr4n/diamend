@@ -132,13 +132,13 @@
                 <div class="pl-lg-4">
                     <div class="row">
                         <div class="col text-center">
-                            <button type="submit" class="btn btn-primary btn-icon-split">
+                            <button type="submit" class="btn btn-primary btn-icon-split btn-sm">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-check"></i>
                                         </span>
                                 <span class="text">{{ __('general.form.save') }}</span>
                             </button>
-                            <button type="submit" class="btn btn-danger btn-icon-split">
+                            <button type="submit" class="btn btn-danger btn-icon-split btn-sm">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-trash"></i>
                                         </span>

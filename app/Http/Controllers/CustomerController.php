@@ -34,14 +34,20 @@ class CustomerController extends Controller
         ]);
     }
 
-    public function data(Request $request)
+    public function data()
     {
-        try {
-            $customers = Customer::select(['id', 'name', 'surname', 'phone_1', 'phone_2', 'address', 'created_at'])->get();
+        $customers = Customer::select(['id', 'name', 'surname', 'phone_1', 'phone_2', 'address', 'created_at']);
 
-            return response()->json($customers);
-        } catch (\Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
-        }
+        return DataTables::of($customers)
+            ->editColumn('created_at', function ($customer) {
+                return $customer->created_at->format('d-m-Y');
+            })
+            ->addColumn('action', function ($customer) {
+                return '
+                <button type="button" class="btn btn-outline-primary btn-sm"><i class="fas fa-pen"></i></button>
+                <button type="button" class="btn btn-outline-danger btn-sm"><i class="fas fa-trash"></i></button>
+            ';
+            })
+            ->make(true);
     }
 }
