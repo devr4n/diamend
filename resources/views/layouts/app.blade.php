@@ -34,6 +34,7 @@
     @livewireStyles
 </head>
 <body id="page-top">
+@livewireScripts
 
 <!-- Sweet Alert -->
 @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
@@ -100,16 +101,6 @@
         </div>
     </div>
 </div>
-
-@livewireScripts
-<script>
-    document.addEventListener('livewire:load', function () {
-        Livewire.on('changeViewMode', data => {
-            console.log('View mode changed:', data);
-            // Handle the event as needed
-        });
-    });
-</script>
 
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

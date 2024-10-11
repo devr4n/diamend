@@ -23,7 +23,6 @@
 
     <!-- Favicon -->
     <link href="{{ asset('img/favicon.png') }}" rel="icon" type="image/png">
-    @livewireStyles
 </head>
 <body id="page-top">
 <!-- Page Wrapper -->
@@ -89,15 +88,6 @@
     </div>
 </div>
 
-@livewireScripts
-<script>
-    document.addEventListener('livewire:load', function () {
-        Livewire.on('changeViewMode', data => {
-            console.log('View mode changed:', data);
-            // Handle the event as needed
-        });
-    });
-</script>
 <!-- jQuery -->
 <!-- Scripts -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

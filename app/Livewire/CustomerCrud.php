@@ -11,16 +11,11 @@ class CustomerCrud extends Component
     public $entryId = null;
     public $pageTitle = null;
     public $currentPageUrl = null;
-    public $mode;
+    public $mode = 'list';
 
-    protected $listeners = ['changeViewMode' => 'setMode'];
+    protected $listeners = ['AddEditCustomer'];
 
-    public function mount($mode = 'list', ?int $id = null)
-    {
-        $this->setMode($mode, $id);
-    }
-
-    public function setMode($mode = 'list', ?int $id = null)
+    public function AddEditCustomer($mode)
     {
         $this->resetErrorBag();
 
@@ -38,20 +33,15 @@ class CustomerCrud extends Component
                 $this->currentPageUrl = route('customers.create');
                 break;
             case 'edit':
-                $this->customer = Customer::findOrFail($id);
-                $this->entryId = $id;
+                $this->customer = Customer::findOrFail($this->entryId);
                 $this->pageTitle = __('general.title.edit_customer');
-                $this->currentPageUrl = route('customers.edit', $id);
+                $this->currentPageUrl = route('customers.edit', $this->entryId);
                 break;
             default:
                 throw new \InvalidArgumentException('Invalid mode: ' . json_encode($mode));
         }
 
         $this->mode = $mode;
-        $this->dispatch('changeViewMode', [
-            'mode' => $this->mode,
-            'pageTitle' => $this->pageTitle,
-        ]);
     }
 
     public function save()
@@ -65,7 +55,7 @@ class CustomerCrud extends Component
 
         $this->customer->save();
 
-        $this->setMode('list');
+        $this->AddEditCustomer('list');
     }
 
     public function render()

@@ -10,12 +10,12 @@
                 @if($mode !== 'list')
                     <input type="button"
                            class="btn btn-primary btn-list btn-sm" value="{{ __('general.title.customer_list') }}"
-                           onclick="Livewire.dispatch('changeViewMode', 'list')"/>
+                           onclick="Livewire.emit('AddEditCustomer', 'list')"/>
                 @endif
                 @if($mode !== 'create')
                     <input type="button"
                            class="btn btn-primary btn-create btn-sm" value="{{ __('general.title.add_new_customer') }}"
-                           onclick="Livewire.dispatch('changeViewMode', 'create')"/>
+                           onclick="Livewire.emit('AddEditCustomer', 'create')"/>
                 @endif
             </div>
         </div>
@@ -24,7 +24,7 @@
             @if($mode === 'list')
                 <x-customers-datatable/>
             @elseif($mode === 'create' || $mode === 'edit')
-                <livewire:customer-crud :mode="$mode" :id="$entryId"/>
+                <livewire:customer-crud mode="{{ $mode }}" :id="$id ?? null"/>
             @endif
         </div>
     </div>
