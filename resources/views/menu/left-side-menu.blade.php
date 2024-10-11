@@ -24,7 +24,7 @@
     </li>
 
     <li class="nav-item {{ Nav::isRoute('customers') }}">
-        <a class="nav-link" href="{{ route('customers') }}">
+        <a class="nav-link" href="{{ route('customers.index') }}">
             <i class="fa-solid fa-users"></i>
             <span>{{ __('general.customers') }}</span></a>
     </li>

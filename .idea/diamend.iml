@@ -122,25 +122,15 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/vlucas/phpdotenv" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/voku/portable-ascii" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/webmozart/assert" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/league/fractal" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/livewire/livewire" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/maennchen/zipstream-php" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/markbaker/complex" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/markbaker/matrix" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/openspout/openspout" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/phpoffice/phpspreadsheet" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/yajra/laravel-datatables" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/yajra/laravel-datatables-buttons" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/yajra/laravel-datatables-editor" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/yajra/laravel-datatables-export" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/yajra/laravel-datatables-fractal" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/yajra/laravel-datatables-html" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/yajra/laravel-datatables-oracle" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="select2" level="application" />
     <orderEntry type="library" name="jquery-3.5.1" level="application" />
     <orderEntry type="library" name="jquery.dataTables" level="application" />
+    <orderEntry type="library" name="dataTables" level="application" />
+    <orderEntry type="library" name="dataTables.dataTables" level="application" />
+    <orderEntry type="library" name="dataTables.bootstrap4" level="application" />
   </component>
 </module>

@@ -23,8 +23,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/products', 'ProductController@index')->name('products');
 
 
-    Route::get('/customers', 'CustomerController@index')->name('customers');
+    Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');
     Route::get('customers/data', [CustomerController::class, 'data'])->name('customers.data');
+    Route::get('customers/create', [CustomerController::class, 'create'])->name('customers.create');
 
 
     Route::get('/profile', 'ProfileController@index')->name('profile');
