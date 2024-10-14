@@ -14,4 +14,11 @@ return [
     'material_type' => 'Malzeme Tipi',
     'material_weight' => 'Malzeme Ağırlığı',
 
+    'form' => [
+        'name' => 'Ad',
+        'surname' => 'Soyad',
+        'phone' => 'Telefon Numarası',
+        'address' => 'Adres',
+        'action' => 'İşlem',
+    ],
 ];

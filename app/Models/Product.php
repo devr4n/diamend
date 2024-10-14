@@ -11,7 +11,7 @@ class Product extends Model
 
     protected $fillable = [
         'customer_id', // customer id
-        'operation_id', // [repair, order]
+        'operation_type_id', // [repair, order]
         'product_type_id', // [gold,silver,diamond,imitation,watch,other]
         'description',
         'weight', // product weight gram

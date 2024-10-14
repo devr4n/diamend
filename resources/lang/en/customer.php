@@ -13,4 +13,12 @@ return [
     'note' => 'Note',
     'material_type' => 'Material Type',
     'material_weight' => 'Material Weight',
+
+    'form' => [
+        'name' => 'Name',
+        'surname' => 'Surname',
+        'phone' => 'Phone Number',
+        'address' => 'Address',
+        'action' => 'Action',
+    ]
 ];

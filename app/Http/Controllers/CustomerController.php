@@ -14,7 +14,7 @@ class CustomerController extends Controller
         $mode = 'list';
         return view('customers.index', [
             'mode' => $mode,
-            'pageTitle' => 'Customer List',
+            'pageTitle' => __('general.title.customer_list')
         ]);
     }
 

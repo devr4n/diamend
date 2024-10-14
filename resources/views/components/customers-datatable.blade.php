@@ -6,14 +6,11 @@
                 <table class="table table-bordered table-striped table-hover text-center" id="customers-table">
                     <thead class="bg-light">
                     <tr>
-                        {{--                        <th>ID</th>--}}
-                        <th>Name</th>
-                        <th>Surname</th>
-                        <th>Phone 1</th>
-                        {{--                        <th>Phone 2</th>--}}
-                        <th>Address</th>
-                        {{--                        <th>Created At</th>--}}
-                        <th>Action</th>
+                        <th>{{__('customer.form.name')}}</th>
+                        <th>{{__('customer.form.surname')}}</th>
+                        <th>{{__('customer.form.phone')}}</th>
+                        <th>{{__('customer.form.address')}}</th>
+                        <th>{{__('customer.form.action')}}</th>
                     </tr>
                     </thead>
                 </table>
@@ -40,7 +37,6 @@
                 serverSide: true,
                 ajax: '{{ route('customers.data') }}',
                 columns: [
-                    // { data: 'id', name: 'id' },
                     {data: 'name', name: 'name'},
                     {data: 'surname', name: 'surname'},
                     {
@@ -50,9 +46,7 @@
                             return '<a href="tel:' + data + '">' + data + '</a>';
                         }
                     },
-                    // { data: 'phone_2', name: 'phone_2' },
                     {data: 'address', name: 'address'},
-                    // { data: 'created_at', name: 'created_at' },
                     {
                         data: 'action',
                         name: 'action',
