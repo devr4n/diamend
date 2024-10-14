@@ -6,7 +6,8 @@
 
     <div class="row">
 
-        @include('livewire.product-crud')
+        <x-products-datatable/>
+        <liveire:product-crud/>
 
     </div>
 

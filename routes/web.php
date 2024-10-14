@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +21,8 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/products', 'ProductController@index')->name('products');
+    Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+    Route::get('/products/data', [ProductController::class, 'data'])->name('products.data');
 
 
     Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');

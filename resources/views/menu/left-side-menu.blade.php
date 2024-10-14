@@ -18,7 +18,7 @@
     </li>
 
     <li class="nav-item {{ Nav::isRoute('products') }}">
-        <a class="nav-link" href="{{ route('products') }}">
+        <a class="nav-link" href="{{ route('products.index') }}">
             <i class="fa-solid fa-diamond"></i>
             <span>{{ __('general.products') }}</span></a>
     </li>

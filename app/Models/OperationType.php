@@ -13,4 +13,6 @@ class OperationType extends Model
         'name_tr',
         'name_en',
     ];
+
+    public $timestamps = true;
 }
