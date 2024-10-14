@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
             MaterialTypeSeeder::class,
             ProductTypeSeeder::class,
             OperationTypeSeeder::class,
+            ProductSeeder::class,
         ]);
     }
 }

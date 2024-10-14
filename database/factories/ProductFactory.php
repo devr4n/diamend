@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\ProductType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Customer;
 use App\Models\OperationType;
@@ -17,6 +18,7 @@ class ProductFactory extends Factory
         return [
             'customer_id' => Customer::pluck('id')->random(),
             'operation_type_id' => OperationType::pluck('id')->random(),
+            'product_type_id' => ProductType::pluck('id')->random(),
             'description' => $this->faker->text,
             'weight' => $this->faker->randomFloat(2, 0, 1000),
             'image' => $this->faker->imageUrl(),
