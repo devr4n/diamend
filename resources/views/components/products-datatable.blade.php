@@ -39,12 +39,12 @@
                 serverSide: true,
                 ajax: '{{ route('products.data') }}',
                 columns: [
-                    {data: 'id', name: 'id'},
-                    {data: 'customer.name', name: 'customer.name'},
-                    {data: 'operation_type.name', name: 'operation_type.name'},
-                    {data: 'product_type.name', name: 'product_type.name'},
-                    {data: 'description', name: 'description'},
-                    {data: 'delivery_date', name: 'delivery_date'},
+                    {data: 'id', name: 'id', searchable: false, orderable:false},
+                    {data: 'customer.name', name: 'customer.name', searchable: true, orderable: true },
+                    {data: 'operation_type.name', name: 'operation_type.name', searchable: false, orderable: true },
+                    {data: 'product_type.name', name: 'product_type.name', searchable: false, orderable: true },
+                    {data: 'description', name: 'description', searchable: false, orderable: false },
+                    {data: 'delivery_date', name: 'delivery_date', orderable: true},
                     {
                         data: 'action',
                         name: 'action',
