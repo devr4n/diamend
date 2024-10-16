@@ -2,35 +2,39 @@
 
 namespace App\Http\Livewire;
 
-
-use App\Models\Product;
 use Livewire\Component;
 
 class ProductManager extends Component
 {
     public $mode = 'list';
     public $productId;
-    public $products = [];
-
-    protected $listeners = ['setMode'];
-
-    public function setMode($mode, $productId = null)
-    {
-        $this->mode = $mode;
-        $this->productId = $productId;
-
-        if ($mode === 'list') {
-            $this->loadProducts();
-        }
-    }
-
-    public function loadProducts()
-    {
-        $this->products = Product::all();
-    }
+    public $pageTitle;
 
     public function render()
     {
-        return view('livewire.product-manager');
+        $this->pageTitle = $this->getPageTitle();
+
+        return view('livewire.product-manager', [
+            'pageTitle' => $this->pageTitle,
+        ]);
+    }
+
+    private function getPageTitle()
+    {
+        switch ($this->mode) {
+            case 'list':
+                return __('general.title.product_list');
+            case 'create':
+                return __('general.title.add_new_product');
+            case 'edit':
+                return __('general.title.edit_product');
+            default:
+                return '';
+        }
+    }
+
+    public function setMode($mode)
+    {
+        $this->mode = $mode;
     }
 }

@@ -16,6 +16,15 @@ class ProductController extends Controller
         ]);
     }
 
+    public function create()
+    {
+        $mode = 'create';
+        return view('products.index',[
+            'mode' => $mode,
+            'pageTitle' => __('general.title.product_create')
+        ]);
+    }
+
     public function data()
     {
         $products = Product::select([
