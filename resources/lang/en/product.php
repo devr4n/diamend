@@ -3,6 +3,7 @@
 return [
     'id' => 'ID',
     'product' => 'Product',
+    'customer_name' => 'Customer Name',
     'operation_type' => 'Operation Type',
     'product_type' => 'Product Type',
     'description' => 'Description',

@@ -24,7 +24,7 @@
 <!-- Custom CSS for DataTable -->
 <style>
     @media (max-width: 430px) {
-        #customers-table th, #products-table td {
+        #products-table th, #products-table td {
             padding: 0.25rem;
             font-size: 0.75rem;
         }

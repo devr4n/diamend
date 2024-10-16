@@ -9,7 +9,11 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return view('products.index');
+        $mode = 'list';
+        return view('products.index',[
+            'mode' => $mode,
+            'pageTitle' => __('general.title.product_list')
+        ]);
     }
 
     public function data()
