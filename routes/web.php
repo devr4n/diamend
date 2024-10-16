@@ -21,11 +21,11 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+    Route::get('/products', [ProductController::class, 'index'])->name('products');
     Route::get('/products/data', [ProductController::class, 'data'])->name('products.data');
 
 
-    Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');
+    Route::get('/customers', [CustomerController::class, 'index'])->name('customers');
     Route::get('customers/data', [CustomerController::class, 'data'])->name('customers.data');
     Route::get('customers/create', [CustomerController::class, 'create'])->name('customers.create');
 

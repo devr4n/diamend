@@ -12,19 +12,19 @@
 
     <!-- Admin Items -->
     <li class="nav-item {{ Nav::isRoute('home') }}">
-        <a class="nav-link" href="{{ route('home') }}">
+        <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>{{ __('general.dashboard') }}</span></a>
     </li>
 
     <li class="nav-item {{ Nav::isRoute('products') }}">
-        <a class="nav-link" href="{{ route('products.index') }}">
+        <a class="nav-link {{ request()->routeIs('products*') ? 'active' : '' }}" href="{{ route('products') }}">
             <i class="fa-solid fa-diamond"></i>
             <span>{{ __('general.products') }}</span></a>
     </li>
 
     <li class="nav-item {{ Nav::isRoute('customers') }}">
-        <a class="nav-link" href="{{ route('customers.index') }}">
+        <a class="nav-link {{ request()->routeIs('customers*') ? 'active' : '' }}" href="{{ route('customers') }}">
             <i class="fa-solid fa-users"></i>
             <span>{{ __('general.customers') }}</span></a>
     </li>
@@ -41,7 +41,7 @@
 
     <!-- Nav Item - Profile -->
     <li class="nav-item {{ Nav::isRoute('profile') }}">
-        <a class="nav-link" href="{{ route('profile') }}">
+        <a class="nav-link {{ request()->routeIs('profile') ? 'active' : '' }}" href="{{ route('profile') }}">
             <i class="fas fa-fw fa-user"></i>
             <span>{{ __('general.profile') }}</span>
         </a>
@@ -49,7 +49,7 @@
 
     <!-- Nav Item - About -->
     <li class="nav-item {{ Nav::isRoute('about') }}">
-        <a class="nav-link" href="{{ route('about') }}">
+        <a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}" href="{{ route('about') }}">
             <i class="fa-solid fa-circle-info"></i>
             <span>{{ __('general.about') }}</span>
         </a>
