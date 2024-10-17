@@ -27,35 +27,33 @@ class ProductController extends Controller
 
     public function data()
     {
-        $products = Product::select([
-            'id',
-            'customer_id',
-            'operation_type_id',
-            'product_type_id',
-            'description',
-            'weight',
-            'image',
-            'receive_date',
-            'due_date',
-            'delivery_date',
-            'price',
-            'note',
-            'material_type_id',
-            'material_weight'
-            ,'status_id',
-            'created_at'
-        ]);
+        $products = Product::with(['customer', 'operationType', 'productType'])
+            ->select([
+                'products.customer_id',
+                'products.operation_type_id',
+                'products.product_type_id',
+                'products.description',
+                'products.weight',
+                'products.image',
+                'products.receive_date',
+                'products.due_date',
+                'products.delivery_date',
+                'products.price',
+                'products.note',
+                'products.material_type_id',
+                'products.material_weight',
+                'products.status_id',
+                'products.created_at',
+            ]);
         return datatables()->of($products)
             ->editColumn('customer.name', function ($product) {
                 return $product->customer->name;
             })
             ->editColumn('operation_type.name', function ($product) {
-                $locale = app()->getLocale();
-                return $locale === 'tr' ? $product->operationType->name_tr : $product->operationType->name_en;
+                return $product->operationType->localized_name;
             })
             ->editColumn('product_type.name', function ($product) {
-                $locale = app()->getLocale();
-                return $locale === 'tr' ? $product->productType->name_tr : $product->productType->name_en;
+                return $product->productType->localized_name;
             })
             ->editColumn('created_at', function ($product) {
                 return $product->created_at->format('d-m-Y');

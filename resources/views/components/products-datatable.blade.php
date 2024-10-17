@@ -6,7 +6,6 @@
                 <table class="table table-bordered table-striped table-hover text-center" id="products-table">
                     <thead class="bg-light">
                     <tr>
-                        <th>{{__('product.id')}}</th>
                         <th>{{__('product.customer_name')}}</th>
                         <th>{{__('product.operation_type')}}</th>
                         <th>{{__('product.product_type')}}</th>
@@ -39,10 +38,9 @@
                 serverSide: true,
                 ajax: '{{ route('products.data') }}',
                 columns: [
-                    {data: 'id', name: 'id', searchable: false, orderable:false},
                     {data: 'customer.name', name: 'customer.name', searchable: true, orderable: true },
-                    {data: 'operation_type.name', name: 'operation_type.name', searchable: false, orderable: true },
-                    {data: 'product_type.name', name: 'product_type.name', searchable: false, orderable: true },
+                    {data: 'operation_type.name', name: 'operation_type.localized_name', searchable: false, orderable: true },
+                    {data: 'product_type.name', name: 'product_type.localized_name', searchable: false, orderable: false },
                     {data: 'description', name: 'description', searchable: false, orderable: false },
                     {data: 'delivery_date', name: 'delivery_date', orderable: true},
                     {

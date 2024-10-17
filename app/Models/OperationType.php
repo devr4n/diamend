@@ -15,4 +15,9 @@ class OperationType extends Model
     ];
 
     public $timestamps = true;
+
+    public function getLocalizedNameAttribute()
+    {
+        return getLang() === 'tr' ? $this->name_tr : $this->name_en;
+    }
 }

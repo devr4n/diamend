@@ -13,4 +13,11 @@ class ProductType extends Model
         'name_tr',
         'name_en',
     ];
+
+    public $timestamps = true;
+
+    public function getLocalizedNameAttribute()
+    {
+        return getLang() === 'tr' ? $this->name_tr : $this->name_en;
+    }
 }
