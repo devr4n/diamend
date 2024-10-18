@@ -21,18 +21,30 @@
             <div class="card-body">
                 @if($mode === 'list')
                     <x-products-datatable/>
+
                 @elseif($mode === 'create' || $mode === 'edit')
                     <livewire:product-crud :mode="$mode" :id="$productId"/>
+
                 @endif
             </div>
         </div>
 </div>
-
 @push('scripts')
     <script>
         document.addEventListener('livewire:load', function () {
             Livewire.on('reloadDataTable', function () {
                 $('#products-table').DataTable().ajax.reload();
+            });
+
+            Livewire.hook('message.processed', (message, component) => {
+                if (message.updateQueue[0].payload.event === 'setMode') {
+                    if ($('#products-table').length) {
+                        $('#products-table').DataTable().destroy();
+                        $('#products-table').DataTable({
+                            // Your DataTable options here
+                        });
+                    }
+                }
             });
         });
     </script>

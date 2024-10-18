@@ -35,9 +35,9 @@
                     </label>
                     <select id="customer" class="form-control select2" name="customer" required>
                         <option value="">{{ __('general.form.select') }}</option>
-                        {{--                                    @foreach($customers as $customer)--}}
-                        {{--                                        <option value="{{ $customer->id }}">{{ $customer->name }}</option>--}}
-                        {{--                                    @endforeach--}}
+                        @foreach($customers as $customer)
+                            <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -49,9 +49,9 @@
                     </label>
                     <select id="customer" class="form-control select2" name="operation_type" required>
                         <option value="">{{ __('general.form.select') }}</option>
-                        {{--                                    @foreach($customers as $customer)--}}
-                        {{--                                        <option value="{{ $customer->id }}">{{ $customer->name }}</option>--}}
-                        {{--                                    @endforeach--}}
+                        @foreach($operationTypes as $operationType)
+                            <option value="{{ $operationType->id }}">{{ $operationType->localized_name }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -61,11 +61,11 @@
                     <label class="form-control-label" for="product_type">
                         {{ __('customer.product_type') }} <span class="small text-danger">*</span>
                     </label>
-                    <select id="customer" class="form-control select2" name="product_type" required>
+                    <select id="product_type" class="form-control select2" name="product_type" required>
                         <option value="">{{ __('general.form.select') }}</option>
-                        {{--                                    @foreach($customers as $customer)--}}
-                        {{--                                        <option value="{{ $customer->id }}">{{ $customer->name }}</option>--}}
-                        {{--                                    @endforeach--}}
+                        @foreach($productTypes as $productType)
+                            <option value="{{ $productType->id }}">{{ $productType->localized_name }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -138,10 +138,18 @@
         </div>
     </div>
 </form>
+
+@push('scripts')
 <script>
     var textAreas = document.getElementsByTagName('textarea');
 
     Array.prototype.forEach.call(textAreas, function (elem) {
         elem.placeholder = elem.placeholder.replace(/\\n/g, '\n');
     });
+
+
+    $(document).ready(function() {
+        $('#product_type').select2();
+    });
 </script>
+@endpush

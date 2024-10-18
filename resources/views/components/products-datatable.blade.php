@@ -31,12 +31,18 @@
 </style>
 
 @push('scripts')
-    <script>
+    <script type="text/javascript">
         $(document).ready(function () {
-            $('#products-table').DataTable({
+            var table = $('#products-table').DataTable({
+                paging: true,
+                scrollCollapse: true,
+                scrollX: 2000,
+                autoWidth: true,
+                // responsive: true,
                 processing: true,
                 serverSide: true,
-                ajax: '{{ route('products.data') }}',
+                stateSave: false,
+                ajax: '{!! route('products.data') !!}',
                 columns: [
                     {data: 'customer.name', name: 'customer.name', searchable: true, orderable: true },
                     {data: 'operation_type.name', name: 'operation_type.localized_name', searchable: false, orderable: true },
@@ -61,6 +67,11 @@
                     }
                 }
             });
+
+            window.addEventListener('refreshTable', event => {
+                table.draw(false)
+            })
+
         });
     </script>
 @endpush
