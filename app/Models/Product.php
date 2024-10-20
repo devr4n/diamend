@@ -11,21 +11,22 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
-        'customer_id', // customer id
-        'operation_type_id', // [repair, order]
-        'product_type_id', // [gold,silver,diamond,imitation,watch,other]
+        'customer_id',
+        'operation_type_id',
+        'product_type_id',
         'description',
-        'weight', // product weight gram
-        'image,',
-        'receive_date', // product received date
-        'due_date', // product due date
-        'delivery_date', // product delivery date
-        'price',
+        'weight',
+        'image',
+        'receive_date',
+        'due_date',
+        'delivery_date',
         'note',
-        'material_type', // [gold,silver,diamond]
-        'material_weight', // material weight gram
-        'status', // [pending,completed]
+        'price',
+        'material_type_id',
+        'material_weight',
+        'status_id',
     ];
+
 
     public function customer(): BelongsTo
     {

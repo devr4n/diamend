@@ -6,12 +6,12 @@
                 <table class="table table-bordered table-striped table-hover text-center" id="products-table">
                     <thead class="bg-light">
                     <tr>
-                        <th>{{__('product.customer_name')}}</th>
-                        <th>{{__('product.operation_type')}}</th>
-                        <th>{{__('product.product_type')}}</th>
-                        <th>{{__('product.description')}}</th>
-                        <th>{{__('product.delivery_date')}}</th>
-                        <th>{{__('product.form.action')}}</th>
+                        <th>{{__('products.customer_name')}}</th>
+                        <th>{{__('products.operation_type')}}</th>
+                        <th>{{__('products.product_type')}}</th>
+                        <th>{{__('products.description')}}</th>
+                        <th>{{__('products.delivery_date')}}</th>
+                        <th>{{__('products.form.action')}}</th>
                     </tr>
                     </thead>
                 </table>

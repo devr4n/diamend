@@ -10,11 +10,11 @@ return [
     'weight' => 'Ağırlık',
     'receive_date' => 'Alınma Tarihi',
     'due_date' => 'Teslim Tarihi',
-    'delivery_date' => 'Teslim Edilme Tarihi',
-    'price' => 'Fiyat',
+    'delivery_date' => 'Teslim Edilen Tarih',
+    'price' => 'İşlem Ücreti',
     'note' => 'Not',
-    'material_type' => 'Malzeme Tipi',
-    'material_weight' => 'Malzeme Ağırlığı',
+    'material_type' => 'Kullanilan Malzeme Tipi',
+    'material_weight' => 'Kullanilan Malzeme Ağırlığı',
     'status' => 'Durum',
 
 

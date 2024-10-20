@@ -14,8 +14,8 @@ class MaterialType extends Model
         'name_en',
     ];
 
-    public function materialTypes()
+    public function getLocalizedNameAttribute()
     {
-        return $this->belongsToMany(MaterialType::class)->withPivot('material_weight')->withTimestamps();
+        return getLang() === 'tr' ? $this->name_tr : $this->name_en;
     }
 }

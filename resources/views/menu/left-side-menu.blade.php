@@ -17,8 +17,8 @@
             <span>{{ __('general.dashboard') }}</span></a>
     </li>
 
-    <li class="nav-item {{ Nav::isRoute('products') }}">
-        <a class="nav-link {{ request()->routeIs('products*') ? 'active' : '' }}" href="{{ route('products') }}">
+    <li class="nav-item {{ Nav::isRoute('products*') }}">
+        <a class="nav-link {{ request()->routeIs('products*') ? 'active' : '' }}" href="{{ route('products.index') }}">
             <i class="fa-solid fa-diamond"></i>
             <span>{{ __('general.products') }}</span></a>
     </li>
