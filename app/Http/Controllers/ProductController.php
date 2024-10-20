@@ -129,7 +129,8 @@ class ProductController extends Controller
                 'products.material_weight',
                 'products.status_id',
                 'products.created_at',
-            ]);
+            ])
+        ->orderBy('created_at', 'desc');
         return datatables()->of($products)
             ->editColumn('customer.name', function ($product) {
                 return $product->customer->name;
@@ -145,8 +146,9 @@ class ProductController extends Controller
             })
             ->addColumn('action', function ($customer) {
                 return '
-                <button type="button" class="btn btn-outline-primary btn-sm"><i class="fas fa-pen"></i></button>
-                <button type="button" class="btn btn-outline-danger btn-sm"><i class="fas fa-trash"></i></button>
+                <button type="button" class="btn btn-outline-success btn-sm" title="View"><i class="fas fa-eye"></i></button>
+                <button type="button" class="btn btn-outline-primary btn-sm" title="Edit"><i class="fas fa-pen"></i></button>
+                <button type="button" class="btn btn-outline-danger btn-sm" title="Delete"><i class="fas fa-trash"></i></button>
             ';
             })
             ->make(true);

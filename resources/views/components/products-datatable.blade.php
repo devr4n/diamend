@@ -10,7 +10,8 @@
                         <th>{{__('products.operation_type')}}</th>
                         <th>{{__('products.product_type')}}</th>
                         <th>{{__('products.description')}}</th>
-                        <th>{{__('products.delivery_date')}}</th>
+                        <th class="text-nowrap">{{__('products.receive_date')}}</th>
+                        <th class="text-info text-nowrap">{{__('products.due_date')}}</th>
                         <th>{{__('products.form.action')}}</th>
                     </tr>
                     </thead>
@@ -47,8 +48,17 @@
                     {data: 'customer.name', name: 'customer.name', searchable: true, orderable: true },
                     {data: 'operation_type.name', name: 'operation_type.localized_name', searchable: false, orderable: true },
                     {data: 'product_type.name', name: 'product_type.localized_name', searchable: false, orderable: false },
-                    {data: 'description', name: 'description', searchable: false, orderable: false },
-                    {data: 'delivery_date', name: 'delivery_date', orderable: true},
+                    {
+                        data: 'description',
+                        name: 'description',
+                        searchable: false,
+                        orderable: false,
+                        render: function(data, type, row) {
+                            return data.length > 100 ? data.substr(0, 60) + '...' : data;
+                        }
+                    },
+                    {data: 'receive_date', name: 'receive_date', searchable: false, orderable: false },
+                    {data: 'due_date', name: 'due_date', orderable: true},
                     {
                         data: 'action',
                         name: 'action',
