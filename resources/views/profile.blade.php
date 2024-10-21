@@ -1,8 +1,8 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
 @section('main-content')
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">{{ __('Profile') }}</h1>
+    <h1 class="h3 mb-4 text-gray-800">{{ __('general.profile') }}</h1>
 
     @if (session('success'))
         <div class="alert alert-success border-left-success alert-dismissible fade show" role="alert">
@@ -72,7 +72,7 @@
             <div class="card shadow mb-4">
 
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">My Account</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">{{ __('general.profile_details') }}
                 </div>
 
                 <div class="card-body">

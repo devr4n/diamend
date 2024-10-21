@@ -80,7 +80,14 @@ return [
     |
     */
 
-    'locale' => env('APP_LOCALE', 'en'),
+//    'locale' => env('APP_LOCALE', 'tr'),
+
+    'locale' => env('APP_LOCALE', 'tr'),
+    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'tr'),
+    'locales' => [
+        'tr' => 'Türkçe',
+        'en' => 'English',
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +100,7 @@ return [
     |
     */
 
-    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
+    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'tr'),
 
     /*
     |--------------------------------------------------------------------------
@@ -185,6 +192,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -213,6 +221,8 @@ return [
     */
 
     'aliases' => [
+
+        'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
 
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,

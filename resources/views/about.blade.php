@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
 @section('main-content')
     <!-- Page Heading -->
@@ -10,21 +10,12 @@
 
             <div class="card shadow mb-4">
 
-                <div class="card-profile-image mt-4">
-                    <img src="{{ asset('img/favicon.png') }}" class="rounded-circle" alt="user-image">
-                </div>
-
                 <div class="card-body">
 
                     <div class="row">
                         <div class="col-lg-12">
-                            <h5 class="font-weight-bold">Laravel SB Admin 2</h5>
-                            <p>SB Admin 2 for Laravel.</p>
-                            <p>Recommend to install this preset on a project that you are starting from scratch, otherwise your project's design might break.</p>
-                            <p>If you found this project useful, then please consider giving it a ⭐</p>
-                            <a href="https://github.com/aleckrh/laravel-sb-admin-2" target="_blank" class="btn btn-github">
-                                <i class="fab fa-github fa-fw"></i> Go to repository
-                            </a>
+                            <h3 class="font-weight-bold text-primary">Diamend</h3>
+                            <p>{{ __('diamend.about_description') }}</p>
                         </div>
                     </div>
 
@@ -32,7 +23,7 @@
 
                     <div class="row">
                         <div class="col-lg-12">
-                            <h5 class="font-weight-bold">Credits</h5>
+                            <h5 class="font-weight-bold">{{ __('diamend.user_manual') }}</h5>
                             <p>Laravel SB Admin 2 uses some open-source third-party libraries/packages, many thanks to the web community.</p>
                             <ul>
                                 <li><a href="https://laravel.com" target="_blank">Laravel</a> - Open source framework.</li>
