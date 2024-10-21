@@ -3,22 +3,19 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">{{ __('general.products') }}</h1>
     @if (session('success'))
-        <div class="alert alert-success border-left-success alert-dismissible fade show" role="alert">
-            {{ session('success') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                toastr.success('{{ session('success') }}');
+            });
+        </script>
     @endif
 
-    @if ($errors->any())
-        <div class="alert alert-danger border-left-danger" role="alert">
-            <ul class="pl-4 my-2">
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
+    @if (session('error'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                toastr.error('{{ session('error') }}');
+            });
+        </script>
     @endif
 
     <div class="card shadow mb-4">
@@ -240,6 +237,11 @@
             Array.prototype.forEach.call(textAreas, function (elem) {
                 elem.placeholder = elem.placeholder.replace(/\\n/g, '\n');
             });
+        });
+
+
+        $(document).ready(function () {
+            $('.select2').select2();
         });
     </script>
 @endpush
