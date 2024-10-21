@@ -19,6 +19,7 @@ return [
         'surname' => 'Soyad',
         'phone' => 'Telefon Numarası',
         'address' => 'Adres',
+        'created_at' => 'Oluşturulma Tarihi',
         'action' => 'İşlem',
     ],
 ];

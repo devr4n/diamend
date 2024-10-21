@@ -19,6 +19,7 @@ return [
         'surname' => 'Surname',
         'phone' => 'Phone Number',
         'address' => 'Address',
+        'created_at' => 'Created At',
         'action' => 'Action',
     ]
 ];

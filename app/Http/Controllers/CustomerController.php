@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Yajra\DataTables\DataTables;
 
@@ -32,12 +33,13 @@ class CustomerController extends Controller
         ]);
 
         try {
-            Customer::create($request->all());
+            $customer = Customer::create($request->all());
+            $customer->save();
             Session::flash('message', 'Customer created successfully');
         } catch (\Exception $e) {
             Session::flash('error', 'An error occurred while saving the customer');
+            Log::error($e->getMessage());
         }
-
         return redirect()->route('customers.index');
     }
 
@@ -63,6 +65,7 @@ class CustomerController extends Controller
             Session::flash('message', 'Customer updated successfully');
         } catch (\Exception $e) {
             Session::flash('error', 'An error occurred while updating the customer');
+            Log::error($e->getMessage());
         }
 
         return redirect()->route('customers.index');
@@ -76,6 +79,7 @@ class CustomerController extends Controller
             Session::flash('message', 'Customer deleted successfully');
         } catch (\Exception $e) {
             Session::flash('error', 'An error occurred while deleting the customer');
+            Log::error($e->getMessage());
         }
 
         return redirect()->route('customers.index');

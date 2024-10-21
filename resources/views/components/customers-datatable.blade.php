@@ -23,6 +23,7 @@
                         <th>{{__('customer.form.surname')}}</th>
                         <th>{{__('customer.form.phone')}}</th>
                         <th>{{__('customer.form.address')}}</th>
+                        <th>{{__('customer.form.created_at')}}</th>
                         <th>{{__('customer.form.action')}}</th>
                     </tr>
                     </thead>
@@ -55,11 +56,13 @@
                     {
                         data: 'phone_1',
                         name: 'phone_1',
+                        orderable: false,
                         render: function (data, type, row) {
                             return '<a href="tel:' + data + '">' + data + '</a>';
                         }
                     },
-                    {data: 'address', name: 'address'},
+                    {data: 'address', name: 'address', orderable: false},
+                    {data: 'created_at', name: 'created_at'},
                     {
                         data: 'action',
                         name: 'action',
@@ -68,6 +71,7 @@
                         className: 'text-center text-nowrap'
                     },
                 ],
+                order: [[4, 'desc']],
                 dom: '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>' +
                     '<"row"<"col-sm-12"tr>>' +
                     '<"row"<"col-sm-12 col-md-5"i><"col-sm-12 col-md-7"p>>',
