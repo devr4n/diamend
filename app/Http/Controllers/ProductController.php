@@ -130,7 +130,7 @@ class ProductController extends Controller
                 'products.status_id',
                 'products.created_at',
             ])
-        ->orderBy('created_at', 'desc');
+            ->orderBy('created_at', 'desc');
         return datatables()->of($products)
             ->editColumn('customer.name', function ($product) {
                 return $product->customer->name;

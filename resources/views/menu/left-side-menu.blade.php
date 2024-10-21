@@ -23,8 +23,8 @@
             <span>{{ __('general.products') }}</span></a>
     </li>
 
-    <li class="nav-item {{ Nav::isRoute('customers') }}">
-        <a class="nav-link {{ request()->routeIs('customers*') ? 'active' : '' }}" href="{{ route('customers') }}">
+    <li class="nav-item {{ Nav::isRoute('customers*') }}">
+        <a class="nav-link {{ request()->routeIs('customers*') ? 'active' : '' }}" href="{{ route('customers.index') }}">
             <i class="fa-solid fa-users"></i>
             <span>{{ __('general.customers') }}</span></a>
     </li>

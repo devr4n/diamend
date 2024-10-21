@@ -32,7 +32,7 @@
                 @endif
                 @if(Route::currentRouteName() !== 'products.create')
                     <a class="btn btn-primary btn-create btn-sm" href="{{ route('products.create') }}">
-                        {{ __('general.title.add_new_customer') }}
+                        {{ __('general.title.add_new_product') }}
                     </a>
                 @endif
             </div>

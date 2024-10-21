@@ -1,8 +1,21 @@
-<div class="container-fluid">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <div class="card shadow mb-4">
-        <div class="card-body">
-            <div class="table-responsive">
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<div class="card shadow mb-4">
+    <div class="card-header py-3 d-flex justify-content-between align-items-center">
+        <h6 class="m-0 font-weight-bold text-primary">Customer List</h6>
+        <div class="text-right">
+            @if(Route::currentRouteName() !== 'customers.index')
+                <a class="btn btn-primary btn-list btn-sm" href="{{ route('customers.index') }}">
+                    {{ __('general.title.product_list') }}
+                </a>
+            @endif
+            <a class="btn btn-primary btn-create btn-sm" href="{{ route('customers.create') }}">
+                {{ __('general.title.add_new_product') }}
+            </a>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <div class="dataTables_wrapper dt-bootstrap4">
                 <table class="table table-bordered table-striped table-hover text-center" id="customers-table">
                     <thead class="bg-light">
                     <tr>

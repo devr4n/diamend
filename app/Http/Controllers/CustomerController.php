@@ -4,34 +4,81 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Yajra\DataTables\DataTables;
-use Illuminate\Support\Facades\Log;
 
 class CustomerController extends Controller
 {
     public function index()
     {
-        $mode = 'list';
-        return view('customers.index', [
-            'mode' => $mode,
-            'pageTitle' => __('general.title.customer_list')
-        ]);
+        $customers = Customer::all();
+        $this->data(); // Call the data method to get the data for the DataTables
+        return view('customers.index', compact('customers'));
     }
 
     public function create()
     {
-        return view('customers.index', [
-            'mode' => 'create',
-            'pageTitle' => 'Add New Customer',
-        ]);
+        return view('customers.create');
     }
 
-    public function edit(int $id)
+    public function store(Request $request)
     {
-        return view('customers.index', [
-            'mode' => 'edit',
-            'page_title' => 'Edit Customer ID : ' . $id,
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'surname' => 'required|string|max:255',
+            'phone_1' => 'required|string|max:20',
+            'phone_2' => 'nullable|string|max:20',
+            'address' => 'required|string|max:255',
         ]);
+
+        try {
+            Customer::create($request->all());
+            Session::flash('message', 'Customer created successfully');
+        } catch (\Exception $e) {
+            Session::flash('error', 'An error occurred while saving the customer');
+        }
+
+        return redirect()->route('customers.index');
+    }
+
+    public function edit($id)
+    {
+        $customer = Customer::findOrFail($id);
+        return view('customers.edit', compact('customer'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'surname' => 'required|string|max:255',
+            'phone_1' => 'required|string|max:15',
+            'phone_2' => 'nullable|string|max:15',
+            'address' => 'required|string|max:255',
+        ]);
+
+        try {
+            $customer = Customer::findOrFail($id);
+            $customer->update($request->all());
+            Session::flash('message', 'Customer updated successfully');
+        } catch (\Exception $e) {
+            Session::flash('error', 'An error occurred while updating the customer');
+        }
+
+        return redirect()->route('customers.index');
+    }
+
+    public function destroy($id)
+    {
+        try {
+            $customer = Customer::findOrFail($id);
+            $customer->delete();
+            Session::flash('message', 'Customer deleted successfully');
+        } catch (\Exception $e) {
+            Session::flash('error', 'An error occurred while deleting the customer');
+        }
+
+        return redirect()->route('customers.index');
     }
 
     public function data()
