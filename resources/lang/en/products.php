@@ -12,6 +12,7 @@ return [
     'due_date' => 'Due Date',
     'delivery_date' => 'Delivery Date',
     'price' => 'Price',
+    'image' => 'Image',
     'note' => 'Note',
     'material_type' => 'Material Type',
     'material_weight' => 'Material Weight',

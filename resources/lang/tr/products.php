@@ -13,6 +13,7 @@ return [
     'delivery_date' => 'Teslim Edilen Tarih',
     'price' => 'İşlem Ücreti',
     'note' => 'Not',
+    'image' => 'Görsel',
     'material_type' => 'Kullanilan Malzeme Tipi',
     'material_weight' => 'Kullanilan Malzeme Ağırlığı',
     'status' => 'Durum',
