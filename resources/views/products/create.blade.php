@@ -198,10 +198,8 @@
 
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="form-control-label" for="image">
-                                    {{ __('products.image') }}
-                                </label>
-                                <input type="file" id="image" name="image" class="form-control-file">
+                                <label for="formFileSm" class="form-control-label">{{ __('products.image') }}</label>
+                                <input class="form-control" id="formFileSm" type="file">
                             </div>
                         </div>
                     </div>
