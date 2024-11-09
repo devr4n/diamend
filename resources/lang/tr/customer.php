@@ -14,6 +14,10 @@ return [
     'material_type' => 'Malzeme Tipi',
     'material_weight' => 'Malzeme Ağırlığı',
 
+    'datatable_info' => 'Toplam _TOTAL_ kayıttan _START_ ile _END_ arasındakiler gösteriliyor',
+    'datatable_length_menu' => '_MENU_ kayıt göster',
+    'datatable_search' => 'Ara:',
+
     'form' => [
         'name' => 'Ad',
         'surname' => 'Soyad',

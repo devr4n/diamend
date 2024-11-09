@@ -18,6 +18,13 @@ return [
     'material_weight' => 'Material Weight',
     'status' => 'Status',
 
+    'click_to_create' => 'Click to create a new customer',
+
+    'datatable_info' => 'Showing _START_ to _END_ of _TOTAL_ entries',
+    'datatable_length_menu' => 'Show _MENU_ entries',
+    'datatable_search' => 'Search:',
+
+
     'form' => [
         'name' => 'Name',
         'surname' => 'Surname',

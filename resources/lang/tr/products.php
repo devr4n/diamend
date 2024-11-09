@@ -18,6 +18,11 @@ return [
     'material_weight' => 'Kullanilan Malzeme Ağırlığı',
     'status' => 'Durum',
 
+    'click_to_create' => 'Yeni müşteri oluşturmak için tıklayın',
+
+    'datatable_info' => 'Toplam _TOTAL_ kayıttan _START_ ile _END_ arasındakiler gösteriliyor',
+    'datatable_length_menu' => '_MENU_ kayıt göster',
+    'datatable_search' => 'Ara:',
 
     'form' => [
         'name' => 'Ad',

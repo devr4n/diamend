@@ -14,6 +14,10 @@ return [
     'material_type' => 'Material Type',
     'material_weight' => 'Material Weight',
 
+    'datatable_info' => 'Showing _START_ to _END_ of _TOTAL_ entries',
+    'datatable_length_menu' => 'Show _MENU_ entries',
+    'datatable_search' => 'Search:',
+
     'form' => [
         'name' => 'Name',
         'surname' => 'Surname',

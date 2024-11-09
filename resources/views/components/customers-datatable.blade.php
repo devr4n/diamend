@@ -1,7 +1,7 @@
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 <div class="card shadow mb-4">
     <div class="card-header py-3 d-flex justify-content-between align-items-center">
-        <h6 class="m-0 font-weight-bold text-primary">Customer List</h6>
+        <h6 class="m-0 font-weight-bold text-primary">{{ __('general.title.customer_list') }}</h6>
         <div class="text-right">
             @if(Route::currentRouteName() !== 'customers.index')
                 <a class="btn btn-primary btn-list btn-sm" href="{{ route('customers.index') }}">
@@ -9,7 +9,7 @@
                 </a>
             @endif
             <a class="btn btn-primary btn-create btn-sm" href="{{ route('customers.create') }}">
-                {{ __('general.title.add_new_product') }}
+                {{ __('general.title.add_new_customer') }}
             </a>
         </div>
     </div>
@@ -19,12 +19,12 @@
                 <table class="table table-bordered table-striped table-hover text-center" id="customers-table">
                     <thead class="bg-light">
                     <tr>
-                        <th>{{__('customer.form.name')}}</th>
-                        <th>{{__('customer.form.surname')}}</th>
-                        <th>{{__('customer.form.phone')}}</th>
-                        <th>{{__('customer.form.address')}}</th>
-                        <th>{{__('customer.form.created_at')}}</th>
-                        <th>{{__('customer.form.action')}}</th>
+                        <th class="text-center">{{__('customer.form.name')}}</th>
+                        <th class="text-center">{{__('customer.form.surname')}}</th>
+                        <th class="text-center">{{__('customer.form.phone')}}</th>
+                        <th class="text-center">{{__('customer.form.address')}}</th>
+                        <th class="text-center">{{__('customer.form.created_at')}}</th>
+                        <th class="text-center">{{__('customer.form.action')}}</th>
                     </tr>
                     </thead>
                 </table>
@@ -72,14 +72,10 @@
                     },
                 ],
                 order: [[4, 'desc']],
-                dom: '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>' +
-                    '<"row"<"col-sm-12"tr>>' +
-                    '<"row"<"col-sm-12 col-md-5"i><"col-sm-12 col-md-7"p>>',
                 language: {
-                    paginate: {
-                        previous: '<i class="fas fa-angle-left"></i>',
-                        next: '<i class="fas fa-angle-right"></i>'
-                    }
+                    lengthMenu: '{{ __('products.datatable_length_menu') }}',
+                    info: '{{ __('products.datatable_info') }}',
+                    search: '{{ __('products.datatable_search') }}',
                 }
             });
         });

@@ -23,18 +23,11 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between align-items-center">
-            <h6 class="m-0 font-weight-bold text-primary">{{__('general.title.customer_list')}}</h6>
+            <h5 class="m-0 font-weight-bold text-primary">{{__('general.title.add_new_customer')}}</h5>
             <div class="text-right">
-                @if(Route::currentRouteName() !== 'customers.index')
-                    <a class="btn btn-primary btn-list btn-sm" href="{{ route('customers.index') }}">
-                        {{ __('general.title.product_list') }}
-                    </a>
-                @endif
-                @if(Route::currentRouteName() !== 'customers.create')
-                    <a class="btn btn-primary btn-create btn-sm" href="{{ route('customer.create') }}">
-                        {{ __('general.title.add_new_customer') }}
-                    </a>
-                @endif
+                <a class="btn btn-primary" href="{{ route('customers.index') }}">
+                    {{ __('general.title.customer_list') }}
+                </a>
             </div>
         </div>
         <div class="card-body">

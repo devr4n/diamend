@@ -20,18 +20,11 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between align-items-center">
-            <h6 class="m-0 font-weight-bold text-primary">Product List</h6>
+            <h5 class="m-0 font-weight-bold text-primary">{{ __('general.title.add_new_product') }}</h5>
             <div class="text-right">
-                @if(Route::currentRouteName() !== 'products.index')
-                    <a class="btn btn-primary btn-list btn-sm" href="{{ route('products.index') }}">
-                        {{ __('general.title.product_list') }}
-                    </a>
-                @endif
-                @if(Route::currentRouteName() !== 'products.create')
-                    <a class="btn btn-primary btn-create btn-sm" href="{{ route('products.create') }}">
-                        {{ __('general.title.add_new_product') }}
-                    </a>
-                @endif
+                <a class="btn btn-primary" href="{{ route('products.index') }}">
+                    {{ __('general.title.product_list') }}
+                </a>
             </div>
         </div>
 
@@ -46,7 +39,7 @@
                         <div class="col-lg-4">
                             <div class="form-group focused">
                                 <label class="form-control-label" for="customer">
-                                    {{ __('customer.customer') }} <span class="small text-danger">*</span>
+                                    {{ __('customer.customer') }} <span class="text-danger">*</span>
                                 </label>
                                 <select id="customer_id" class="form-control select2" name="customer_id" required>
                                     <option value="">{{ __('general.form.select') }}</option>
@@ -54,13 +47,16 @@
                                         <option value="{{ $customer->id }}">{{ $customer->name }}</option>
                                     @endforeach
                                 </select>
+                                <a href="{{ route('customers.create') }}" class="text-decoration-none">
+                                    <small class="text-primary">{{__('products.click_to_create')}}</small>
+                                </a>
                             </div>
                         </div>
 
                         <div class="col-lg-4">
                             <div class="form-group focused">
                                 <label class="form-control-label" for="operation_type">
-                                    {{ __('products.operation_type') }} <span class="small text-danger">*</span>
+                                    {{ __('products.operation_type') }} <span class="text-danger">*</span>
                                 </label>
                                 <select id="operation_type_id" class="form-control select2" name="operation_type_id"
                                         required>
@@ -76,7 +72,7 @@
                         <div class="col-lg-4">
                             <div class="form-group focused">
                                 <label class="form-control-label" for="product_type">
-                                    {{ __('products.product_type') }} <span class="small text-danger">*</span>
+                                    {{ __('products.product_type') }} <span class="text-danger">*</span>
                                 </label>
                                 <select id="product_type_id" class="form-control select2" name="product_type_id"
                                         required>
@@ -94,7 +90,7 @@
                         <div class="col-lg-12">
                             <div class="form-group">
                                 <label class="form-control-label" for="description">
-                                    {{ __('products.description') }} <span class="small text-danger">*</span>
+                                    {{ __('products.description') }} <span class="text-danger">*</span>
                                 </label>
                                 <textarea id="description" class="form-control textAreaMultiline" name="description"
                                           maxlength="100"
@@ -137,22 +133,28 @@
                         </div>
                     </div>
 
+                    <hr>
+
+                        {{-- Product Details --}}
+
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group focused">
                                 <label class="form-control-label" for="weight">
-                                    {{ __('products.weight') }} <span class="small text-secondary">(gr)</span>
+                                    {{ __('products.weight') }} <span class="text-secondary">(gr)</span>
                                 </label>
-                                <input type="number" id="weight" class="form-control" name="weight"
+                                <input type="number" id="weight" class="form-control" name="weight" min="0" value="0"
+                                       step="0.01"
                                        placeholder="{{ __('products.weight') }}" required>
                             </div>
                         </div>
+
                         <div class="col-lg-6">
                             <div class="form-group focused">
                                 <label class="form-control-label" for="price">
                                     {{ __('products.price') }}
                                 </label>
-                                <input type="number" id="price" class="form-control" name="price"
+                                <input type="number" id="price" class="form-control" name="price" min="0" value="0"
                                        placeholder="{{ __('products.price') }}">
                             </div>
                         </div>
@@ -174,12 +176,14 @@
                                 </select>
                             </div>
                         </div>
+
                         <div class="col-lg-6">
                             <div class="form-group focused">
                                 <label class="form-control-label" for="material_weight">
-                                    {{ __('products.material_weight') }} <span class="small text-secondary">(gr)</span>
+                                    {{ __('products.material_weight') }} <span class="text-secondary">(gr)</span>
                                 </label>
                                 <input type="number" id="material_weight" class="form-control" name="material_weight"
+                                       min="0" value="0" step="0.01"
                                        placeholder="{{ __('products.material_weight') }}">
                             </div>
                         </div>
@@ -192,7 +196,7 @@
                                     {{ __('products.note') }}
                                 </label>
                                 <textarea id="note" class="form-control" name="note" maxlength="100"
-                                          placeholder="100TL Kapora Alındı" required></textarea>
+                                          placeholder="100TL Kapora Alındı"></textarea>
                             </div>
                         </div>
 
@@ -213,7 +217,7 @@
                 <div class="pl-lg-4">
                     <div class="row">
                         <div class="col text-center">
-                            <button type="submit" class="btn btn-primary btn-icon-split btn-sm">
+                            <button type="submit" class="btn btn-primary btn-icon-split">
                         <span class="icon text-white-50">
                             <i class="fas fa-check"></i>
                         </span>
