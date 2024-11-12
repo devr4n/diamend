@@ -64,6 +64,7 @@ return [
         'product_list' => 'Ürün Listesi',
         'add_new_product' => 'Yeni Ürün Ekle',
         'edit_product' => 'Ürün ID : ',
-        'product_information' => 'Formu doldurarak ürün oluşturabilir veya bilgileri güncelleyebilirsiniz.',
+        'product_information_1' => 'Formu doldurarak ürün oluşturabilir veya bilgileri güncelleyebilirsiniz.',
+        'product_information_2' => 'ile işaretlenmiş alanlar zorunludur.',
     ],
 ];

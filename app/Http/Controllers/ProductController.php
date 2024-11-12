@@ -14,6 +14,23 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class ProductController extends Controller
 {
+    protected $validateRules = [
+        'customer_id' => ['required', 'exists:customers,id'],
+        'operation_type_id' => ['required', 'exists:operation_types,id'],
+        'product_type_id' => ['required', 'exists:product_types,id'],
+        'description' => 'required',
+        'weight' => 'nullable',
+        'image' => 'nullable',
+        'receive_date' => 'nullable',
+        'due_date' => 'nullable',
+        'delivery_date' => 'nullable',
+        'note' => 'nullable',
+        'price' => 'nullable',
+        'material_type_id' => 'nullable',
+        'material_weight' => 'nullable',
+        'status_id' => 'nullable',
+    ];
+
     public function index()
     {
         $customers = Customer::all();
@@ -38,22 +55,7 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'customer_id' => ['required', 'exists:customers,id'],
-            'operation_type_id' => ['required', 'exists:operation_types,id'],
-            'product_type_id' => ['required', 'exists:product_types,id'],
-            'description' => 'required',
-            'weight' => 'nullable',
-            'image' => 'nullable',
-            'receive_date' => 'nullable',
-            'due_date' => 'nullable',
-            'delivery_date' => 'nullable',
-            'note' => 'nullable',
-            'price' => 'nullable',
-            'material_type_id' => 'nullable',
-            'material_weight' => 'nullable',
-            'status_id' => 'nullable',
-        ]);
+        $request->validate($this->validateRules);
 
         try {
             $product = new Product($request->all());
@@ -82,22 +84,16 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'customer_id' => ['required', 'exists:customers,id'],
-            'operation_type_id' => ['required', 'exists:operation_types,id'],
-            'product_type_id' => ['required', 'exists:product_types,id'],
-            'price' => 'required',
-        ]);
+        $request->validate($this->validateRules);
 
         try {
             $product = Product::findOrFail($id);
             $product->update($request->all());
-            Session::flash('message', 'Product updated successfully');
+            Alert::success('Success', 'Product updated successfully');
         } catch (\Exception $e) {
-            Session::flash('error', 'An error occurred while updating the product');
+            Alert::error('Error', 'An error occurred while updating the product');
+            logger()->error($e->getMessage());
         }
-
-        return redirect()->route('products.index');
     }
 
     public function destroy($id)
@@ -105,18 +101,19 @@ class ProductController extends Controller
         try {
             $product = Product::findOrFail($id);
             $product->delete();
-            Session::flash('message', 'Product deleted successfully');
+            Alert::success('Success', 'Product deleted successfully');
+            redirect()->route('products.index');
         } catch (\Exception $e) {
-            Session::flash('error', 'An error occurred while deleting the product');
+            Alert::error('Error', 'An error occurred while deleting the product');
+            logger()->error($e->getMessage());
         }
-
-        return redirect()->route('products.index');
     }
 
     public function data()
     {
         $products = Product::with(['customer', 'operationType', 'productType'])
             ->select([
+                'products.id',
                 'products.customer_id',
                 'products.operation_type_id',
                 'products.product_type_id',
@@ -152,9 +149,9 @@ class ProductController extends Controller
             })
             ->addColumn('action', function ($product) {
                 return '
-    <button type="button" class="btn btn-outline-success btn-sm" title="View"><i class="fas fa-eye"></i></button>
-    <a href="' . route('products.edit', ['id' => $product->id]) . '" class="btn btn-outline-primary btn-sm" title="Edit"><i class="fas fa-edit"></i></a>
-    <button type="button" class="btn btn-outline-danger btn-sm" title="Delete"><i class="fas fa-trash"></i></button>
+        <button type="button" class="btn btn-outline-success btn-sm" title="View"><i class="fas fa-eye"></i></button>
+        <a href="' . route('products.edit', $product->id) . '" class="btn btn-outline-primary btn-sm" title="Edit"><i class="fas fa-edit"></i></a>
+        <button type="button" class="btn btn-outline-danger btn-sm" title="Delete"><i class="fas fa-trash"></i></button>
     ';
             })
             ->make(true);

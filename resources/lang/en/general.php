@@ -64,6 +64,8 @@ return [
         'product_list' => 'Product List',
         'add_new_product' => 'Add New Product',
         'edit_product' => 'Product ID : ',
-        'product_information' => 'You can create a product or update information by filling out the form.',
+        'product_information_1' => 'You can create a product or update information by filling out the form.',
+        'product_information_2' => 'Required fields are marked with an asterisk.',
+
     ],
 ];
