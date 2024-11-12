@@ -14,15 +14,15 @@ return new class extends Migration
             $table->unsignedBigInteger('operation_type_id')->unsigned();
             $table->unsignedBigInteger('product_type_id')->unsigned();
             $table->text('description');
-            $table->float('weight');
-            $table->string('image');
+            $table->float('weight')->nullable();
+            $table->string('image')->nullable();
             $table->date('receive_date');
-            $table->date('due_date');
-            $table->date('delivery_date');
-            $table->float('price');
-            $table->text('note');
-            $table->unsignedBigInteger('material_type_id');
-            $table->float('material_weight');
+            $table->date('due_date')->nullable();
+            $table->date('delivery_date')->nullable();
+            $table->float('price')->nullable();
+            $table->text('note')->nullable();
+            $table->unsignedBigInteger('material_type_id')->nullable();
+            $table->float('material_weight')->nullable();
             $table->unsignedBigInteger('status_id')->unsigned();
 
             $table->foreign('customer_id')->references('id')->on('customers')->cascadeOnDelete();

@@ -44,7 +44,7 @@
                                 <select id="customer_id" class="form-control select2" name="customer_id" required>
                                     <option value="">{{ __('general.form.select') }}</option>
                                     @foreach($customers as $customer)
-                                        <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+                                        <option value="{{ $customer->id }}">{{ $customer->name }} {{ $customer->surname }}</option>
                                     @endforeach
                                 </select>
                                 <a href="{{ route('customers.create') }}" class="text-decoration-none">
@@ -145,7 +145,7 @@
                                 </label>
                                 <input type="number" id="weight" class="form-control" name="weight" min="0" value="0"
                                        step="0.01"
-                                       placeholder="{{ __('products.weight') }}" required>
+                                       placeholder="{{ __('products.weight') }}" >
                             </div>
                         </div>
 
@@ -166,8 +166,7 @@
                                 <label class="form-control-label" for="material_type">
                                     {{ __('products.material_type') }}
                                 </label>
-                                <select id="material_type_id" class="form-control select2" name="material_type_id"
-                                        required>
+                                <select id="material_type_id" class="form-control select2" name="material_type_id">
                                     <option value="">{{ __('general.form.select') }}</option>
                                     @foreach($materialTypes as $materialType)
                                         <option

@@ -10,6 +10,7 @@ use App\Models\ProductType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProductController extends Controller
 {
@@ -58,13 +59,14 @@ class ProductController extends Controller
             $product = new Product($request->all());
             $product->status_id = 0;
             $product->save();
-            Session::flash('message', 'Product created successfully');
-        } catch (\Exception $e) {
-            Session::flash('error', 'An error occurred while saving the product: ' . $e->getMessage());
-            logger()->error($e->getMessage());
-        }
+            Alert::success('Success', 'Product created successfully');
 
-        return redirect()->route('products.index');
+            return redirect()->route('products.index');
+        } catch (\Exception $e) {
+            Alert::error('Error', 'An error occurred while saving the product');
+            logger()->error($e->getMessage());
+            return redirect()->back();
+        }
     }
 
     public function edit($id)
@@ -73,8 +75,9 @@ class ProductController extends Controller
         $customers = Customer::all();
         $operationTypes = OperationType::all();
         $productTypes = ProductType::all();
+        $materialTypes = MaterialType::all();
 
-        return view('products.edit', compact('product', 'customers', 'operationTypes', 'productTypes'));
+        return view('products.edit', compact('product', 'customers', 'operationTypes', 'productTypes', 'materialTypes'));
     }
 
     public function update(Request $request, $id)
@@ -141,15 +144,18 @@ class ProductController extends Controller
             ->editColumn('product_type.name', function ($product) {
                 return $product->productType->localized_name;
             })
+            ->editColumn('due_date', function ($product) {
+                return $product->due_date ?? '-';
+            })
             ->editColumn('created_at', function ($product) {
                 return $product->created_at->format('d-m-Y');
             })
-            ->addColumn('action', function ($customer) {
+            ->addColumn('action', function ($product) {
                 return '
-                <button type="button" class="btn btn-outline-success btn-sm" title="View"><i class="fas fa-eye"></i></button>
-                <button type="button" class="btn btn-outline-primary btn-sm" title="Edit"><i class="fas fa-pen"></i></button>
-                <button type="button" class="btn btn-outline-danger btn-sm" title="Delete"><i class="fas fa-trash"></i></button>
-            ';
+    <button type="button" class="btn btn-outline-success btn-sm" title="View"><i class="fas fa-eye"></i></button>
+    <a href="' . route('products.edit', ['id' => $product->id]) . '" class="btn btn-outline-primary btn-sm" title="Edit"><i class="fas fa-edit"></i></a>
+    <button type="button" class="btn btn-outline-danger btn-sm" title="Delete"><i class="fas fa-trash"></i></button>
+    ';
             })
             ->make(true);
     }
