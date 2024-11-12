@@ -90,6 +90,7 @@ class ProductController extends Controller
             $product = Product::findOrFail($id);
             $product->update($request->all());
             Alert::success('Success', 'Product updated successfully');
+            return redirect()->route('products.index');
         } catch (\Exception $e) {
             Alert::error('Error', 'An error occurred while updating the product');
             logger()->error($e->getMessage());
@@ -101,8 +102,7 @@ class ProductController extends Controller
         try {
             $product = Product::findOrFail($id);
             $product->delete();
-            Alert::success('Success', 'Product deleted successfully');
-            redirect()->route('products.index');
+            return redirect()->route('products.index');
         } catch (\Exception $e) {
             Alert::error('Error', 'An error occurred while deleting the product');
             logger()->error($e->getMessage());
@@ -150,9 +150,12 @@ class ProductController extends Controller
             ->addColumn('action', function ($product) {
                 return '
         <button type="button" class="btn btn-outline-success btn-sm" title="View"><i class="fas fa-eye"></i></button>
-        <a href="' . route('products.edit', $product->id) . '" class="btn btn-outline-primary btn-sm" title="Edit"><i class="fas fa-edit"></i></a>
-        <button type="button" class="btn btn-outline-danger btn-sm" title="Delete"><i class="fas fa-trash"></i></button>
-    ';
+    <a href="' . route('products.edit', $product->id) . '" class="btn btn-outline-primary btn-sm" title="Edit"><i class="fas fa-edit"></i></a>
+    <form action="' . route('products.destroy', $product->id) . '" method="POST" style="display:inline;">
+        ' . csrf_field() . '
+        ' . method_field('DELETE') . '
+        <button type="submit" class="delete-button btn btn-outline-danger btn-sm " title="Delete"><i class="fas fa-trash"></i></button>
+    </form>';
             })
             ->make(true);
     }

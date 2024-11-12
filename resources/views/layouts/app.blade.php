@@ -36,7 +36,8 @@
 @livewireScripts
 
 <!-- Sweet Alert -->
-@include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 <!-- Page Wrapper -->
 <div id="wrapper">
