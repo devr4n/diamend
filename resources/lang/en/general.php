@@ -58,14 +58,14 @@ return [
         'customer_list' => 'Customer List',
         'add_new_customer' => 'Add New Customer',
         'edit_customer' => 'Edit Customer ID : ',
-        'customer_information' => 'You can create a new customer or update the information by filling out the form.',
+        'customer_information_1' => 'You can create a new customer or update the information by filling out the form.',
 
+        'required_fields' => 'Required fields are marked with an asterisk.',
 
         'product_list' => 'Product List',
         'add_new_product' => 'Add New Product',
         'edit_product' => 'Product ID : ',
         'product_information_1' => 'You can create a product or update information by filling out the form.',
-        'product_information_2' => 'Required fields are marked with an asterisk.',
 
     ],
 ];

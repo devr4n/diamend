@@ -95,7 +95,7 @@ class CustomerController extends Controller
             })
             ->addColumn('action', function ($customer) {
                 return '
-                <button type="button" class="btn btn-outline-primary btn-sm"><i class="fas fa-pen"></i></button>
+                <a href="' . route('customers.edit', $customer->id) . '" class="btn btn-outline-primary btn-sm" title="Edit"><i class="fas fa-edit"></i></a>
                 <button type="button" class="btn btn-outline-danger btn-sm"><i class="fas fa-trash"></i></button>
             ';
             })

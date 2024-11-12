@@ -19,7 +19,7 @@
     @endif
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between align-items-center">
-            <h6 class="m-0 font-weight-bold text-primary">{{ __('general.title.edit_product') }}</h6>
+            <h6 class="m-0 font-weight-bold text-primary">{{ __('general.title.edit_product') }} {{$product->id}}</h6>
             <div class="text-right">
                 <a class="btn btn-primary btn-list btn-sm" href="{{ route('products.index') }}">
                     {{ __('general.title.product_list') }}
@@ -35,7 +35,7 @@
                 @method('PUT')
                 <ul class="text-muted">
                     <li>{{ __('general.title.product_information_1') }}</li>
-                    <li><span class="text-danger">*</span> {{ __('general.title.product_information_2') }}</li>
+                    <li><span class="text-danger">*</span> {{ __('general.title.required_fields') }}</li>
                 </ul>
                 <hr>
 

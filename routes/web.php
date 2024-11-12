@@ -23,18 +23,21 @@ Auth::routes();
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
 
+    // Products
     Route::get('/products', [ProductController::class, 'index'])->name('products.index');
     Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
     Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
-
     Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
     Route::post('/products/store', [ProductController::class, 'store'])->name('products.store');
     Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
     Route::get('/products/data', [ProductController::class, 'data'])->name('products.data');
 
+    // Customers
     Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');
     Route::get('/customers/create', [CustomerController::class, 'create'])->name('customers.create');
+    Route::get('/customers/{id}/edit', [CustomerController::class, 'edit'])->name('customers.edit');
     Route::post('/customers/store', [CustomerController::class, 'store'])->name('customers.store');
+    Route::put('/customers/{id}', [CustomerController::class, 'update'])->name('customers.update');
     Route::get('/customers/data', [CustomerController::class, 'data'])->name('customers.data');
 
     Route::get('/profile', 'ProfileController@index')->name('profile');
