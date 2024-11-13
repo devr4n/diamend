@@ -18,6 +18,16 @@ return [
     'datatable_length_menu' => 'Show _MENU_ entries',
     'datatable_search' => 'Search:',
 
+    // Alerts
+    'success' => 'Success',
+    'error' => 'Error',
+    'customer_created' => 'Customer created successfully',
+    'customer_created_error' => 'An error occurred while creating the customer',
+    'customer_updated' => 'Customer updated successfully',
+    'customer_updated_error' => 'An error occurred while updating the customer',
+    'customer_deleted' => 'Customer deleted successfully',
+    'customer_deleted_error' => 'An error occurred while deleting the customer',
+
     'form' => [
         'name' => 'Name',
         'surname' => 'Surname',

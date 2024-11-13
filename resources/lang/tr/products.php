@@ -24,6 +24,17 @@ return [
     'datatable_length_menu' => '_MENU_ kayıt göster',
     'datatable_search' => 'Ara:',
 
+    //Alerts
+    'success' => 'Başarılı',
+    'error' => 'Hata',
+    'product_created' => 'Ürün başarıyla oluşturuldu',
+    'product_created_error' => 'Ürün oluşturulurken bir hata oluştu',
+    'product_updated' => 'Ürün başarıyla güncellendi',
+    'product_updated_error' => 'Ürün güncellenirken bir hata oluştu',
+    'product_deleted' => 'Ürün başarıyla silindi',
+    'product_deleted_error' => 'Ürün silinirken bir hata oluştu',
+
+
     'form' => [
         'name' => 'Ad',
         'surname' => 'Soyad',

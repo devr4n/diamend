@@ -38,12 +38,12 @@ class CustomerController extends Controller
         try {
             $customer = Customer::create($request->all());
             $customer->save();
-            Session::flash('message', 'Customer created successfully');
+            Alert::success(__('customer.success'), __('customer.customer_created'));
+            return redirect()->route('customers.index');
         } catch (\Exception $e) {
-            Session::flash('error', 'An error occurred while saving the customer');
+            Alert::error(__('customer.error'), __('customer.customer_created_error'));
             Log::error($e->getMessage());
         }
-        return redirect()->route('customers.index');
     }
 
     public function edit($id)
@@ -59,10 +59,10 @@ class CustomerController extends Controller
         try {
             $customer = Customer::findOrFail($id);
             $customer->update($request->all());
-            Alert::success('Success', 'Customer updated successfully');
+            Alert::success(__('customer.success'), __('customer.customer_updated'));
             return redirect()->route('customers.index');
         } catch (\Exception $e) {
-            Alert::error('Error', 'An error occurred while updating the customer');
+            Alert::error(__('customer.error'), __('customer.customer_updated_error'));
             Log::error($e->getMessage());
         }
     }
@@ -72,13 +72,12 @@ class CustomerController extends Controller
         try {
             $customer = Customer::findOrFail($id);
             $customer->delete();
-            Session::flash('message', 'Customer deleted successfully');
+            Alert::success(__('customer.success'), __('customer.customer_deleted'));
+            return redirect()->route('customers.index');
         } catch (\Exception $e) {
-            Session::flash('error', 'An error occurred while deleting the customer');
+            Alert::error(__('customer.error'), __('customer.customer_deleted_error'));
             Log::error($e->getMessage());
         }
-
-        return redirect()->route('customers.index');
     }
 
     public function data()

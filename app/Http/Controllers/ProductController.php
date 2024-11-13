@@ -62,11 +62,11 @@ class ProductController extends Controller
             $product = new Product($request->all());
             $product->status_id = 0;
             $product->save();
-            Alert::success('Success', 'Product created successfully');
+            Alert::success(__('products.success'), __('products.product_created'));
 
             return redirect()->route('products.index');
         } catch (\Exception $e) {
-            Alert::error('Error', 'An error occurred while saving the product');
+            Alert::error(__('products.error'), __('products.product_created_error'));
             Log::error($e->getMessage());
             return redirect()->back();
         }
@@ -90,10 +90,10 @@ class ProductController extends Controller
         try {
             $product = Product::findOrFail($id);
             $product->update($request->all());
-            Alert::success('Success', 'Product updated successfully');
+            Alert::success(__('products.success'), __('products.product_updated'));
             return redirect()->route('products.index');
         } catch (\Exception $e) {
-            Alert::error('Error', 'An error occurred while updating the product');
+            Alert::error(__('products.error'), __('products.product_updated_error'));
             Log::error($e->getMessage());
         }
     }
@@ -103,9 +103,10 @@ class ProductController extends Controller
         try {
             $product = Product::findOrFail($id);
             $product->delete();
+            Alert::success(__('products.success'), __('products.product_deleted'));
             return redirect()->route('products.index');
         } catch (\Exception $e) {
-            Alert::error('Error', 'An error occurred while deleting the product');
+            Alert::error(__('products.error'), __('products.product_deleted_error'));
             Log::error($e->getMessage());
         }
     }

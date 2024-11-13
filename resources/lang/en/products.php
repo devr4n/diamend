@@ -24,6 +24,16 @@ return [
     'datatable_length_menu' => 'Show _MENU_ entries',
     'datatable_search' => 'Search:',
 
+    // Alerts
+    'success' => 'Success',
+    'error' => 'Error',
+    'product_created' => 'Product created successfully',
+    'product_created_error' => 'An error occurred while creating the product',
+    'product_updated' => 'Product updated successfully',
+    'product_updated_error' => 'An error occurred while updating the product',
+    'product_deleted' => 'Product deleted successfully',
+    'product_deleted_error' => 'An error occurred while deleting the product',
+
 
     'form' => [
         'name' => 'Name',
