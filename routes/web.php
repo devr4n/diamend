@@ -39,6 +39,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/customers/store', [CustomerController::class, 'store'])->name('customers.store');
     Route::put('/customers/{id}', [CustomerController::class, 'update'])->name('customers.update');
     Route::get('/customers/data', [CustomerController::class, 'data'])->name('customers.data');
+    Route::delete('/customers/{id}', [CustomerController::class, 'destroy'])->name('customers.destroy');
 
     Route::get('/profile', 'ProfileController@index')->name('profile');
     Route::put('/profile', 'ProfileController@update')->name('profile.update');

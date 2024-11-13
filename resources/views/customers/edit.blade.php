@@ -107,14 +107,14 @@
                                 <span class="icon text-white-50">
                                     <i class="fas fa-check"></i>
                                 </span>
-                                <span class="text">{{ __('general.form.save') }}</span>
+                                <span class="text">{{ __('general.form.update') }}</span>
                             </button>
-                            <button type="submit" class="btn btn-danger btn-icon-split">
+                            <a href="{{ route('customers.index') }}" class="btn btn-secondary btn-icon-split">
                                 <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
+                                    <i class="fas fa-arrow-left"></i>
                                 </span>
-                                <span class="text">{{ __('general.form.delete') }}</span>
-                            </button>
+                                <span class="text">{{ __('general.form.cancel') }}</span>
+                            </a>
                         </div>
                     </div>
                 </div>

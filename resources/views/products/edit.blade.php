@@ -234,12 +234,12 @@
                 <span class="icon text-white-50">
                     <i class="fas fa-check"></i>
                 </span>
-                                <span class="text">{{ __('general.form.save') }}</span>
+                                <span class="text">{{ __('general.form.update') }}</span>
                             </button>
                             <a href="{{ route('products.index') }}" class="btn btn-secondary btn-icon-split">
-                <span class="icon text-white-50">
-                    <i class="fas fa-arrow-left"></i>
-                </span>
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-arrow-left"></i>
+                                </span>
                                 <span class="text">{{ __('general.form.cancel') }}</span>
                             </a>
                         </div>
