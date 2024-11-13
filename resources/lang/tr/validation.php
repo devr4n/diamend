@@ -22,10 +22,26 @@ return [
     ],
 
     'customer' => [
-        'name' => 'Ad alanı zorunludur.',
-        'surname' => 'Soyad alanı zorunludur.',
-        'phone' => 'Telefon alanı zorunludur.',
-        'address' => 'Adres alanı zorunludur.',
+        'name' => [
+            'required' => 'Ad alanı zorunludur.',
+            'max' => 'Ad alanı en fazla :max karakter olabilir.',
+        ],
+        'surname' => [
+            'required' => 'Soyad alanı zorunludur.',
+            'max' => 'Soyad alanı en fazla :max karakter olabilir.',
+        ],
+        'phone_1' => [
+            'required' => 'Birincil telefon alanı zorunludur.',
+            'max' => 'Birincil telefon alanı en fazla :max karakter olabilir.',
+        ],
+        'phone_2' => [
+            'required' => 'İkincil telefon alanı zorunludur.',
+            'max' => 'İkincil telefon alanı en fazla :max karakter olabilir.',
+        ],
+        'address' => [
+            'required' => 'Adres alanı zorunludur.',
+            'max' => 'Adres alanı en fazla :max karakter olabilir.',
+        ],
     ],
 
 

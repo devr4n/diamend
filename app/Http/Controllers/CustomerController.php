@@ -6,10 +6,19 @@ use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
+use RealRashid\SweetAlert\Facades\Alert;
 use Yajra\DataTables\DataTables;
 
 class CustomerController extends Controller
 {
+    protected $validateRules = [
+        'name' => 'required|string|max:255',
+        'surname' => 'required|string|max:255',
+        'phone_1' => 'required|string|max:20',
+        'phone_2' => 'nullable|string|max:20',
+        'address' => 'required|string|max:255',
+    ];
+
     public function index()
     {
         $customers = Customer::all();
@@ -24,13 +33,7 @@ class CustomerController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'surname' => 'required|string|max:255',
-            'phone_1' => 'required|string|max:20',
-            'phone_2' => 'nullable|string|max:20',
-            'address' => 'required|string|max:255',
-        ]);
+        $request->validate($this->validateRules);
 
         try {
             $customer = Customer::create($request->all());
@@ -51,24 +54,17 @@ class CustomerController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'surname' => 'required|string|max:255',
-            'phone_1' => 'required|string|max:15',
-            'phone_2' => 'nullable|string|max:15',
-            'address' => 'required|string|max:255',
-        ]);
+        $request->validate($this->validateRules);
 
         try {
             $customer = Customer::findOrFail($id);
             $customer->update($request->all());
-            Session::flash('message', 'Customer updated successfully');
+            Alert::success('Success', 'Customer updated successfully');
+            return redirect()->route('customers.index');
         } catch (\Exception $e) {
-            Session::flash('error', 'An error occurred while updating the customer');
+            Alert::error('Error', 'An error occurred while updating the customer');
             Log::error($e->getMessage());
         }
-
-        return redirect()->route('customers.index');
     }
 
     public function destroy($id)

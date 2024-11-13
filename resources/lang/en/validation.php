@@ -22,10 +22,26 @@ return [
     ],
 
     'customer' => [
-        'name' => 'The name field is required.',
-        'surname' => 'The surname field is required.',
-        'phone' => 'The phone field is required.',
-        'address' => 'The address field is required.',
+        'name' => [
+            'required' => 'Name field is required.',
+            'max' => 'Name field can be at most :max characters.',
+        ],
+        'surname' => [
+            'required' => 'Surname field is required.',
+            'max' => 'Surname field can be at most :max characters.',
+        ],
+        'phone_1' => [
+            'required' => 'Primary phone field is required.',
+            'max' => 'Primary phone field can be at most :max characters.',
+        ],
+        'phone_2' => [
+            'required' => 'Secondary phone field is required.',
+            'max' => 'Secondary phone field can be at most :max characters.',
+        ],
+        'address' => [
+            'required' => 'Address field is required.',
+            'max' => 'Address field can be at most :max characters.',
+        ],
     ],
 
 

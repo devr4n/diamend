@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\ProductType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -66,7 +67,7 @@ class ProductController extends Controller
             return redirect()->route('products.index');
         } catch (\Exception $e) {
             Alert::error('Error', 'An error occurred while saving the product');
-            logger()->error($e->getMessage());
+            Log::error($e->getMessage());
             return redirect()->back();
         }
     }
@@ -93,7 +94,7 @@ class ProductController extends Controller
             return redirect()->route('products.index');
         } catch (\Exception $e) {
             Alert::error('Error', 'An error occurred while updating the product');
-            logger()->error($e->getMessage());
+            Log::error($e->getMessage());
         }
     }
 
@@ -105,7 +106,7 @@ class ProductController extends Controller
             return redirect()->route('products.index');
         } catch (\Exception $e) {
             Alert::error('Error', 'An error occurred while deleting the product');
-            logger()->error($e->getMessage());
+            Log::error($e->getMessage());
         }
     }
 

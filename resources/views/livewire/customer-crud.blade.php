@@ -29,7 +29,7 @@
 
                 <input type="hidden" name="_method" value="PUT">
 
-                <h6 class="heading-small text-muted mb-4">{{ __('general.title.customer_information') }}</h6>
+                <h6 class="heading-small text-muted mb-4">{{ __('general.title.customer_information_1') }}</h6>
 
                 <div class="pl-lg-4">
 
