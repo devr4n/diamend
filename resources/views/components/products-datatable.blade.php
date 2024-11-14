@@ -19,13 +19,13 @@
                 <table class="table table-bordered dataTable table-striped table-hover text-center" id="products-table">
                     <thead class="bg-light">
                     <tr>
-                        <th class="text-center">{{__('products.customer_name')}}</th>
-                        <th class="text-center">{{__('products.operation_type')}}</th>
-                        <th class="text-center">{{__('products.product_type')}}</th>
-                        <th class="text-center">{{__('products.description')}}</th>
+                        <th class="text-nowrap text-center">{{__('products.customer_name')}}</th>
+                        <th class="text-nowrap text-center">{{__('products.operation_type')}}</th>
+                        <th class="text-nowrap text-center">{{__('products.product_type')}}</th>
+                        <th class="text-nowrap text-center">{{__('products.description')}}</th>
                         <th class="text-nowrap text-center">{{__('products.receive_date')}}</th>
-                        <th class="text-info text-nowrap text-center">{{__('products.due_date')}}</th>
-                        <th class="text-center">{{__('products.form.action')}}</th>
+                        <th class="text-nowrap text-center">{{__('products.due_date')}}</th>
+                        <th class="text-nowrap text-center">{{__('products.form.action')}}</th>
                     </tr>
                     </thead>
                 </table>
@@ -39,6 +39,7 @@
     .dataTables_wrapper {
         width: 100%;
     }
+
     #products-table {
         width: 100% !important;
     }
@@ -65,15 +66,67 @@
                 stateSave: false,
                 ajax: '{!! route('products.data') !!}',
                 columns: [
-                    {data: 'customer.name', name: 'customer.name', searchable: true, orderable: true, width: '15%'},
-                    {data: 'operation_type.name', name: 'operation_type.localized_name', searchable: false, orderable: true, width: '15%'},
-                    {data: 'product_type.name', name: 'product_type.localized_name', searchable: false, orderable: false, width: '15%'},
-                    {data: 'description', name: 'description', searchable: false, orderable: false, width: '30%', render: function (data, type, row) {
+                    {
+                        data: 'customer.name',
+                        name: 'customer.name',
+                        searchable: true,
+                        orderable: true,
+                        width: '15%',
+                        className: 'text-center text-nowrap'
+                    },
+                    {
+                        data: 'operation_type.name',
+                        name: 'operation_type.localized_name',
+                        searchable: false,
+                        orderable: true,
+                        width: '15%',
+                        className: 'text-center text-nowrap'
+                    },
+                    {
+                        data: 'product_type.name',
+                        name: 'product_type.localized_name',
+                        searchable: false,
+                        orderable: false,
+                        width: '15%',
+                        className: 'text-center text-nowrap'
+                    },
+                    {
+                        data: 'description',
+                        name: 'description',
+                        searchable: false,
+                        orderable: false,
+                        width: '30%',
+                        className: 'text-center text-nowrap',
+                        render: function (data, type, row) {
                             return data.length > 50 ? data.substr(0, 25) + '...' : data;
-                        }},
-                    {data: 'receive_date', name: 'receive_date', searchable: false, orderable: false, className: 'text-center', width: '10%'},
-                    {data: 'due_date', name: 'due_date', orderable: true, className: 'text-center', width: '10%'},
-                    {data: 'action', name: 'action', orderable: false, searchable: false, className: 'text-center text-nowrap', width: '5%'},
+                        }
+                    },
+                    {
+                        data: 'receive_date',
+                        name: 'receive_date',
+                        searchable: false,
+                        orderable: false,
+                        className: 'text-center',
+                        width: '10%'
+                    },
+                    {
+                        data: 'due_date',
+                        name: 'due_date',
+                        orderable: true,
+                        className: 'text-center',
+                        width: '10%',
+                        render: function (data, type, row) {
+                            return '<span class="badge badge-info">' + data + '</span>';
+                        }
+                    },
+                    {
+                        data: 'action',
+                        name: 'action',
+                        orderable: false,
+                        searchable: false,
+                        className: 'text-center text-nowrap',
+                        width: '5%'
+                    },
                 ],
                 language: {
                     lengthMenu: '{{ __('customer.datatable_length_menu') }}',

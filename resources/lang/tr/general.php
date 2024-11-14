@@ -22,6 +22,7 @@ return [
         'products_annual_earnings' => 'Yıllık Kazanç',
         'products_monthly_earnings' => 'Aylık Kazanç',
         'monthly_products' => 'Aylık Ürünler',
+        'completed_orders' => 'Tamamlanan',
     ],
 
     'form' => [

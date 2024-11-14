@@ -32,7 +32,7 @@ return [
     'form' => [
         'name' => 'Ad',
         'surname' => 'Soyad',
-        'phone' => 'Telefon Numarası',
+        'phone' => 'Telefon ',
         'address' => 'Adres',
         'created_at' => 'Oluşturulma Tarihi',
         'action' => 'İşlem',

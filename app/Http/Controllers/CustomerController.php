@@ -82,7 +82,8 @@ class CustomerController extends Controller
 
     public function data()
     {
-        $customers = Customer::select(['id', 'name', 'surname', 'phone_1', 'phone_2', 'address', 'created_at']);
+        $customers = Customer::select(['id', 'name', 'surname', 'phone_1', 'phone_2', 'address', 'created_at'])
+        ->orderBy('created_at','desc');
 
         return DataTables::of($customers)
             ->editColumn('created_at', function ($customer) {

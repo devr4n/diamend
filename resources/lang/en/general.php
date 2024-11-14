@@ -22,6 +22,7 @@ return [
         'products_annual_earnings' => 'Annual Earnings',
         'products_monthly_earnings' => 'Monthly Earnings',
         'monthly_products' => 'Monthly Products',
+        'completed_orders' => 'Completed',
     ],
 
     'form' => [

@@ -23,7 +23,7 @@
                         <th class="text-center">{{__('customer.form.surname')}}</th>
                         <th class="text-center">{{__('customer.form.phone')}}</th>
                         <th class="text-center">{{__('customer.form.address')}}</th>
-                        <th class="text-center">{{__('customer.form.created_at')}}</th>
+{{--                        <th class="text-center">{{__('customer.form.created_at')}}</th>--}}
                         <th class="text-center">{{__('customer.form.action')}}</th>
                     </tr>
                     </thead>
@@ -51,18 +51,23 @@
                 serverSide: true,
                 ajax: '{{ route('customers.data') }}',
                 columns: [
-                    {data: 'name', name: 'name'},
-                    {data: 'surname', name: 'surname'},
+                    {data: 'name', name: 'name', className: 'text-center text-nowrap'},
+                    {data: 'surname', name: 'surname', className: 'text-center text-nowrap'},
                     {
                         data: 'phone_1',
                         name: 'phone_1',
+                        className: 'text-center text-nowrap',
                         orderable: false,
                         render: function (data, type, row) {
                             return '<a href="tel:' + data + '">' + data + '</a>';
                         }
                     },
-                    {data: 'address', name: 'address', orderable: false},
-                    {data: 'created_at', name: 'created_at'},
+                    {data: 'address', name: 'address', orderable: false,
+                        render: function (data, type, row) {
+                            return data.length > 20 ? data.substr(0, 20) + '...' : data;
+                        }
+                    },
+                    // {data: 'created_at', name: 'created_at'},
                     {
                         data: 'action',
                         name: 'action',
@@ -71,7 +76,7 @@
                         className: 'text-center text-nowrap'
                     },
                 ],
-                order: [[4, 'desc']],
+                // order: [[4, 'desc']],
                 language: {
                     lengthMenu: '{{ __('products.datatable_length_menu') }}',
                     info: '{{ __('products.datatable_info') }}',
