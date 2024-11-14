@@ -18,6 +18,12 @@ return [
     'products' => 'Products',
     'customers' => 'Customers',
 
+    'board' => [
+        'products_annual_earnings' => 'Annual Earnings',
+        'products_monthly_earnings' => 'Monthly Earnings',
+        'monthly_products' => 'Monthly Products',
+    ],
+
     'form' => [
         'submit' => 'Submit',
         'save' => 'Save',

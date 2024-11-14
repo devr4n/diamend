@@ -18,6 +18,12 @@ return [
     'products' => 'Ürünler',
     'customers' => 'Müşteriler',
 
+    'board' => [
+        'products_annual_earnings' => 'Yıllık Kazanç',
+        'products_monthly_earnings' => 'Aylık Kazanç',
+        'monthly_products' => 'Aylık Ürünler',
+    ],
+
     'form' => [
         'submit' => 'Gönder',
         'save' => 'Kaydet',
