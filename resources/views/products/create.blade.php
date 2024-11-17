@@ -32,7 +32,7 @@
             <form action="{{ route('products.store') }}" method="POST">
                 @csrf
 
-                <h6 class="heading-small text-muted mb-4">{{ __('general.title.product_information') }}</h6>
+                <h6 class="heading-small text-muted mb-4">{{ __('general.title.product_information_1') }}</h6>
 
                 <div class="pl-lg-4">
                     <div class="row">
@@ -202,7 +202,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="formFileSm" class="form-control-label">{{ __('products.image') }}</label>
-                                <input class="form-control" id="formFileSm" type="file">
+                                <input class="form-control" id="formFileSm" type="file" name="image">
                             </div>
                         </div>
                     </div>

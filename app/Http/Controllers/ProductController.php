@@ -61,6 +61,12 @@ class ProductController extends Controller
         try {
             $product = new Product($request->all());
             $product->status_id = 0;
+
+            if ($request->hasFile('image')) {
+                $imagePath = $request->file('image')->store('products', 'public');
+                $product->image = $imagePath;
+            }
+
             $product->save();
             Alert::success(__('products.success'), __('products.product_created'));
 
