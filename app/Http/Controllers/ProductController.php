@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class ProductController extends Controller
@@ -21,7 +22,7 @@ class ProductController extends Controller
         'product_type_id' => ['required', 'exists:product_types,id'],
         'description' => 'required',
         'weight' => 'nullable',
-        'image' => 'nullable',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5048',
         'receive_date' => 'nullable',
         'due_date' => 'nullable',
         'delivery_date' => 'nullable',
@@ -95,7 +96,20 @@ class ProductController extends Controller
 
         try {
             $product = Product::findOrFail($id);
-            $product->update($request->all());
+
+            if ($request->hasFile('image')) {
+
+                if ($product->image && Storage::disk('public')->exists($product->image)) {
+                    Storage::disk('public')->delete($product->image);
+                }
+
+                $imagePath = $request->file('image')->store('products', 'public');
+                $product->image = $imagePath;
+            }
+
+
+            $product->update($request->except('image'));
+
             Alert::success(__('products.success'), __('products.product_updated'));
             return redirect()->route('products.index');
         } catch (\Exception $e) {

@@ -29,7 +29,7 @@
         </div>
 
         <div class="card-body">
-            <form action="{{ route('products.store') }}" method="POST">
+            <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <h6 class="heading-small text-muted mb-4">{{ __('general.title.product_information_1') }}</h6>
