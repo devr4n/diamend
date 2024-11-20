@@ -163,6 +163,9 @@ class ProductController extends Controller
             ->editColumn('product_type.name', function ($product) {
                 return $product->productType->localized_name;
             })
+            ->editColumn('image', function ($product) {
+                return '<img src="' . asset('storage/' . $product->image) . '" alt="Product Image" class="img-thumbnail" width="50" height="50">' ?? '-';
+            })
             ->editColumn('due_date', function ($product) {
                 return $product->due_date ?? '-';
             })

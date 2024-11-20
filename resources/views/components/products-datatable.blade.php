@@ -22,6 +22,7 @@
                         <th class="text-nowrap text-center">{{__('products.customer_name')}}</th>
                         <th class="text-nowrap text-center">{{__('products.operation_type')}}</th>
                         <th class="text-nowrap text-center">{{__('products.product_type')}}</th>
+                        <th class="text-nowrap text-center">{{__('products.image')}}</th>
                         <th class="text-nowrap text-center">{{__('products.description')}}</th>
                         <th class="text-nowrap text-center">{{__('products.receive_date')}}</th>
                         <th class="text-nowrap text-center">{{__('products.due_date')}}</th>
@@ -71,7 +72,7 @@
                         name: 'customer.name',
                         searchable: true,
                         orderable: true,
-                        width: '15%',
+                        width: '10%',
                         className: 'text-center text-nowrap'
                     },
                     {
@@ -79,7 +80,7 @@
                         name: 'operation_type.localized_name',
                         searchable: false,
                         orderable: true,
-                        width: '15%',
+                        width: '10%',
                         className: 'text-center text-nowrap'
                     },
                     {
@@ -87,18 +88,29 @@
                         name: 'product_type.localized_name',
                         searchable: false,
                         orderable: false,
-                        width: '15%',
+                        width: '10%',
                         className: 'text-center text-nowrap'
+                    },
+                    {
+                        data: 'image',
+                        name: 'image',
+                        searchable: false,
+                        orderable: false,
+                        width: '10%',
+                        className: 'text-center text-nowrap',
+                        render: function (data, type, row) {
+                            return '<img src="' + data + '" class="img-thumbnail" style="width: 50px; height: 50px;" alt="Product Image">';
+                        }
                     },
                     {
                         data: 'description',
                         name: 'description',
                         searchable: false,
                         orderable: false,
-                        width: '30%',
+                        width: '15%',
                         className: 'text-center text-nowrap',
                         render: function (data, type, row) {
-                            return data.length > 50 ? data.substr(0, 25) + '...' : data;
+                            return data.length > 25 ? data.substr(0, 25) + '...' : data;
                         }
                     },
                     {
