@@ -218,7 +218,12 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="formFileSm" class="form-control-label">{{ __('products.image') }}</label>
-                                <input class="form-control" id="formFileSm" type="file" name="image">
+                                <input class="form-control" id="formFileSm" type="file" name="image" onchange="previewImage(event)">
+                                @if($product->image)
+                                    <div class="mt-2">
+                                        <img id="imagePreview" src="/storage/products/{{ basename($product->image) }}" style="max-width: 75px; max-height: 75px;">
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>

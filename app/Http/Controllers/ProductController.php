@@ -22,7 +22,7 @@ class ProductController extends Controller
         'product_type_id' => ['required', 'exists:product_types,id'],
         'description' => 'required',
         'weight' => 'nullable',
-        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:15048',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:15048',
         'receive_date' => 'required',
         'due_date' => 'required',
         'delivery_date' => 'nullable',
@@ -98,7 +98,6 @@ class ProductController extends Controller
             $product = Product::findOrFail($id);
 
             if ($request->hasFile('image')) {
-
                 if ($product->image && Storage::disk('public')->exists($product->image)) {
                     Storage::disk('public')->delete($product->image);
                 }
@@ -107,8 +106,7 @@ class ProductController extends Controller
                 $product->image = $imagePath;
             }
 
-            dd($product->image);
-            $product->update($request->all());
+            $product->update($request->except('image'));
 
             Alert::success(__('products.success'), __('products.product_updated'));
             return redirect()->route('products.index');

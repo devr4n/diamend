@@ -41,7 +41,7 @@
                 responsive: true,
                 processing: true,
                 serverSide: true,
-                stateSave: false,
+                stateSave: true,
                 ajax: '{!! route('products.data') !!}',
                 columns: [
                     {
