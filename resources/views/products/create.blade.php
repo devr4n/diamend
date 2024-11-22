@@ -161,7 +161,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="form-control-label" for="price">
-                                    {{ __('products.price') }}
+                                    {{ __('products.price') }} <span class="text-secondary">(₺)</span>
                                 </label>
                                 <input type="number" id="price" class="form-control" name="price" min="0" value="0"
                                        placeholder="{{ __('products.price') }}">
