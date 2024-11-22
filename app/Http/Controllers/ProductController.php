@@ -32,6 +32,7 @@ class ProductController extends Controller
         'material_weight' => 'nullable',
         'status_id' => 'nullable',
     ];
+
     public function index()
     {
         $customers = Customer::all();
@@ -53,6 +54,7 @@ class ProductController extends Controller
 
         return view('products.create', compact('customers', 'operationTypes', 'productTypes', 'materialTypes'));
     }
+
     public function store(Request $request)
     {
         $request->validate($this->validateRules);
@@ -88,6 +90,17 @@ class ProductController extends Controller
         $materialTypes = MaterialType::all();
 
         return view('products.edit', compact('product', 'customers', 'operationTypes', 'productTypes', 'materialTypes'));
+    }
+
+    public function show($id) // show method for modal
+    {
+        $product = Product::findOrFail($id);
+        $customers = Customer::all();
+        $operationTypes = OperationType::all();
+        $productTypes = ProductType::all();
+        $materialTypes = MaterialType::all();
+
+        return view('products.show', compact('product', 'customers', 'operationTypes', 'productTypes', 'materialTypes'));
     }
 
     public function update(Request $request, $id)
@@ -172,7 +185,7 @@ class ProductController extends Controller
             })
             ->addColumn('action', function ($product) {
                 return '
-        <button type="button" class="btn btn-outline-success btn-sm" title="View"><i class="fas fa-eye"></i></button>
+    <a href="' . route('products.show', $product->id) . '" class="btn btn-outline-info btn-sm" title="Show"><i class="fas fa-eye"></i></a>
     <a href="' . route('products.edit', $product->id) . '" class="btn btn-outline-primary btn-sm" title="Edit"><i class="fas fa-edit"></i></a>
     <form action="' . route('products.destroy', $product->id) . '" method="POST" style="display:inline;">
         ' . csrf_field() . '

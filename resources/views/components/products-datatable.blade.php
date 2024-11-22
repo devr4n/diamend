@@ -117,6 +117,7 @@
                 }
             });
 
+
             window.addEventListener('refreshTable', event => {
                 table.draw(false)
             });

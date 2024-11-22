@@ -32,6 +32,9 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
     Route::get('/products/data', [ProductController::class, 'data'])->name('products.data');
 
+    // Modal
+    Route::get('/products/show/{id}', [ProductController::class, 'show'])->name('products.show');
+
     // Customers
     Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');
     Route::get('/customers/create', [CustomerController::class, 'create'])->name('customers.create');
