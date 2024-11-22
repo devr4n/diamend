@@ -3,6 +3,22 @@
 return [
     'required' => ':attribute alanı zorunludur.',
     'exists' => 'Seçilen :attribute geçersiz.',
+    'uploaded' => ':attribute yüklenemedi.',
+
+    'attributes' => [
+        'product.customer_id' => 'Müşteri',
+        'product.operation_type_id' => 'İşlem tipi',
+        'product.product_type_id' => 'Ürün türü',
+        'product.price' => 'Fiyat',
+        'product.receive_date' => 'Teslim Alınma Tarihi',
+        'product.quantity' => 'Miktar',
+        'product.image' => 'Görsel',
+
+        'customer.name' => 'Ad',
+        'customer.surname' => 'Soyad',
+        'customer.phone' => 'Telefon',
+        'customer.address' => 'Adres',
+    ],
 
     'product' => [
         'customer_id' => [
@@ -18,6 +34,7 @@ return [
             'exists' => 'Seçilen ürün türü geçersiz.',
         ],
         'price' => 'Fiyat alanı zorunludur.',
+        'receive_date' => 'Teslim Alınma Tarihi alanı zorunludur.',
         'quantity' => 'Miktar alanı zorunludur.',
     ],
 
@@ -44,17 +61,4 @@ return [
         ],
     ],
 
-
-    'attributes' => [
-        'product.customer_id' => 'Müşteri',
-        'product.operation_type_id' => 'İşlem tipi',
-        'product.product_type_id' => 'Ürün türü',
-        'product.price' => 'Fiyat',
-        'product.quantity' => 'Miktar',
-
-        'customer.name' => 'Ad',
-        'customer.surname' => 'Soyad',
-        'customer.phone' => 'Telefon',
-        'customer.address' => 'Adres',
-    ],
 ];

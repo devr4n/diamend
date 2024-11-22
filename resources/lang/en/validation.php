@@ -3,6 +3,22 @@
 return [
     'required' => 'The :attribute field is required.',
     'exists' => 'The selected :attribute is invalid.',
+    'uploaded' => 'The :attribute could not be uploaded.',
+
+    'attributes' => [
+        'product.customer_id' => 'Customer',
+        'product.operation_type_id' => 'Operation type',
+        'product.product_type_id' => 'Product type',
+        'product.price' => 'Price',
+        'product.quantity' => 'Quantity',
+        'product.receive_date' => 'Receive Date',
+        'product.image' => 'Image',
+
+        'customer.name' => 'Name',
+        'customer.surname' => 'Surname',
+        'customer.phone' => 'Phone',
+        'customer.address' => 'Address',
+    ],
 
     'product' => [
         'customer_id' => [
@@ -17,6 +33,7 @@ return [
             'required' => 'The product type field is required.',
             'exists' => 'The selected product type is invalid.',
         ],
+        'receive_date' => 'The receive date field is required.',
         'price' => 'The price field is required.',
         'quantity' => 'The quantity field is required.',
     ],
@@ -44,17 +61,4 @@ return [
         ],
     ],
 
-
-    'attributes' => [
-        'product.customer_id' => 'Customer',
-        'product.operation_type_id' => 'Operation type',
-        'product.product_type_id' => 'Product type',
-        'product.price' => 'Price',
-        'product.quantity' => 'Quantity',
-
-        'customer.name' => 'Name',
-        'customer.surname' => 'Surname',
-        'customer.phone' => 'Phone',
-        'customer.address' => 'Address',
-    ],
 ];

@@ -2,20 +2,22 @@
 @section('main-content')
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">{{ __('general.products') }}</h1>
-    @if (session('success'))
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                toastr.success('{{ session('success') }}');
-            });
-        </script>
-    @endif
-
-    @if (session('error'))
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                toastr.error('{{ session('error') }}');
-            });
-        </script>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @elseif (session()->has('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @elseif (session()->has('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
     @endif
 
     <div class="card shadow mb-4">
@@ -44,17 +46,21 @@
                                 <select id="customer_id" class="form-control select2" name="customer_id" required>
                                     <option value="">{{ __('general.form.select') }}</option>
                                     @foreach($customers as $customer)
-                                        <option value="{{ $customer->id }}">{{ $customer->name }} {{ $customer->surname }}</option>
+                                        <option
+                                            value="{{ $customer->id }}">{{ $customer->name }} {{ $customer->surname }}</option>
                                     @endforeach
                                 </select>
                                 <a href="{{ route('customers.create') }}" class="text-decoration-none">
                                     <small class="text-primary">{{__('products.click_to_create')}}</small>
                                 </a>
+                                @error('customer_id')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="col-lg-4">
-                            <div class="form-group focused">
+                            <div class="form-group">
                                 <label class="form-control-label" for="operation_type">
                                     {{ __('products.operation_type') }} <span class="text-danger">*</span>
                                 </label>
@@ -70,7 +76,7 @@
                         </div>
 
                         <div class="col-lg-4">
-                            <div class="form-group focused">
+                            <div class="form-group">
                                 <label class="form-control-label" for="product_type">
                                     {{ __('products.product_type') }} <span class="text-danger">*</span>
                                 </label>
@@ -109,6 +115,9 @@
                                 </label>
                                 <input type="date" id="receive_date" class="form-control" name="receive_date"
                                        placeholder="{{ __('products.receive_date') }}">
+                                @error('receive_date')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
 
@@ -135,22 +144,22 @@
 
                     <hr>
 
-                        {{-- Product Details --}}
+                    {{-- Product Details --}}
 
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="form-group focused">
+                            <div class="form-group">
                                 <label class="form-control-label" for="weight">
                                     {{ __('products.weight') }} <span class="text-secondary">(gr)</span>
                                 </label>
                                 <input type="number" id="weight" class="form-control" name="weight" min="0" value="0"
                                        step="0.01"
-                                       placeholder="{{ __('products.weight') }}" >
+                                       placeholder="{{ __('products.weight') }}">
                             </div>
                         </div>
 
                         <div class="col-lg-6">
-                            <div class="form-group focused">
+                            <div class="form-group">
                                 <label class="form-control-label" for="price">
                                     {{ __('products.price') }}
                                 </label>
@@ -162,7 +171,7 @@
 
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="form-group focused">
+                            <div class="form-group">
                                 <label class="form-control-label" for="material_type">
                                     {{ __('products.material_type') }}
                                 </label>
@@ -177,7 +186,7 @@
                         </div>
 
                         <div class="col-lg-6">
-                            <div class="form-group focused">
+                            <div class="form-group">
                                 <label class="form-control-label" for="material_weight">
                                     {{ __('products.material_weight') }} <span class="text-secondary">(gr)</span>
                                 </label>
@@ -201,8 +210,8 @@
 
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="formFileSm" class="form-control-label">{{ __('products.image') }}</label>
-                                <input class="form-control" id="formFileSm" type="file" name="image">
+                                <label  class="form-control-label">{{ __('products.image') }}</label>
+                                <input class="form-control" id="image" type="file" name="image">
                             </div>
                         </div>
                     </div>

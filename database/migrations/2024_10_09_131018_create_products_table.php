@@ -16,7 +16,7 @@ return new class extends Migration
             $table->text('description');
             $table->float('weight')->nullable();
             $table->string('image')->nullable();
-            $table->date('receive_date');
+            $table->date('receive_date')->nullable();
             $table->date('due_date')->nullable();
             $table->date('delivery_date')->nullable();
             $table->float('price')->nullable();

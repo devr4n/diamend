@@ -47,4 +47,10 @@ class Product extends Model
     {
         return $this->belongsToMany(MaterialType::class)->withPivot('material_weight')->withTimestamps();
     }
+
+    public function getImageUrlAttribute()
+    {
+        return $this->image ? asset('storage/' . $this->image) : asset('default-image.png');
+    }
+
 }

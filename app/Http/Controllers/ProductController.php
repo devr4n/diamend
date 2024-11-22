@@ -22,9 +22,9 @@ class ProductController extends Controller
         'product_type_id' => ['required', 'exists:product_types,id'],
         'description' => 'required',
         'weight' => 'nullable',
-        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5048',
-        'receive_date' => 'nullable',
-        'due_date' => 'nullable',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:15048',
+        'receive_date' => 'required',
+        'due_date' => 'required',
         'delivery_date' => 'nullable',
         'note' => 'nullable',
         'price' => 'nullable',
@@ -32,7 +32,6 @@ class ProductController extends Controller
         'material_weight' => 'nullable',
         'status_id' => 'nullable',
     ];
-
     public function index()
     {
         $customers = Customer::all();
@@ -54,12 +53,12 @@ class ProductController extends Controller
 
         return view('products.create', compact('customers', 'operationTypes', 'productTypes', 'materialTypes'));
     }
-
     public function store(Request $request)
     {
         $request->validate($this->validateRules);
 
         try {
+
             $product = new Product($request->all());
             $product->status_id = 0;
 
@@ -69,8 +68,8 @@ class ProductController extends Controller
             }
 
             $product->save();
-            Alert::success(__('products.success'), __('products.product_created'));
 
+            Alert::success(__('products.success'), __('products.product_created'));
             return redirect()->route('products.index');
         } catch (\Exception $e) {
             Alert::error(__('products.error'), __('products.product_created_error'));
@@ -78,6 +77,7 @@ class ProductController extends Controller
             return redirect()->back();
         }
     }
+
 
     public function edit($id)
     {
@@ -107,8 +107,8 @@ class ProductController extends Controller
                 $product->image = $imagePath;
             }
 
-
-            $product->update($request->except('image'));
+            dd($product->image);
+            $product->update($request->all());
 
             Alert::success(__('products.success'), __('products.product_updated'));
             return redirect()->route('products.index');
@@ -155,13 +155,16 @@ class ProductController extends Controller
             ->orderBy('created_at', 'desc');
         return datatables()->of($products)
             ->editColumn('customer.name', function ($product) {
-                return $product->customer->name;
+                return $product->customer->name ?? '-';
             })
             ->editColumn('operation_type.name', function ($product) {
-                return $product->operationType->localized_name;
+                return $product->operationType->localized_name ?? '-';
             })
             ->editColumn('product_type.name', function ($product) {
-                return $product->productType->localized_name;
+                return $product->productType->localized_name ?? '-';
+            })
+            ->addColumn('image_url', function ($product) {
+                return $product->image_url; // Modeldeki accessor kullanılır
             })
             ->editColumn('due_date', function ($product) {
                 return $product->due_date ?? '-';
