@@ -92,15 +92,16 @@ class ProductController extends Controller
         return view('products.edit', compact('product', 'customers', 'operationTypes', 'productTypes', 'materialTypes'));
     }
 
-    public function show($id) // show method for modal
+    // app/Http/Controllers/ProductController.php
+    public function show($id)
     {
-        $product = Product::findOrFail($id);
-        $customers = Customer::all();
-        $operationTypes = OperationType::all();
-        $productTypes = ProductType::all();
-        $materialTypes = MaterialType::all();
-
-        return view('products.show', compact('product', 'customers', 'operationTypes', 'productTypes', 'materialTypes'));
+        try {
+            $product = Product::findOrFail($id);
+            return view('products.show', compact('product'));
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return response()->json(['error' => 'Product not found'], 500);
+        }
     }
 
     public function update(Request $request, $id)
@@ -185,7 +186,7 @@ class ProductController extends Controller
             })
             ->addColumn('action', function ($product) {
                 return '
-    <a href="' . route('products.show', $product->id) . '" class="btn btn-outline-info btn-sm" title="Show"><i class="fas fa-eye"></i></a>
+    <a class="btn btn-outline-info btn-sm" title="Show" onClick="showModal(' . $product->id . ')"><i class="fas fa-eye"></i></a>
     <a href="' . route('products.edit', $product->id) . '" class="btn btn-outline-primary btn-sm" title="Edit"><i class="fas fa-edit"></i></a>
     <form action="' . route('products.destroy', $product->id) . '" method="POST" style="display:inline;">
         ' . csrf_field() . '

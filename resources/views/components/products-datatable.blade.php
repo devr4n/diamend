@@ -29,6 +29,24 @@
         </table>
     </div>
 </div>
+<div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="productModalLabel">{{ __('Product Details') }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Product details will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Close') }}</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @push('scripts')
     <script type="text/javascript">
@@ -122,5 +140,17 @@
                 table.draw(false)
             });
         });
+
+        // Show product details in modal
+        function showModal(productId) {
+            $.ajax({
+                url: '/products/show/' + productId,
+                type: 'GET',
+                success: function (response) {
+                    $('#productModal .modal-body').html(response);
+                    $('#productModal').modal('show');
+                }
+            });
+        }
     </script>
 @endpush
