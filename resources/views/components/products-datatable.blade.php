@@ -29,6 +29,8 @@
         </table>
     </div>
 </div>
+
+{{--Product Modal--}}
 <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -39,7 +41,16 @@
                 </button>
             </div>
             <div class="modal-body">
-                <!-- Product details will be loaded here -->
+                <p><strong>{{ __('Customer Name') }}:</strong> <span id="customer-name"></span></p>
+                <p><strong>{{ __('Operation Type') }}:</strong> <span id="operation-type"></span></p>
+                <p><strong>{{ __('Product Type') }}:</strong> <span id="product-type"></span></p>
+                <p><strong>{{ __('Receive Date') }}:</strong> <span id="receive-date"></span></p>
+                <p><strong>{{ __('Due Date') }}:</strong> <span id="due-date"></span></p>
+                <p><strong>{{ __('Description') }}:</strong> <span id="description"></span></p>
+                <p><strong>{{ __('Weight') }}:</strong> <span id="weight"></span></p>
+                <p><strong>{{ __('Price') }}:</strong> <span id="price"></span></p>
+                <p><strong>{{ __('Note') }}:</strong> <span id="note"></span></p>
+                <p><strong>{{ __('Image') }}:</strong> <img id="image" class="img-thumbnail" style="width: 100px; height: 100px;" src=""></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Close') }}</button>
@@ -141,15 +152,28 @@
             });
         });
 
-        // Show product details in modal
+        // Show product details modal
         function showModal(productId) {
-            $.ajax({
-                url: '/products/show/' + productId,
-                type: 'GET',
-                success: function (response) {
-                    $('#productModal .modal-body').html(response);
-                    $('#productModal').modal('show');
+            var productURL = '{{ route('products.show', ':id') }}';
+            productURL = productURL.replace(':id', productId);
+
+            $.get(productURL, function (data) {
+                if (data.error) {
+                    alert(data.error);
+                    return;
                 }
+
+                $('#customer-name').text(data.customer.name);
+                $('#operation-type').text(data.operation_type.localized_name);
+                $('#product-type').text(data.product_type.localized_name);
+                $('#receive-date').text(data.receive_date);
+                $('#due-date').text(data.due_date);
+                $('#description').text(data.description);
+                $('#weight').text(data.weight);
+                $('#price').text(data.price);
+                $('#note').text(data.note);
+                $('#image').attr('src', data.image_url);
+                $('#productModal').modal('show');
             });
         }
     </script>

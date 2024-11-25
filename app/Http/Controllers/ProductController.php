@@ -96,8 +96,8 @@ class ProductController extends Controller
     public function show($id)
     {
         try {
-            $product = Product::findOrFail($id);
-            return view('products.show', compact('product'));
+            $product = Product::with(['customer', 'operationType', 'productType'])->findOrFail($id);
+            return response()->json($product);
         } catch (\Exception $e) {
             Log::error($e->getMessage());
             return response()->json(['error' => 'Product not found'], 500);
