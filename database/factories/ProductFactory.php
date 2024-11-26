@@ -21,7 +21,7 @@ class ProductFactory extends Factory
             'product_type_id' => ProductType::pluck('id')->random(),
             'description' => $this->faker->text,
             'weight' => $this->faker->randomFloat(2, 0, 1000),
-            'image' => 'products/default-product.png',
+            'image' => '',
             'receive_date' => $this->faker->dateTimeThisYear(),
             'due_date' => $this->faker->dateTimeThisYear(),
             'delivery_date' => $this->faker->dateTimeThisYear(),

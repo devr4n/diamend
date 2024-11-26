@@ -107,7 +107,7 @@ class ProductController extends Controller
                 'weight' => $product->weight,
                 'price' => $product->price,
                 'note' => $product->note,
-                'image_url' => $product->image ? asset('storage/' . $product->image) : asset('images/default.png'),
+                'image_url' => $product->image ? asset('storage/' . $product->image) : asset('storage/products/default-product.png'),
             ]);
         } catch (\Exception $e) {
             Log::error($e->getMessage());

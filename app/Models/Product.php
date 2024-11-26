@@ -50,7 +50,7 @@ class Product extends Model
 
     public function getImageUrlAttribute()
     {
-        return $this->image ? asset('storage/' . $this->image) : asset('default-image.png');
+        return $this->image ? asset('storage/' . $this->image) : asset('storage/products/default-product.png');
     }
 
 }
