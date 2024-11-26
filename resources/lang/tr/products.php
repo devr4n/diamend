@@ -24,6 +24,8 @@ return [
     'datatable_length_menu' => '_MENU_ kayıt göster',
     'datatable_search' => 'Ara:',
 
+    'product_details' => 'Ürün Detayları',
+
     //Alerts
     'success' => 'Başarılı',
     'error' => 'Hata',

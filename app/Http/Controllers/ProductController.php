@@ -176,7 +176,7 @@ class ProductController extends Controller
                 return $product->productType->localized_name ?? '-';
             })
             ->addColumn('image_url', function ($product) {
-                return $product->image_url; // Modeldeki accessor kullanılır
+                return $product->image_url ?? 'products/default-product.png'; // Modeldeki accessor kullanılır
             })
             ->editColumn('due_date', function ($product) {
                 return $product->due_date ?? '-';

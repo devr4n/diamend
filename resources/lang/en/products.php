@@ -24,6 +24,8 @@ return [
     'datatable_length_menu' => 'Show _MENU_ entries',
     'datatable_search' => 'Search:',
 
+    'product_details' => 'Product Details',
+
     // Alerts
     'success' => 'Success',
     'error' => 'Error',
