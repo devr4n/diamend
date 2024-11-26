@@ -6,7 +6,7 @@
             <div class="modal-header">
                 <h5 class="modal-title font-weight-bold" id="imagePreviewModalLabel"></h5>
                 <button type="button" class="close" data-dismiss="modal">
-                    <i class="fa-solid fa-xmark fa-lg" title="Close Preview"></i>
+                    <i class="fa-solid fa-xmark fa-lg" ></i>
                 </button>
             </div>
             <div class="modal-body">
@@ -15,7 +15,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" title="Close Preview">Close
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" title="{{ __('products.close') }}">
+                    {{ __('products.close') }}
                 </button>
             </div>
         </div>

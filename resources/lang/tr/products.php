@@ -25,6 +25,7 @@ return [
     'datatable_search' => 'Ara:',
 
     'product_details' => 'Ürün Detayları',
+    'close' => 'Kapat',
 
     //Alerts
     'success' => 'Başarılı',

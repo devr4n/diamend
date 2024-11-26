@@ -97,7 +97,18 @@ class ProductController extends Controller
     {
         try {
             $product = Product::with(['customer', 'operationType', 'productType'])->findOrFail($id);
-            return response()->json($product);
+            return response()->json([
+                'customer' => $product->customer,
+                'operation_type' => $product->operationType,
+                'product_type' => $product->productType,
+                'receive_date' => $product->receive_date,
+                'due_date' => $product->due_date,
+                'description' => $product->description,
+                'weight' => $product->weight,
+                'price' => $product->price,
+                'note' => $product->note,
+                'image_url' => $product->image ? asset('storage/' . $product->image) : asset('images/default.png'),
+            ]);
         } catch (\Exception $e) {
             Log::error($e->getMessage());
             return response()->json(['error' => 'Product not found'], 500);

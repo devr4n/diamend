@@ -25,6 +25,7 @@ return [
     'datatable_search' => 'Search:',
 
     'product_details' => 'Product Details',
+    'close' => 'Close',
 
     // Alerts
     'success' => 'Success',

@@ -20,7 +20,6 @@
                 <th>{{__('products.operation_type')}}</th>
                 <th>{{__('products.product_type')}}</th>
                 <th>{{__('products.image')}}</th>
-                <th>{{__('products.description')}}</th>
                 <th>{{__('products.receive_date')}}</th>
                 <th>{{__('products.due_date')}}</th>
                 <th>{{__('products.form.action')}}</th>
@@ -44,8 +43,6 @@
                 paging: true,
                 scrollCollapse: true,
                 scrollX: true,
-                autoWidth: false,
-                responsive: true,
                 processing: true,
                 serverSide: true,
                 stateSave: true,
@@ -80,16 +77,6 @@
                         className: 'text-center text-nowrap',
                         render: function (data, type, row) {
                             return '<img src="' + data + '" class="img-thumbnail" style="width: 50px; height: 50px;" onclick="showImagePreview(\'' + data + '\', \'' + row.customer.name + '\')">';
-                        }
-                    },
-                    {
-                        data: 'description',
-                        name: 'description',
-                        searchable: false,
-                        orderable: false,
-                        className: 'text-center text-nowrap',
-                        render: function (data, type, row) {
-                            return data.length > 25 ? data.substr(0, 25) + '...' : data;
                         }
                     },
                     {
