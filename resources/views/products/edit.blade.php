@@ -22,9 +22,11 @@
             <h6 class="m-0 font-weight-bold text-primary">{{ __('general.title.edit_product') }} {{$product->id}}</h6>
             <div class="text-right">
                 <a class="btn btn-primary btn-list btn-sm" href="{{ route('products.index') }}">
+                    <i class="fa-solid fa-list"></i>
                     {{ __('general.title.product_list') }}
                 </a>
                 <a class="btn btn-primary btn-create btn-sm" href="{{ route('products.create') }}">
+                    <i class="fa-solid fa-plus"></i>
                     {{ __('general.title.add_new_product') }}
                 </a>
             </div>
@@ -116,7 +118,7 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label class="form-control-label" for="receive_date">
-                                    {{ __('products.receive_date') }}
+                                    {{ __('products.receive_date') }} <span class="text-danger">*</span>
                                 </label>
                                 <input type="date" id="receive_date" class="form-control" name="receive_date"
                                        placeholder="{{ __('products.receive_date') }}"
@@ -127,7 +129,7 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label class="form-control-label text-danger" for="due_date">
-                                    {{ __('products.due_date') }}
+                                    {{ __('products.due_date') }} <span class="text-danger">*</span>
                                 </label>
                                 <input type="date" id="due_date" class="form-control" name="due_date"
                                        value="{{ $product->due_date }}" placeholder="{{ __('products.due_date') }}">

@@ -23,9 +23,10 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between align-items-center">
-            <h5 class="m-0 font-weight-bold text-primary">{{__('general.title.add_new_customer')}}</h5>
+            <h6 class="m-0 font-weight-bold text-primary">{{__('general.title.add_new_customer')}}</h6>
             <div class="text-right">
-                <a class="btn btn-primary" href="{{ route('customers.index') }}">
+                <a class="btn btn-primary btn-sm" href="{{ route('customers.index') }}">
+                    <i class="fa-solid fa-list"></i>
                     {{ __('general.title.customer_list') }}
                 </a>
             </div>
@@ -34,7 +35,11 @@
             <form method="POST" action="{{ route('customers.store') }}">
                 @csrf
 
-                <h6 class="heading-small text-muted mb-4">{{ __('general.title.customer_information_1') }}</h6>
+                <ul class="text-muted">
+                    <li>{{ __('general.title.customer_information_1') }}</li>
+                    <li><span class="text-danger">*</span> {{ __('general.title.required_fields') }}</li>
+                </ul>
+                <hr>
 
                 <div class="pl-lg-4">
                     <div class="row">
@@ -102,12 +107,12 @@
                                 </span>
                                 <span class="text">{{ __('general.form.save') }}</span>
                             </button>
-                            <button type="submit" class="btn btn-danger btn-icon-split">
+                            <a href="{{ route('customers.index') }}" class="btn btn-secondary btn-icon-split">
                                 <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
+                                    <i class="fas fa-arrow-left"></i>
                                 </span>
-                                <span class="text">{{ __('general.form.delete') }}</span>
-                            </button>
+                                <span class="text">{{ __('general.form.cancel') }}</span>
+                            </a>
                         </div>
                     </div>
                 </div>

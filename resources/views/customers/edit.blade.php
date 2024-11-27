@@ -25,8 +25,13 @@
         <div class="card-header py-3 d-flex justify-content-between align-items-center">
             <h6 class="m-0 font-weight-bold text-primary">{{ __('general.title.edit_customer') }} {{$customer->id}}</h6>
             <div class="text-right">
-                <a class="btn btn-primary" href="{{ route('customers.index') }}">
+                <a class="btn btn-primary btn-sm" href="{{ route('customers.index') }}">
+                    <i class="fa-solid fa-list"></i>
                     {{ __('general.title.customer_list') }}
+                </a>
+                <a class="btn btn-primary btn-create btn-sm" href="{{ route('customers.create') }}">
+                    <i class="fa-solid fa-plus"></i>
+                    {{ __('general.title.add_new_customer') }}
                 </a>
             </div>
         </div>

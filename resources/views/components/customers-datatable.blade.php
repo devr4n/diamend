@@ -1,14 +1,9 @@
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 <div class="card shadow mb-4">
     <div class="card-header py-3 d-flex justify-content-between align-items-center">
         <h6 class="m-0 font-weight-bold text-primary">{{ __('general.title.customer_list') }}</h6>
         <div class="text-right">
-            @if(Route::currentRouteName() !== 'customers.index')
-                <a class="btn btn-primary btn-list btn-sm" href="{{ route('customers.index') }}">
-                    {{ __('general.title.product_list') }}
-                </a>
-            @endif
             <a class="btn btn-primary btn-create btn-sm" href="{{ route('customers.create') }}">
+                <i class="fa-solid fa-plus"></i>
                 {{ __('general.title.add_new_customer') }}
             </a>
         </div>
@@ -16,14 +11,13 @@
     <div class="card-body">
         <div class="table-responsive">
             <div class="dataTables_wrapper dt-bootstrap4">
-                <table class="table table-bordered table-striped table-hover text-center" id="customers-table">
-                    <thead class="bg-light">
+                <table class="table" id="customers-table">
+                    <thead class="thead-light text-nowrap">
                     <tr>
                         <th class="text-center">{{__('customer.form.name')}}</th>
                         <th class="text-center">{{__('customer.form.surname')}}</th>
                         <th class="text-center">{{__('customer.form.phone')}}</th>
                         <th class="text-center">{{__('customer.form.address')}}</th>
-{{--                        <th class="text-center">{{__('customer.form.created_at')}}</th>--}}
                         <th class="text-center">{{__('customer.form.action')}}</th>
                     </tr>
                     </thead>
@@ -33,15 +27,6 @@
     </div>
 </div>
 
-<!-- Custom CSS for DataTable -->
-<style>
-    @media (max-width: 430px) {
-        #customers-table th, #customers-table td {
-            padding: 0.25rem;
-            font-size: 0.75rem;
-        }
-    }
-</style>
 
 @push('scripts')
     <script>
@@ -59,10 +44,10 @@
                         className: 'text-center text-nowrap',
                         orderable: false,
                         render: function (data, type, row) {
-                            return '<a href="tel:' + data + '">' + data + '</a>';
+                            return '<a href="tel:' + data + '" class="font-weight-bold">' + data + '</a>';
                         }
                     },
-                    {data: 'address', name: 'address', orderable: false,
+                    {data: 'address', name: 'address', orderable: false, className: 'text-center text-nowrap',
                         render: function (data, type, row) {
                             return data.length > 20 ? data.substr(0, 20) + '...' : data;
                         }
