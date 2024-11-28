@@ -131,7 +131,10 @@ class ProductController extends Controller
                 $product->image = $imagePath;
             }
 
-            $product->update($request->except('image'));
+            $data = $request->except('image');
+            $data['status_id'] = $request->has('status_id') ? 1 : 0;
+
+            $product->update($data);
 
             Alert::success(__('products.success'), __('products.product_updated'));
             return redirect()->route('products.index');

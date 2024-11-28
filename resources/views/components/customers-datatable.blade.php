@@ -31,43 +31,43 @@
 @push('scripts')
     <script>
         $(document).ready(function () {
-            $('#customers-table').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: '{{ route('customers.data') }}',
-                columns: [
-                    {data: 'name', name: 'name', className: 'text-center text-nowrap'},
-                    {data: 'surname', name: 'surname', className: 'text-center text-nowrap'},
-                    {
-                        data: 'phone_1',
-                        name: 'phone_1',
-                        className: 'text-center text-nowrap',
-                        orderable: false,
-                        render: function (data, type, row) {
-                            return '<a href="tel:' + data + '" class="font-weight-bold">' + data + '</a>';
-                        }
-                    },
-                    {data: 'address', name: 'address', orderable: false, className: 'text-center text-nowrap',
-                        render: function (data, type, row) {
-                            return data.length > 20 ? data.substr(0, 20) + '...' : data;
-                        }
-                    },
-                    // {data: 'created_at', name: 'created_at'},
-                    {
-                        data: 'action',
-                        name: 'action',
-                        orderable: false,
-                        searchable: false,
-                        className: 'text-center text-nowrap'
-                    },
-                ],
-                // order: [[4, 'desc']],
-                language: {
-                    lengthMenu: '{{ __('products.datatable_length_menu') }}',
-                    info: '{{ __('products.datatable_info') }}',
-                    search: '{{ __('products.datatable_search') }}',
-                }
-            });
+            if (!$.fn.DataTable.isDataTable('#customers-table')) {
+                $('#customers-table').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    ajax: '{{ route('customers.data') }}',
+                    columns: [
+                        {data: 'name', name: 'name', className: ' text-nowrap'},
+                        {data: 'surname', name: 'surname', className: 'text-center text-nowrap'},
+                        {
+                            data: 'phone_1',
+                            name: 'phone_1',
+                            className: 'text-center text-nowrap',
+                            orderable: false,
+                            render: function (data, type, row) {
+                                return '<a href="tel:' + data + '" class="font-weight-bold">' + data + '</a>';
+                            }
+                        },
+                        {data: 'address', name: 'address', orderable: false, className: 'text-center text-nowrap',
+                            render: function (data, type, row) {
+                                return data.length > 20 ? data.substr(0, 20) + '...' : data;
+                            }
+                        },
+                        {
+                            data: 'action',
+                            name: 'action',
+                            orderable: false,
+                            searchable: false,
+                            className: 'text-center text-nowrap'
+                        },
+                    ],
+                    language: {
+                        lengthMenu: '{{ __('products.datatable_length_menu') }}',
+                        info: '{{ __('products.datatable_info') }}',
+                        search: '{{ __('products.datatable_search') }}',
+                    }
+                });
+            }
         });
     </script>
 @endpush

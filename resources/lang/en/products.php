@@ -17,6 +17,8 @@ return [
     'material_type' => 'Material Type',
     'material_weight' => 'Material Weight',
     'status' => 'Status',
+    'completed' => 'Completed',
+    'pending' => 'Pending',
 
     'click_to_create' => 'Click to create a new customer',
 

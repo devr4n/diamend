@@ -34,6 +34,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Modal
     Route::get('/products/show/{id}', [ProductController::class, 'show'])->name('products.show');
+    Route::post('/products/{id}/update-status', [ProductController::class, 'updateStatus']);
 
     // Customers
     Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');

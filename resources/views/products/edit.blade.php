@@ -220,13 +220,23 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="formFileSm" class="form-control-label">{{ __('products.image') }}</label>
-                                <input class="form-control" id="formFileSm" type="file" name="image" onchange="previewImage(event)">
+                                <input class="form-control" id="formFileSm" type="file" name="image"
+                                       onchange="previewImage(event)">
                                 @if($product->image)
                                     <div class="mt-2">
-                                        <img id="imagePreview" src="/storage/products/{{ basename($product->image) }}" style="max-width: 75px; max-height: 75px;">
+                                        <img id="imagePreview" src="/storage/products/{{ basename($product->image) }}"
+                                             style="max-width: 75px; max-height: 75px;">
                                     </div>
                                 @endif
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="d-flex justify-content-center w-100">
+                            <input type="checkbox" class="status-checkbox" autocomplete="off" name="status_id"
+                                    {{ $product->status_id == 1 ? 'checked' : '' }}>
+                            <label for="status_id" class="m-1">{{ __('products.completed') }}</label>
                         </div>
                     </div>
 
@@ -236,11 +246,12 @@
                 <!-- Buttons -->
                 <div class="pl-lg-4">
                     <div class="row">
+
                         <div class="col text-center">
                             <button type="submit" class="btn btn-primary btn-icon-split">
-                <span class="icon text-white-50">
-                    <i class="fas fa-check"></i>
-                </span>
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-check"></i>
+                                </span>
                                 <span class="text">{{ __('general.form.update') }}</span>
                             </button>
                             <a href="{{ route('products.index') }}" class="btn btn-secondary btn-icon-split">
@@ -249,6 +260,7 @@
                                 </span>
                                 <span class="text">{{ __('general.form.cancel') }}</span>
                             </a>
+
                         </div>
                     </div>
                 </div>
@@ -260,15 +272,15 @@
 @push('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            let textAreas = document.getElementsByTagName('textarea');
-
-            Array.prototype.forEach.call(textAreas, function (elem) {
+            document.querySelectorAll('textarea').forEach(function (elem) {
                 elem.placeholder = elem.placeholder.replace(/\\n/g, '\n');
             });
-        });
 
-        $(document).ready(function () {
             $('.select2').select2();
+
+            $('.status-checkbox').on('change', function () {
+                this.value = this.checked ? 1 : 2;
+            });
         });
     </script>
 @endpush

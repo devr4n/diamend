@@ -17,6 +17,8 @@ return [
     'material_type' => 'Kullanilan Malzeme Tipi',
     'material_weight' => 'Kullanilan Malzeme Ağırlığı',
     'status' => 'Durum',
+    'completed' => 'Tamamlandı',
+    'pending' => 'Beklemede',
 
     'click_to_create' => 'Yeni müşteri oluşturmak için tıklayın',
 

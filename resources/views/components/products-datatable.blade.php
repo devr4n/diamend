@@ -16,10 +16,12 @@
         <table class="table " id="products-table">
             <thead class="thead-light text-nowrap">
             <tr>
+                <th>{{__('products.id')}}</th>
                 <th>{{__('products.customer_name')}}</th>
                 <th>{{__('products.operation_type')}}</th>
                 <th>{{__('products.product_type')}}</th>
                 <th>{{__('products.image')}}</th>
+                <th>{{__('products.status')}}</th>
                 <th>{{__('products.receive_date')}}</th>
                 <th>{{__('products.due_date')}}</th>
                 <th>{{__('products.form.action')}}</th>
@@ -39,82 +41,105 @@
 @push('scripts')
     <script type="text/javascript">
         $(document).ready(function () {
-            var table = $('#products-table').DataTable({
-                paging: true,
-                scrollCollapse: true,
-                scrollX: true,
-                processing: true,
-                serverSide: true,
-                stateSave: true,
-                ajax: '{!! route('products.data') !!}',
-                columns: [
-                    {
-                        data: 'customer.name',
-                        name: 'customer.name',
-                        searchable: true,
-                        orderable: true,
-                        className: 'text-center text-nowrap'
+            if (!$.fn.DataTable.isDataTable('#products-table')) {
+                $('#products-table').DataTable({
+                    paging: true,
+                    scrollCollapse: true,
+                    scrollX: true,
+                    processing: true,
+                    serverSide: true,
+                    stateSave: true,
+                    ajax: '{!! route('products.data') !!}',
+                    columns: [
+                        {
+                            data: 'id',
+                            name: 'id',
+                            searchable: true,
+                            orderable: true,
+                            width: '1%',
+                            className: 'text-center text-nowrap'
+                        },
+                        {
+                            data: 'customer.name',
+                            name: 'customer.name',
+                            searchable: true,
+                            orderable: true,
+                            className: 'text-center text-nowrap'
+                        },
+                        {
+                            data: 'operation_type.name',
+                            name: 'operation_type.localized_name',
+                            searchable: false,
+                            orderable: true,
+                            className: 'text-center text-nowrap'
+                        },
+                        {
+                            data: 'product_type.name',
+                            name: 'product_type.localized_name',
+                            searchable: false,
+                            orderable: false,
+                            className: 'text-center text-nowrap'
+                        },
+                        {
+                            data: 'image_url',
+                            name: 'image',
+                            searchable: false,
+                            orderable: false,
+                            className: 'text-center text-nowrap',
+                            render: function (data, type, row) {
+                                return '<img src="' + data + '" class="img-thumbnail" style="width: 50px; height: 50px;" onclick="showImagePreview(\'' + data + '\', \'' + row.customer.name + '\')">';
+                            }
+                        },
+                        {
+                            data: 'status_id',
+                            name: 'status_id',
+                            searchable: false,
+                            orderable: false,
+                            width: '1%',
+                            className: 'text-center',
+                            // if status id = 1 write `completed` else write `pending`
+                            render: function (data, type, row) {
+                                return data === 1 ? '' +
+                                    '<span class="badge badge-success text-white">{{ __('products.completed') }}</span>' : '<span class="badge badge-danger text-white">{{ __('products.pending') }}</span>';
+                            }
+                        },
+                        {
+                            data: 'receive_date',
+                            name: 'receive_date',
+                            searchable: false,
+                            orderable: false,
+                            className: 'text-center',
+                        },
+                        {
+                            data: 'due_date',
+                            name: 'due_date',
+                            orderable: true,
+                            className: 'text-center',
+                            width: '10%',
+                            render: function (data, type, row) {
+                                return '<span class="badge badge-warning text-dark">' + data + '</span>';
+                            }
+                        },
+                        {
+                            data: 'action',
+                            name: 'action',
+                            orderable: false,
+                            searchable: false,
+                            className: 'text-center text-nowrap',
+                        },
+                    ],
+                    language: {
+                        lengthMenu: '{{ __('customer.datatable_length_menu') }}',
+                        info: '{{ __('customer.datatable_info') }}',
+                        search: '{{ __('customer.datatable_search') }}',
                     },
-                    {
-                        data: 'operation_type.name',
-                        name: 'operation_type.localized_name',
-                        searchable: false,
-                        orderable: true,
-                        className: 'text-center text-nowrap'
-                    },
-                    {
-                        data: 'product_type.name',
-                        name: 'product_type.localized_name',
-                        searchable: false,
-                        orderable: false,
-                        className: 'text-center text-nowrap'
-                    },
-                    {
-                        data: 'image_url',
-                        name: 'image',
-                        searchable: false,
-                        orderable: false,
-                        className: 'text-center text-nowrap',
-                        render: function (data, type, row) {
-                            return '<img src="' + data + '" class="img-thumbnail" style="width: 50px; height: 50px;" onclick="showImagePreview(\'' + data + '\', \'' + row.customer.name + '\')">';
-                        }
-                    },
-                    {
-                        data: 'receive_date',
-                        name: 'receive_date',
-                        searchable: false,
-                        orderable: false,
-                        className: 'text-center',
-                    },
-                    {
-                        data: 'due_date',
-                        name: 'due_date',
-                        orderable: true,
-                        className: 'text-center',
-                        width: '10%',
-                        render: function (data, type, row) {
-                            return '<span class="badge badge-warning text-dark">' + data + '</span>';
-                        }
-                    },
-                    {
-                        data: 'action',
-                        name: 'action',
-                        orderable: false,
-                        searchable: false,
-                        className: 'text-center text-nowrap',
-                    },
-                ],
-                language: {
-                    lengthMenu: '{{ __('customer.datatable_length_menu') }}',
-                    info: '{{ __('customer.datatable_info') }}',
-                    search: '{{ __('customer.datatable_search') }}',
-                },
-            });
+                });
 
 
-            window.addEventListener('refreshTable', event => {
-                table.draw(false)
-            });
+                window.addEventListener('refreshTable', event => {
+                    table.draw(false)
+                });
+            }
         });
 
 
