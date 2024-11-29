@@ -29,7 +29,7 @@ class ProductFactory extends Factory
             'note' => $this->faker->text,
             'material_type_id' => MaterialType::pluck('id')->random(),
             'material_weight' => $this->faker->randomFloat(2, 0, 1000),
-            'status_id' => $this->faker->numberBetween(1, 3),
+            'status_id' => $this->faker->numberBetween(1, 2),
         ];
     }
 }

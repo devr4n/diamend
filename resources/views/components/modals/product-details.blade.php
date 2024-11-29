@@ -54,6 +54,8 @@
     // Show product details modal
     function showModal(productId) {
         var productURL = '{{ route('products.show', ':id') }}';
+        var locale = document.documentElement.lang || 'en'; // Default to 'en' if locale is not set
+
         productURL = productURL.replace(':id', productId);
 
         $.get(productURL, function (data) {
@@ -63,8 +65,8 @@
             }
 
             $('#customer-name').text(data.customer.name || '-');
-            $('#operation-type').text(data.operation_type.localized_name || '-');
-            $('#product-type').text(data.product_type.localized_name || '-');
+            $('#operation-type').text(data.operation_type['name_' + locale] || '-');
+            $('#product-type').text(data.product_type['name_' + locale] || '-');
             $('#receive-date').text(data.receive_date || '-');
             $('#due-date').text(data.due_date || '-');
             $('#description').text(data.description || '-');
