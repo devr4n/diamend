@@ -75,5 +75,9 @@ return [
         'edit_product' => 'Product ID : ',
         'product_information_1' => 'You can create a product or update information by filling out the form.',
 
+        'expense_list' => 'Expense List',
+        'add_new_expense' => 'Add New Expense',
+        'edit_expense' => 'Expense ID : ',
+        'expense_information_1' => 'You can create an expense or update information by filling out the form.',
     ],
 ];

@@ -75,5 +75,10 @@ return [
         'add_new_product' => 'Yeni Ürün Ekle',
         'edit_product' => 'Ürün ID : ',
         'product_information_1' => 'Formu doldurarak ürün oluşturabilir veya bilgileri güncelleyebilirsiniz.',
+
+        'expense_list' => 'Gider Listesi',
+        'add_new_expense' => 'Yeni Gider Ekle',
+        'edit_expense' => 'Gider ID : ',
+        'expense_information_1' => 'Formu doldurarak gider oluşturabilir veya bilgileri güncelleyebilirsiniz.',
     ],
 ];

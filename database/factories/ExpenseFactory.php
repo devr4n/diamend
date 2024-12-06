@@ -17,7 +17,7 @@ class ExpenseFactory extends Factory
     public function definition(): array
     {
         return [
-            'expense_type_id' => $this->faker->numberBetween(1, 10),
+            'expense_type_id' => $this->faker->numberBetween(1, 4),
             'amount' => $this->faker->randomFloat(2, 1, 1000),
             'date' => $this->faker->date(),
             'note' => $this->faker->text(),
