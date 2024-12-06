@@ -17,6 +17,7 @@ return [
     'create_an_account' => 'Hesap Oluştur',
     'products' => 'Ürünler',
     'customers' => 'Müşteriler',
+    'expenses' => 'Giderler',
 
     'board' => [
         'products_annual_earnings' => 'Yıllık Kazanç',

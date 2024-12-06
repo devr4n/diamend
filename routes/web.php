@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
@@ -45,6 +46,14 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/customers/{id}', [CustomerController::class, 'update'])->name('customers.update');
     Route::get('/customers/data', [CustomerController::class, 'data'])->name('customers.data');
     Route::delete('/customers/{id}', [CustomerController::class, 'destroy'])->name('customers.destroy');
+
+    // Expenses
+    Route::get('/expenses', [ExpenseController::class, 'index'])->name('expenses.index');
+    Route::get('/expenses/create', [ExpenseController::class, 'create'])->name('expenses.create');
+    Route::get('/expenses/{id}/edit', [ExpenseController::class, 'edit'])->name('expenses.edit');
+    Route::post('/expenses/store', [ExpenseController::class, 'store'])->name('expenses.store');
+    Route::put('/expenses/{id}', [ExpenseController::class, 'update'])->name('expenses.update');
+    Route::get('/expenses/data', [ExpenseController::class, 'data'])->name('expenses.data');
 
     Route::get('/profile', 'ProfileController@index')->name('profile');
     Route::put('/profile', 'ProfileController@update')->name('profile.update');

@@ -11,22 +11,32 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Admin Items -->
+    <!-- Dashboard -->
     <li class="nav-item {{ Nav::isRoute('home') }}">
         <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>{{ __('general.dashboard') }}</span></a>
     </li>
 
+    <!-- Products -->
     <li class="nav-item {{ Nav::isRoute('products*') }}">
         <a class="nav-link {{ request()->routeIs('products*') ? 'active' : '' }}" href="{{ route('products.index') }}">
             <i class="fa-solid fa-diamond"></i>
             <span>{{ __('general.products') }}</span></a>
     </li>
 
+    <!-- Customers -->
     <li class="nav-item {{ Nav::isRoute('customers*') }}">
         <a class="nav-link {{ request()->routeIs('customers*') ? 'active' : '' }}" href="{{ route('customers.index') }}">
             <i class="fa-solid fa-users"></i>
             <span>{{ __('general.customers') }}</span></a>
+    </li>
+
+    <!-- Expenses -->
+    <li class="nav-item {{ Nav::isRoute('expenses*') }}">
+        <a class="nav-link {{ request()->routeIs('expenses*') ? 'active' : '' }}" href="{{ route('expenses.index') }}">
+            <i class="fa-solid fa-turkish-lira-sign"></i>
+            <span>{{ __('general.expenses') }}</span></a>
     </li>
 
     <!-- End of Admin Items -->

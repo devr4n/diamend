@@ -17,6 +17,7 @@ return [
     'create_an_account' => 'Create an Account',
     'products' => 'Products',
     'customers' => 'Customers',
+    'expenses' => 'Expenses',
 
     'board' => [
         'products_annual_earnings' => 'Annual Earnings',
