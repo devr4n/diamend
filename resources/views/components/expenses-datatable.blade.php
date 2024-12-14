@@ -13,23 +13,49 @@
         </div>
     </div>
     <div class="card-body">
-        <table class="table " id="products-table">
+        <table class="table " id="expenses-table">
             <thead class="thead-light text-nowrap">
             <tr>
-                <th>{{__('products.id')}}</th>
-                <th>{{__('products.customer_name')}}</th>
-                <th>{{__('products.operation_type')}}</th>
-                <th>{{__('products.product_type')}}</th>
-                <th>{{__('products.image')}}</th>
-                <th>{{__('products.status')}}</th>
-                <th>{{__('products.receive_date')}}</th>
-                <th>{{__('products.due_date')}}</th>
-                <th>{{__('products.form.action')}}</th>
+                <th>{{__('expenses.id')}}</th>
+                <th>{{__('expenses.expense_type')}}</th>
+                <th>{{__('expenses.amount')}}</th>
+                <th>{{__('expenses.date')}}</th>
+                <th>{{__('expenses.note')}}</th>
+                <th>{{__('expenses.action')}}</th>
             </tr>
             </thead>
         </table>
     </div>
 </div>
 @push('scripts')
+    <script>
+        $(document).ready(function () {
+            if (!$.fn.DataTable.isDataTable('#expenses-table')) {
+                $('#expenses-table').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    ajax: '{{ route('expenses.data') }}',
+                    columns: [
+                        {data: 'id', name: 'id', className: 'text-nowrap'},
+                        {data: 'expense_type.name', name: 'expense_type.localized_name', className: 'text-nowrap'},
+                        {data: 'amount', name: 'amount', className: 'text-nowrap'},
+                        {data: 'date', name: 'date', className: 'text-nowrap'},
+                        {
+                            data: 'note', name: 'note', orderable: false, className: 'text-center text-nowrap',
+                            render: function (data, type, row) {
+                                return data.length > 20 ? data.substr(0, 20) + '...' : data;
+                            }
+                        },
+                        {data: 'action', name: 'action', orderable: false, searchable: false, className: 'text-nowrap'},
+                    ],
+                    language: {
+                        lengthMenu: '{{ __('products.datatable_length_menu') }}',
+                        info: '{{ __('products.datatable_info') }}',
+                        search: '{{ __('products.datatable_search') }}',
+                    }
+                });
+            }
+        });
 
+    </script>
 @endpush

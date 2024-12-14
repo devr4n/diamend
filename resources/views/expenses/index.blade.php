@@ -6,7 +6,7 @@
     <div class="row1 mx-11 my-2 d-flex1">
         <div id="left-table" class="px-4" style="width: 100%">
             @if(Route::currentRouteName() === 'expenses.index')
-{{--                @include('components.expenses-datatable')--}}
+                @include('components.expenses-datatable')
             @endif
         </div>
     </div>

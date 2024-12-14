@@ -15,4 +15,11 @@ class ExpenseType extends Model
         'description_tr',
         'description_en',
     ];
+
+    public $timestamps =  true;
+
+    public function getLocalizedNameAttribute()
+    {
+        return getLang() === 'tr' ? $this->name_tr : $this->name_en;
+    }
 }
