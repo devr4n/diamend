@@ -54,6 +54,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/expenses/store', [ExpenseController::class, 'store'])->name('expenses.store');
     Route::put('/expenses/{id}', [ExpenseController::class, 'update'])->name('expenses.update');
     Route::get('/expenses/data', [ExpenseController::class, 'data'])->name('expenses.data');
+    Route::get('/expenses/{id}', [ExpenseController::class, 'destroy'])->name('expenses.destroy');
 
     Route::get('/profile', 'ProfileController@index')->name('profile');
     Route::put('/profile', 'ProfileController@update')->name('profile.update');
