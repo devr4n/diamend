@@ -16,7 +16,6 @@
         <table class="table " id="expenses-table">
             <thead class="thead-light text-nowrap text-center">
             <tr>
-                <th>{{__('expenses.id')}}</th>
                 <th>{{__('expenses.expense_type')}}</th>
                 <th>{{__('expenses.amount')}} <small class="text-secondary">(₺)</small> </th>
                 <th>{{__('expenses.date')}}</th>
@@ -34,9 +33,9 @@
                 $('#expenses-table').DataTable({
                     processing: true,
                     serverSide: true,
+                    stateSave: true,
                     ajax: '{{ route('expenses.data') }}',
                     columns: [
-                        {data: 'id', name: 'id', className: 'text-nowrap'},
                         {
                             data: 'expense_type.name',
                             name: 'expense_type.localized_name',
@@ -54,6 +53,7 @@
                         },
                         {data: 'action', name: 'action', orderable: false, searchable: false, className: 'text-center text-nowrap'},
                     ],
+                    order: [[3, 'desc']],
                     language: {
                         lengthMenu: '{{ __('products.datatable_length_menu') }}',
                         info: '{{ __('products.datatable_info') }}',

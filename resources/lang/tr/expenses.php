@@ -10,4 +10,10 @@ return [
     'note' => 'Not',
     'date' => 'Tarih',
     'action' => 'İşlem',
+
+    'success' => 'Başarılı',
+    'error' => 'Hata',
+
+    'expense_created' => 'Gider başarıyla oluşturuldu.',
+    'expense_created_error' => 'Gider oluşturulurken bir hata oluştu.',
 ];

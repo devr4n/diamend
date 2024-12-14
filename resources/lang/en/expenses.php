@@ -10,4 +10,10 @@ return [
     'note' => 'Note',
     'date' => 'Date',
     'action' => 'Action',
+
+    'success' => 'Success',
+    'error' => 'Error',
+
+    'expense_created' => 'Expense created successfully.',
+    'expense_created_error' => 'An error occurred while creating the expense.',
 ];
