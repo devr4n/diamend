@@ -31,10 +31,13 @@ class ExpenseController extends Controller
                 return Carbon::parse($expense->date)->format('d-m-Y');
             })
             ->addColumn('action', function ($expense) {
-                return '<a href="' . route('expenses.edit', $expense->id) . '" class="btn btn-primary btn-sm">Edit</a>
-                <a href="' . route('expenses.destroy', $expense->id) . '" class="btn btn-danger btn-sm">Delete</a>';
+                return '<a href="' . route('expenses.edit', $expense->id) . '" class="btn btn-outline-primary btn-sm" title="Edit"><i class="fas fa-edit"></i></a>
+                <form action="' . route('expenses.destroy', $expense->id) . '" method="POST" class="d-inline">
+                    ' . csrf_field() . '
+                    ' . method_field('DELETE') . '
+                    <button type="submit" class="btn btn-outline-danger btn-sm" title="Delete"><i class="fas fa-trash"></i></button>
+                    </form>';
             })
-            ->rawColumns(['action'])
             ->make(true);
     }
 }

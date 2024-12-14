@@ -14,11 +14,11 @@
     </div>
     <div class="card-body">
         <table class="table " id="expenses-table">
-            <thead class="thead-light text-nowrap">
+            <thead class="thead-light text-nowrap text-center">
             <tr>
                 <th>{{__('expenses.id')}}</th>
                 <th>{{__('expenses.expense_type')}}</th>
-                <th>{{__('expenses.amount')}}</th>
+                <th>{{__('expenses.amount')}} <small class="text-secondary">(₺)</small> </th>
                 <th>{{__('expenses.date')}}</th>
                 <th>{{__('expenses.note')}}</th>
                 <th>{{__('expenses.action')}}</th>
@@ -37,16 +37,22 @@
                     ajax: '{{ route('expenses.data') }}',
                     columns: [
                         {data: 'id', name: 'id', className: 'text-nowrap'},
-                        {data: 'expense_type.name', name: 'expense_type.localized_name', className: 'text-nowrap'},
-                        {data: 'amount', name: 'amount', className: 'text-nowrap'},
-                        {data: 'date', name: 'date', className: 'text-nowrap'},
+                        {
+                            data: 'expense_type.name',
+                            name: 'expense_type.localized_name',
+                            orderaable: true,
+                            searchable: true,
+                            className: 'text-center text-nowrap'
+                        },
+                        {data: 'amount', name: 'amount', className: 'text-center text-nowrap'},
+                        {data: 'date', name: 'date', orderaable: true, searchable: true, className: 'text-center text-nowrap'},
                         {
                             data: 'note', name: 'note', orderable: false, className: 'text-center text-nowrap',
                             render: function (data, type, row) {
                                 return data.length > 20 ? data.substr(0, 20) + '...' : data;
                             }
                         },
-                        {data: 'action', name: 'action', orderable: false, searchable: false, className: 'text-nowrap'},
+                        {data: 'action', name: 'action', orderable: false, searchable: false, className: 'text-center text-nowrap'},
                     ],
                     language: {
                         lengthMenu: '{{ __('products.datatable_length_menu') }}',

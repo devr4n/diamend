@@ -12,13 +12,13 @@
         <div class="table-responsive">
             <div class="dataTables_wrapper dt-bootstrap4">
                 <table class="table" id="customers-table">
-                    <thead class="thead-light text-nowrap">
+                    <thead class="thead-light text-nowrap text-center">
                     <tr>
-                        <th class="text-center">{{__('customer.form.name')}}</th>
-                        <th class="text-center">{{__('customer.form.surname')}}</th>
-                        <th class="text-center">{{__('customer.form.phone')}}</th>
-                        <th class="text-center">{{__('customer.form.address')}}</th>
-                        <th class="text-center">{{__('customer.form.action')}}</th>
+                        <th>{{__('customer.form.name')}}</th>
+                        <th>{{__('customer.form.surname')}}</th>
+                        <th>{{__('customer.form.phone')}}</th>
+                        <th>{{__('customer.form.address')}}</th>
+                        <th>{{__('customer.form.action')}}</th>
                     </tr>
                     </thead>
                 </table>
@@ -37,7 +37,7 @@
                     serverSide: true,
                     ajax: '{{ route('customers.data') }}',
                     columns: [
-                        {data: 'name', name: 'name', className: ' text-nowrap'},
+                        {data: 'name', name: 'name', className: ' text-center text-nowrap'},
                         {data: 'surname', name: 'surname', className: 'text-center text-nowrap'},
                         {
                             data: 'phone_1',
