@@ -49,8 +49,16 @@ class ExpenseController extends Controller
 
     public function destroy($id)
     {
-        $expense = Expense::findOrFail($id);
-        $expense->delete();
+        try {
+            $expense = Expense::findOrFail($id);
+            $expense->delete();
+            Alert::success(__('expenses.success'), __('expenses.expense_deleted'));
+            return redirect()->route('expenses.index');
+        } catch (\Exception $e) {
+            Alert::error(__('expenses.error'), __('expenses.expense_deleted_error'));
+            Log::error('Expense deletion error: ' . $e->getMessage());
+            return redirect()->back();
+        }
     }
 
     public function data()

@@ -38,10 +38,15 @@
                     columns: [
                         {
                             data: 'expense_type.name',
-                            name: 'expense_type.localized_name',
-                            orderaable: true,
+                            name: 'expense_type.name',
+                            orderable: true,
                             searchable: true,
-                            className: 'text-center text-nowrap'
+                            className: 'text-center text-nowrap',
+                            render: function (data, type, row) {
+                                var name = row.expense_type.name ?? '-';
+                                var color = row.expense_type.color ?? ''; // No default color if not set
+                                return '<h5><span class="badge" style="background-color: ' + color + ';">' + name + '</span></h5>';
+                            }
                         },
                         {data: 'amount', name: 'amount', className: 'text-center text-nowrap'},
                         {data: 'date', name: 'date', orderaable: true, searchable: true, className: 'text-center text-nowrap'},
