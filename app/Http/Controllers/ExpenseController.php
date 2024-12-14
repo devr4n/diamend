@@ -31,6 +31,30 @@ class ExpenseController extends Controller
         return view('expenses.create', compact('expenseTypes'));
     }
 
+    public function edit($id)
+    {
+        $expense = Expense::findOrFail($id);
+        $expenseTypes = ExpenseType::all();
+        return view('expenses.edit', compact('expense', 'expenseTypes'));
+    }
+
+    public function update(Request $request)
+    {
+        $request->validate($this->validateRules);
+
+        try {
+            $expense = Expense::findOrFail($request->id);
+            $expense->update($request->all());
+
+            Alert::success(__('expenses.success'), __('expenses.expense_updated'));
+            return redirect()->route('expenses.index');
+        } catch (\Exception $e) {
+            Alert::error(__('expenses.error'), __('expenses.expense_updated_error'));
+            Log::error('Expense update error: ' . $e->getMessage());
+            return redirect()->back();
+        }
+    }
+
     public function store(Request $request)
     {
         $request->validate($this->validateRules);

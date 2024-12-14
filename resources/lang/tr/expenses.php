@@ -15,8 +15,11 @@ return [
     'error' => 'Hata',
 
     'expense_created' => 'Gider başarıyla oluşturuldu.',
+    'expense_updated' => 'Gider başarıyla güncellendi.',
     'expense_deleted' => 'Gider başarıyla silindi.',
 
-    'expense_deleted_error' => 'Gider silinirken bir hata oluştu.',
     'expense_created_error' => 'Gider oluşturulurken bir hata oluştu.',
+    'expense_updated_error' => 'Gider güncellenirken bir hata oluştu.',
+    'expense_deleted_error' => 'Gider silinirken bir hata oluştu.',
+
 ];
