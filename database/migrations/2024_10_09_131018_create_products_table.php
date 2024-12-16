@@ -31,6 +31,7 @@ return new class extends Migration
             $table->foreign('material_type_id')->references('id')->on('material_types')->cascadeOnDelete();
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
