@@ -211,18 +211,17 @@
             <!-- Illustrations -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Aylık Gelir & Gider Grafiği</h6>
                 </div>
                 <div class="card-body">
                     <div class="text-center">
-                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                             src="{{ asset('img/svg/undraw_editable_dywm.svg') }}" alt="">
+                        @include('components.charts.monthly-income-expense-chart', ['monthlyIncome' => $widget['monthlyIncome'], 'monthlyExpense' => $widget['monthlyExpense']])
                     </div>
-                    <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow"
-                                                                                          href="https://undraw.co/">unDraw</a>,
-                        a constantly updated collection of beautiful svg images that you can use completely free and
-                        without attribution!</p>
-                    <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on unDraw →</a>
+                    <p class="mt-3">
+                        Bu grafik, aylık gelir ve giderlerinizi göstermektedir.
+                        Gelirler tamamlanan islerden alinan ucretler ile belirlenmektedir.
+                        Daha fazla bilgi için aşağıdaki bağlantıya tıklayın.</p>
+                    <a target="_blank" rel="nofollow" href="{{ route('expenses.index') }}">Giderler Sayfasına Git →</a>
                 </div>
             </div>
 

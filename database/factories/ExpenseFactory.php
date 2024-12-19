@@ -18,8 +18,8 @@ class ExpenseFactory extends Factory
     {
         return [
             'expense_type_id' => $this->faker->numberBetween(1, 4),
-            'amount' => $this->faker->randomFloat(2, 1, 1000),
-            'date' => $this->faker->date(),
+            'amount' => $this->faker->numberBetween(2, 10000),
+            'date' => $this->faker->dateTimeThisYear(),
             'note' => $this->faker->text(),
         ];
     }
