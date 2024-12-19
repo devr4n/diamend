@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
             OperationTypeSeeder::class,
             ProductSeeder::class,
             UserSeeder::class,
+            ExpenseTypeSeeder::class,
+            ExpenseSeeder::class
         ]);
     }
 }
