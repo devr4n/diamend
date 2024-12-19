@@ -25,6 +25,9 @@ return [
                         Incomes are determined by the fees received from completed jobs.
                         Click the link below for more information.',
     'click_to_go_expenses' => 'Click to go to expenses',
+    'download_chart' => 'Download Chart',
+    'normal' => 'Normal',
+    'transparent' => 'Transparent',
 
     'board' => [
         'products_annual_earnings' => 'Annual Earnings',

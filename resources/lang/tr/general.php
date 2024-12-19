@@ -25,6 +25,9 @@ return [
                         Gelirler tamamlanan islerden alinan ucretler ile belirlenmektedir.
                         Daha fazla bilgi için aşağıdaki bağlantıya tıklayın.',
     'click_to_go_expenses' => 'Giderlere gitmek için tıklayın',
+    'download_chart' => 'Grafiği İndir',
+    'normal' => 'Normal',
+    'transparent' => 'Şeffaf',
 
 
     'board' => [

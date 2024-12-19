@@ -210,9 +210,41 @@
 
             <!-- Illustrations -->
             <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">{{ __('general.monthly_incomes_and_expenses') }}</h6>
+                <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        <i class="fas fa-chart-bar mr-2"></i> {{ __('general.monthly_incomes_and_expenses') }}
+                    </h6>
+                    <div class="d-flex align-items-center">
+                        <!-- Select Year -->
+                        <select id="yearSelector" class="form-control form-control-sm mr-2" style="width: auto;" onchange="updateChartForYear(this.value)">
+                            @for ($year = now()->year; $year >= 2015; $year--)
+                                <option value="{{ $year }}" {{ $year == now()->year ? 'selected' : '' }}>
+                                    {{ $year }}
+                                </option>
+                            @endfor
+                        </select>
+
+                        <!-- Download as Image -->
+                        <div class="dropdown">
+                            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-download"></i> {{ __('general.download_chart') }}
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#"
+                                   onclick="exportChartAsImage('chart4', '', false)">
+                                    <i class="fas fa-image mr-2"></i> {{ __('general.normal') }}
+                                </a>
+                                <a class="dropdown-item" href="#"
+                                   onclick="exportChartAsImage('chart4', '', true)">
+                                    <i class="fas fa-image mr-2"></i> {{ __('general.transparent') }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+
                 <div class="card-body">
                     <div class="text-center">
                         @include('components.charts.monthly-income-expense-chart', ['monthlyIncome' => $widget['monthlyIncome'], 'monthlyExpense' => $widget['monthlyExpense']])
