@@ -12,16 +12,16 @@
         var chart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                labels: ['{{ __('general.month.january') }}', '{{ __('general.month.february') }}', '{{ __('general.month.march') }}', '{{ __('general.month.april') }}', '{{ __('general.month.may') }}', '{{ __('general.month.june') }}', '{{ __('general.month.july') }}', '{{ __('general.month.august') }}', '{{ __('general.month.september') }}', '{{ __('general.month.october') }}', '{{ __('general.month.november') }}', '{{ __('general.month.december') }}'],
                 datasets: [
                     {
-                        label: 'Income',
+                        label: '{{ __('general.incomes') }}',
                         backgroundColor: 'rgba(75, 192, 192)',
                         borderWidth: 1,
                         data: monthlyIncome
                     },
                     {
-                        label: 'Expense',
+                        label: '{{ __('general.expenses') }}',
                         backgroundColor: 'rgba(255, 99, 132)',
                         borderWidth: 1,
                         data: monthlyExpense

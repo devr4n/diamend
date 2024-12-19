@@ -18,6 +18,13 @@ return [
     'products' => 'Products',
     'customers' => 'Customers',
     'expenses' => 'Expenses',
+    'incomes' => 'Incomes',
+
+    'monthly_incomes_and_expenses' => 'Monthly Incomes & Expenses',
+    'monthly_incomes_and_expenses_desc_1' => 'This chart shows your monthly income and expenses.
+                        Incomes are determined by the fees received from completed jobs.
+                        Click the link below for more information.',
+    'click_to_go_expenses' => 'Click to go to expenses',
 
     'board' => [
         'products_annual_earnings' => 'Annual Earnings',
@@ -79,5 +86,20 @@ return [
         'add_new_expense' => 'Add New Expense',
         'edit_expense' => 'Expense ID : ',
         'expense_information_1' => 'You can create an expense or update information by filling out the form.',
+    ],
+
+    'month' => [
+        'january' => 'January',
+        'february' => 'February',
+        'march' => 'March',
+        'april' => 'April',
+        'may' => 'May',
+        'june' => 'June',
+        'july' => 'July',
+        'august' => 'August',
+        'september' => 'September',
+        'october' => 'October',
+        'november' => 'November',
+        'december' => 'December',
     ],
 ];

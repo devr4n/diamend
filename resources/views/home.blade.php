@@ -211,17 +211,16 @@
             <!-- Illustrations -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Aylık Gelir & Gider Grafiği</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">{{ __('general.monthly_incomes_and_expenses') }}</h6>
                 </div>
                 <div class="card-body">
                     <div class="text-center">
                         @include('components.charts.monthly-income-expense-chart', ['monthlyIncome' => $widget['monthlyIncome'], 'monthlyExpense' => $widget['monthlyExpense']])
                     </div>
                     <p class="mt-3">
-                        Bu grafik, aylık gelir ve giderlerinizi göstermektedir.
-                        Gelirler tamamlanan islerden alinan ucretler ile belirlenmektedir.
-                        Daha fazla bilgi için aşağıdaki bağlantıya tıklayın.</p>
-                    <a target="_blank" rel="nofollow" href="{{ route('expenses.index') }}">Giderler Sayfasına Git →</a>
+                        {{ __('general.monthly_incomes_and_expenses_desc_1') }}</p>
+                    <a target="_blank" rel="nofollow"
+                       href="{{ route('expenses.index') }}">{{ __('general.click_to_go_expenses') }} →</a>
                 </div>
             </div>
 
