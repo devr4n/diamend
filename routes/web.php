@@ -24,6 +24,8 @@ Auth::routes();
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/completed-products', [HomeController::class, 'getCompletedProducts'])->name('completed-products');
+    Route::get('/monthly-income-expense', [HomeController::class, 'getMonthlyIncomeAndExpense'])->name('monthly-income-expense');
+
 
     // Products
     Route::get('/products', [ProductController::class, 'index'])->name('products.index');

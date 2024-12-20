@@ -28,21 +28,30 @@ class HomeController extends Controller
         return response()->json(['completedProducts' => round($completedProducts)]);
     }
 
-    private function calculateMonthlyIncomeAndExpense($year)
+    public function getMonthlyIncomeAndExpense(Request $request)
     {
-        $year = date('Y');
-        // Calculate monthly income and expense
+        $year = $request->input('year', date('Y'));
+
+        $monthlyIncome = [];
+        $monthlyExpense = [];
+
         for ($month = 1; $month <= 12; $month++) {
-            $this->monthlyIncome[] = Product::whereYear('receive_date', $year)
+            $monthlyIncome[] = Product::whereYear('receive_date', $year)
                 ->whereMonth('receive_date', $month)
                 ->where('status_id', 1)
                 ->sum('price');
 
-            $this->monthlyExpense[] = Expense::whereYear('date', $year)
+            $monthlyExpense[] = Expense::whereYear('date', $year)
                 ->whereMonth('date', $month)
                 ->sum('amount');
         }
+
+        return response()->json([
+            'monthlyIncome' => $monthlyIncome,
+            'monthlyExpense' => $monthlyExpense,
+        ]);
     }
+
 
     public function index()
     {
@@ -61,8 +70,6 @@ class HomeController extends Controller
         // Monthly products
         $monthlyTotalProducts = Product::whereMonth('created_at', date('m'))
             ->count();
-
-        $this->calculateMonthlyIncomeAndExpense(date('Y'));
 
         $widget = [
             'users' => $users,
