@@ -45,7 +45,8 @@ return [
     'input' => [
         'name' => 'Ad',
         'surname' => 'Soyad',
-        'phone' => 'Tel No',
+        'phone_1' => 'Tel No 1',
+        'phone_2' => 'Tel No 2',
         'address' => 'Adres',
         'photo' => 'Fotoğraf',
         'email' => 'E-posta',
@@ -68,6 +69,7 @@ return [
         'add_new_customer' => 'Yeni Müşteri Ekle',
         'edit_customer' => 'Müşteri ID : ',
         'customer_information_1' => 'Formu doldurarak müşteri oluşturabilir veya bilgileri güncelleyebilirsiniz.',
+        'customer_information_2' => 'Birincil telefon numarası benzersiz olmalıdır.',
 
         'required_fields' => 'ile işaretlenmiş alanlar zorunludur.',
 

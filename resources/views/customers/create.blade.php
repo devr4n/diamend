@@ -37,6 +37,7 @@
 
                 <ul class="text-muted">
                     <li>{{ __('general.title.customer_information_1') }}</li>
+                    <li>{{ __('general.title.customer_information_2') }}</li>
                     <li><span class="text-danger">*</span> {{ __('general.title.required_fields') }}</li>
                 </ul>
                 <hr>
@@ -67,19 +68,19 @@
                         <div class="col-lg-6">
                             <div class="form-group focused">
                                 <label class="form-control-label" for="phone_1">
-                                    {{ __('general.input.phone') }} | 1 <span class="small text-danger">*</span>
+                                    {{ __('general.input.phone_1') }} <span class="small text-danger">*</span>
                                 </label>
                                 <input type="tel" id="phone_1" class="form-control" name="phone_1"
-                                       placeholder="{{ __('general.input.phone') }}" required>
+                                       placeholder="{{ __('general.input.phone_1') }}" required>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group focused">
                                 <label class="form-control-label" for="phone_2">
-                                    {{ __('general.input.phone') }} | 2
+                                    {{ __('general.input.phone_2') }}
                                 </label>
                                 <input type="tel" id="phone_2" class="form-control" name="phone_2"
-                                       placeholder="{{ __('general.input.phone') }}">
+                                       placeholder="{{ __('general.input.phone_2') }}">
                             </div>
                         </div>
                     </div>

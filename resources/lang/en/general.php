@@ -44,7 +44,8 @@ return [
     'input' => [
         'name' => 'Name',
         'surname' => 'Surname',
-        'phone' => 'Phone Number',
+        'phone_1' => 'Phone No 1',
+        'phone_2' => 'Phone No 2',
         'address' => 'Address',
         'photo' => 'Photo',
         'email' => 'Email',
@@ -67,6 +68,7 @@ return [
         'add_new_customer' => 'Add New Customer',
         'edit_customer' => 'Edit Customer ID : ',
         'customer_information_1' => 'You can create a new customer or update the information by filling out the form.',
+        'customer_information_2' => 'Primary phone number must be unique.',
 
         'required_fields' => 'Required fields are marked with an asterisk.',
 
