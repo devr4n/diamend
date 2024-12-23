@@ -18,7 +18,7 @@ class ExpenseTypeSeeder extends Seeder
             'name_en' => 'Gold Purchase',
             'description_tr' => 'Altın alımı.',
             'description_en' => 'Gold purchase.',
-            'color' => '#FFD700',
+            'color' => '#FFDE4D',
         ]);
 
         ExpenseType::create([
@@ -26,7 +26,7 @@ class ExpenseTypeSeeder extends Seeder
             'name_en' => 'Silver Purchase',
             'description_tr' => 'Gümüş alımı.',
             'description_en' => 'Silver purchase.',
-            'color' => '#FFD700',
+            'color' => '#F6F4F0',
         ]);
 
         ExpenseType::create([
@@ -34,7 +34,7 @@ class ExpenseTypeSeeder extends Seeder
             'name_en' => 'Electricity',
             'description_tr' => 'Elektrik faturası.',
             'description_en' => 'Electricity bill.',
-            'color' => '#FFD700',
+            'color' => '#FF748B',
         ]);
 
         ExpenseType::create([
@@ -58,7 +58,7 @@ class ExpenseTypeSeeder extends Seeder
             'name_en' => 'Other',
             'description_tr' => 'Diğer masraflar.',
             'description_en' => 'Other expenses.',
-            'color' => '#D3D3D3',
+            'color' => '#D6C0B3',
         ]);
     }
 }

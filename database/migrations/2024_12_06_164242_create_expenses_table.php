@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('expense_type_id');
             $table->decimal('amount', 8, 2);
             $table->date('date');
-            $table->string('note');
+            $table->string('note')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

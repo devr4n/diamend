@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\ExpenseType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,9 @@ class ExpenseFactory extends Factory
      */
     public function definition(): array
     {
+        $expenseTypes = ExpenseType::all()->pluck('id')->toArray();
         return [
-            'expense_type_id' => $this->faker->numberBetween(1, 4),
+            'expense_type_id' => $this->faker->randomElement($expenseTypes),
             'amount' => $this->faker->randomFloat(2, 1, 1000),
             'date' => $this->faker->date(),
             'note' => $this->faker->text(),
