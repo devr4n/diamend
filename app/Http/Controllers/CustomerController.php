@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -83,20 +84,26 @@ class CustomerController extends Controller
     public function data()
     {
         $customers = Customer::select(['id', 'name', 'surname', 'phone_1', 'phone_2', 'address', 'created_at'])
-        ->orderBy('created_at','desc');
+            ->orderBy('created_at', 'desc');
 
         return DataTables::of($customers)
             ->editColumn('created_at', function ($customer) {
                 return $customer->created_at->format('d-m-Y');
             })
+            ->editColumn('phone_1', function ($customer) {
+                return $customer->phone_1;
+            })
+            ->editColumn('phone_2', function ($customer) {
+                return $customer->phone_2;
+            })
             ->addColumn('action', function ($customer) {
                 return '
                 <a href="' . route('customers.edit', $customer->id) . '" class="btn btn-outline-primary btn-sm" title="Edit"><i class="fas fa-edit"></i></a>
                 <form action="' . route('customers.destroy', $customer->id) . '" method="POST" style="display:inline;">
-        ' . csrf_field() . '
-        ' . method_field('DELETE') . '
-        <button type="submit" class="delete-button btn btn-outline-danger btn-sm " title="Delete"><i class="fas fa-trash"></i></button>
-    </form>';
+                    ' . csrf_field() . '
+                    ' . method_field('DELETE') . '
+                    <button type="submit" class="delete-button btn btn-outline-danger btn-sm " title="Delete"><i class="fas fa-trash"></i></button>
+                </form>';
             })
             ->make(true);
     }

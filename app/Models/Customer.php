@@ -26,7 +26,11 @@ class Customer extends Model
 
     public function getPhone1Attribute($value)
     {
-        return Crypt::decryptString($value);
+        try {
+            return Crypt::decryptString($value);
+        } catch (\Exception $e) {
+            return $value; // If it cannot be decrypted, return the original value
+        }
     }
 
     public function setPhone2Attribute($value)
@@ -36,7 +40,11 @@ class Customer extends Model
 
     public function getPhone2Attribute($value)
     {
-        return Crypt::decryptString($value);
+        try {
+            return Crypt::decryptString($value);
+        } catch (\Exception $e) {
+            return $value; // If it cannot be decrypted, return the original value
+        }
     }
 
 }
