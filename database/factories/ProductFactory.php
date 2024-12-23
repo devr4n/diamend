@@ -25,7 +25,7 @@ class ProductFactory extends Factory
             'receive_date' => $this->faker->dateTimeThisYear(),
             'due_date' => $this->faker->dateTimeThisYear(),
             'delivery_date' => $this->faker->dateTimeThisYear(),
-            'price' => $this->faker->numberBetween(100, 1000),
+            'price' => $this->faker->numberBetween(100, 10000),
             'note' => $this->faker->text,
             'material_type_id' => MaterialType::pluck('id')->random(),
             'material_weight' => $this->faker->randomFloat(2, 0, 1000),

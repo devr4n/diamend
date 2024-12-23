@@ -25,7 +25,7 @@ class Product extends Model
         'price',
         'material_type_id',
         'material_weight',
-        'status_id',
+        'status_id', // 0: Pending, 1: Completed
     ];
 
 

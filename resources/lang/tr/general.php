@@ -18,6 +18,17 @@ return [
     'products' => 'Ürünler',
     'customers' => 'Müşteriler',
     'expenses' => 'Giderler',
+    'incomes' => 'Gelirler',
+
+    'monthly_incomes_and_expenses' => 'Aylık Gelirler & Giderler',
+    'monthly_incomes_and_expenses_desc_1' => 'Bu grafik, aylık gelir ve giderlerinizi göstermektedir.
+                        Gelirler tamamlanan islerden alinan ucretler ile belirlenmektedir.
+                        Daha fazla bilgi için aşağıdaki bağlantıya tıklayın.',
+    'click_to_go_expenses' => 'Giderlere gitmek için tıklayın',
+    'download_chart' => 'Grafiği İndir',
+    'normal' => 'Normal',
+    'transparent' => 'Şeffaf',
+
 
     'board' => [
         'products_annual_earnings' => 'Yıllık Kazanç',
@@ -82,5 +93,20 @@ return [
         'add_new_expense' => 'Yeni Gider Ekle',
         'edit_expense' => 'Gider ID : ',
         'expense_information_1' => 'Formu doldurarak gider oluşturabilir veya bilgileri güncelleyebilirsiniz.',
+    ],
+
+    'month' => [
+        'january' => 'Ocak',
+        'february' => 'Şubat',
+        'march' => 'Mart',
+        'april' => 'Nisan',
+        'may' => 'Mayıs',
+        'june' => 'Haziran',
+        'july' => 'Temmuz',
+        'august' => 'Ağustos',
+        'september' => 'Eylül',
+        'october' => 'Ekim',
+        'november' => 'Kasım',
+        'december' => 'Aralık',
     ],
 ];

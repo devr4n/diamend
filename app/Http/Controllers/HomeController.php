@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Expense;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -9,6 +10,8 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public $completedProducts;
+    public $monthlyIncome = [];
+    public $monthlyExpense = [];
 
     public function __construct()
     {
@@ -24,6 +27,31 @@ class HomeController extends Controller
 
         return response()->json(['completedProducts' => round($completedProducts)]);
     }
+
+    public function getMonthlyIncomeAndExpense(Request $request)
+    {
+        $year = $request->input('year', date('Y'));
+
+        $monthlyIncome = [];
+        $monthlyExpense = [];
+
+        for ($month = 1; $month <= 12; $month++) {
+            $monthlyIncome[] = Product::whereYear('receive_date', $year)
+                ->whereMonth('receive_date', $month)
+                ->where('status_id', 1)
+                ->sum('price');
+
+            $monthlyExpense[] = Expense::whereYear('date', $year)
+                ->whereMonth('date', $month)
+                ->sum('amount');
+        }
+
+        return response()->json([
+            'monthlyIncome' => $monthlyIncome,
+            'monthlyExpense' => $monthlyExpense,
+        ]);
+    }
+
 
     public function index()
     {
@@ -43,12 +71,13 @@ class HomeController extends Controller
         $monthlyTotalProducts = Product::whereMonth('created_at', date('m'))
             ->count();
 
-
         $widget = [
             'users' => $users,
             'yearlyTotalProductEarnings' => $yearlyTotalProductEarnings,
             'monthlyTotalProductEarnings' => $monthlyTotalProductEarnings,
             'monthlyTotalProducts' => $monthlyTotalProducts,
+            'monthlyIncome' => $this->monthlyIncome,
+            'monthlyExpense' => $this->monthlyExpense,
         ];
 
         return view('home', compact('widget'));
