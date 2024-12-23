@@ -51,7 +51,9 @@
                                     <option value="">{{ __('general.form.select') }}</option>
                                     @foreach($customers as $customer)
                                         <option
-                                            value="{{ $customer->id }}">{{ $customer->name }} {{ $customer->surname }}</option>
+                                            value="{{ $customer->id }}">
+                                            {{ $customer->name }} {{ $customer->surname }} | {{ $customer->phone_1 }}
+                                        </option>
                                     @endforeach
                                 </select>
                                 <a href="{{ route('customers.create') }}" class="text-decoration-none">

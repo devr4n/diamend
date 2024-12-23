@@ -45,8 +45,8 @@ return [
     'input' => [
         'name' => 'Ad',
         'surname' => 'Soyad',
-        'phone_1' => 'Tel No 1',
-        'phone_2' => 'Tel No 2',
+        'phone_1' => 'Birincil Telefon',
+        'phone_2' => 'İkincil Telefon',
         'address' => 'Adres',
         'photo' => 'Fotoğraf',
         'email' => 'E-posta',

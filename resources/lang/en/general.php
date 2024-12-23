@@ -44,8 +44,8 @@ return [
     'input' => [
         'name' => 'Name',
         'surname' => 'Surname',
-        'phone_1' => 'Phone No 1',
-        'phone_2' => 'Phone No 2',
+        'phone_1' => 'Primary Phone',
+        'phone_2' => 'Secondary Phone',
         'address' => 'Address',
         'photo' => 'Photo',
         'email' => 'Email',
