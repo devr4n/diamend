@@ -33,16 +33,17 @@
 </div>
 
 <!-- Chart & Information -->
-<div class="card-body">
-    <div class="text-center">
-        <canvas id="monthlyIncomeExpenseChart"></canvas>
+<div class="card-body p-3">
+    <div class="text-center overflow-auto">
+        <canvas id="monthlyIncomeExpenseChart" class="w-100"></canvas>
     </div>
-    <p class="mt-3">
+    <p class="mt-3 text-center">
         {{ __('general.monthly_incomes_and_expenses_desc_1') }}
     </p>
     <a target="_blank" rel="nofollow"
        href="{{ route('expenses.index') }}">{{ __('general.click_to_go_expenses') }} →</a>
 </div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
@@ -65,13 +66,13 @@
                 datasets: [
                     {
                         label: '{{ __('general.incomes') }}',
-                        backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                        backgroundColor: 'rgba(75, 192, 192)',
                         borderWidth: 1,
                         data: []  // Empty array to be filled dynamically
                     },
                     {
                         label: '{{ __('general.expenses') }}',
-                        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                        backgroundColor: 'rgba(255, 99, 132)',
                         borderWidth: 1,
                         data: []  // Empty array to be filled dynamically
                     }
