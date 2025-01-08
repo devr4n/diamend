@@ -19,6 +19,7 @@ return [
     'customers' => 'Müşteriler',
     'expenses' => 'Giderler',
     'incomes' => 'Gelirler',
+    'user_information' => 'Kullanıcı Bilgileri',
 
     'monthly_incomes_and_expenses' => 'Aylık Gelirler & Giderler',
     'monthly_incomes_and_expenses_desc_1' => 'Bu grafik, aylık gelir ve giderlerinizi gösterir.
@@ -33,7 +34,7 @@ return [
         'products_annual_earnings' => 'Yıllık Kazanç',
         'products_monthly_earnings' => 'Aylık Kazanç',
         'monthly_products' => 'Aylık Ürünler',
-        'completed_orders' => 'Tamamlanan',
+        'completed_orders' => 'Tamamlanan ürünler',
     ],
 
     'form' => [
@@ -51,7 +52,6 @@ return [
         'throttle' => 'Çok fazla giriş denemesi. Lütfen daha sonra tekrar deneyin.',
     ],
 
-
     'input' => [
         'name' => 'Ad',
         'surname' => 'Soyad',
@@ -63,15 +63,17 @@ return [
         'password' => 'Şifre',
         'password_confirmation' => 'Şifre Tekrarı',
 
-
         'remember_me' => 'Beni Hatırla',
         'forgot_password' => 'Şifremi Unuttum?',
         'reset_password' => 'Şifre Sıfırla',
         'send_password_reset_link' => 'Şifre Sıfırlama Bağlantısı Gönder',
         'confirm_password' => 'Şifreyi Onayla',
-        'old_password' => 'Eski Şifre',
+        'current_password' => 'Mevcut Şifre',
         'new_password' => 'Yeni Şifre',
         'new_password_confirmation' => 'Yeni Şifre Tekrarı',
+
+        'profile_save_success' => 'Profil başarıyla güncellendi.',
+        'profile_save_error' => 'Profil güncellenirken bir hata oluştu. Lütfen tekrar deneyin.',
     ],
 
     'title' => [
@@ -92,6 +94,8 @@ return [
         'add_new_expense' => 'Yeni Gider Ekle',
         'edit_expense' => 'Gider ID : ',
         'expense_information_1' => 'Formu doldurarak gider oluşturabilir veya bilgileri güncelleyebilirsiniz.',
+
+        'user_information' => 'Formu kullanarak bilgilerinizi güncelleyebilirsiniz.',
     ],
 
     'month' => [

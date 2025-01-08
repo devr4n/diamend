@@ -33,7 +33,7 @@ return [
         'products_annual_earnings' => 'Annual Earnings',
         'products_monthly_earnings' => 'Monthly Earnings',
         'monthly_products' => 'Monthly Products',
-        'completed_orders' => 'Completed',
+        'completed_orders' => 'Completed products',
     ],
 
     'form' => [
@@ -68,9 +68,12 @@ return [
         'reset_password' => 'Reset Password',
         'send_password_reset_link' => 'Send Password Reset Link',
         'confirm_password' => 'Confirm Password',
-        'old_password' => 'Old Password',
+        'current_password' => 'Current Password',
         'new_password' => 'New Password',
         'new_password_confirmation' => 'New Password Confirmation',
+
+        'profile_save_success' => 'Profile updated successfully.',
+        'profile_save_error' => 'An error occurred while updating the profile. Please try again.',
     ],
 
     'title' => [
@@ -91,6 +94,8 @@ return [
         'add_new_expense' => 'Add New Expense',
         'edit_expense' => 'Expense ID : ',
         'expense_information_1' => 'You can create an expense or update information by filling out the form.',
+
+        'user_information' => 'You can update your information by filling out the form.',
     ],
 
     'month' => [
