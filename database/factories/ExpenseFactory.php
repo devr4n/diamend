@@ -20,8 +20,8 @@ class ExpenseFactory extends Factory
         $expenseTypes = ExpenseType::all()->pluck('id')->toArray();
         return [
             'expense_type_id' => $this->faker->randomElement($expenseTypes),
-            'amount' => $this->faker->randomFloat(2, 1, 1000),
-            'date' => $this->faker->date(),
+            'amount' => $this->faker->numberBetween( 100, 10000),
+            'date' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'note' => $this->faker->text(),
         ];
     }

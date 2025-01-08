@@ -21,10 +21,9 @@ return [
     'incomes' => 'Gelirler',
 
     'monthly_incomes_and_expenses' => 'Aylık Gelirler & Giderler',
-    'monthly_incomes_and_expenses_desc_1' => 'Bu grafik, aylık gelir ve giderlerinizi göstermektedir.
-                        Gelirler tamamlanan islerden alinan ucretler ile belirlenmektedir.
-                        Daha fazla bilgi için aşağıdaki bağlantıya tıklayın.',
-    'click_to_go_expenses' => 'Giderlere gitmek için tıklayın',
+    'monthly_incomes_and_expenses_desc_1' => 'Bu grafik, aylık gelir ve giderlerinizi gösterir.
+                                              Gelirler tamamlanan işlerden alınan ücretlerle belirlenir.',
+    'click_to_go_expenses' => 'Giderlere gitmek için tıklayın.',
     'download_chart' => 'Grafiği İndir',
     'normal' => 'Normal',
     'transparent' => 'Şeffaf',

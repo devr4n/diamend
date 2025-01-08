@@ -37,7 +37,7 @@
     <div class="text-center overflow-auto">
         <canvas id="monthlyIncomeExpenseChart" class="w-100"></canvas>
     </div>
-    <p class="mt-3 text-center">
+    <p class="mt-3 text-left">
         {{ __('general.monthly_incomes_and_expenses_desc_1') }}
     </p>
     <a target="_blank" rel="nofollow"
