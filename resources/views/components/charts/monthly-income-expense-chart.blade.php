@@ -83,6 +83,16 @@
                     y: {
                         beginAtZero: true
                     }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                // Tooltip: Label + Value + Currency
+                                return tooltipItem.dataset.label + ': ' + tooltipItem.raw + ' ₺';
+                            }
+                        }
+                    }
                 }
             }
         });
