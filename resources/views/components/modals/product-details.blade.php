@@ -16,7 +16,13 @@
                     <div class="col-md-8">
                         <div class="row">
                             <div class="col-6">
-                                <p><strong>{{ __('products.customer_name') }}:</strong> <span id="customer-name"></span>
+                                <p>
+                                    <strong>{{ __('products.customer_name') }}:</strong> <span
+                                        id="customer-name"></span>
+                                </p>
+                                <p>
+                                    <strong>{{ __('products.form.phone') }}:</strong>
+                                    <a href="tel:" id="customer-phone" class="text-primary"></a>
                                 </p>
                                 <p><strong>{{ __('products.operation_type') }}:</strong> <span
                                         id="operation-type"></span></p>
@@ -27,11 +33,13 @@
                                 <p><strong>{{ __('products.due_date') }}:</strong> <span
                                         class="badge badge-warning text-dark" id="due-date"></span></p>
                             </div>
+
                             <div class="col-6">
                                 <p><strong>{{ __('products.description') }}:</strong> <span id="description"></span></p>
                                 <p><strong>{{ __('products.weight') }}:</strong> <span id="weight"></span> gr </p>
                                 <p><strong>{{ __('products.price') }}:</strong> <span id="price"></span> ₺</p>
                             </div>
+
                         </div>
                         <p><strong>{{ __('products.note') }}:</strong> <span id="note"></span></p>
                     </div>
@@ -65,6 +73,7 @@
             }
 
             $('#customer-name').text(data.customer.name || '-');
+            $('#customer-phone').text(data.customer.phone_1 || '-');
             $('#operation-type').text(data.operation_type['name_' + locale] || '-');
             $('#product-type').text(data.product_type['name_' + locale] || '-');
             $('#receive-date').text(data.receive_date || '-');

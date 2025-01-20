@@ -98,7 +98,11 @@ class ProductController extends Controller
         try {
             $product = Product::with(['customer', 'operationType', 'productType'])->findOrFail($id);
             return response()->json([
-                'customer' => $product->customer,
+                'customer' => [
+                    'phone_1' => $product->customer->phone_1,
+                    'name' => $product->customer->name,
+                    'email' => $product->customer->email,
+                ],
                 'operation_type' => $product->operationType,
                 'product_type' => $product->productType,
                 'receive_date' => $product->receive_date,
