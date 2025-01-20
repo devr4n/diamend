@@ -22,7 +22,7 @@
                                 </p>
                                 <p>
                                     <strong>{{ __('products.form.phone') }}:</strong>
-                                    <a href="tel:" id="customer-phone" class="text-primary"></a>
+                                    <a href="tel:" id="customer-phone" class="text-primary" onclick="makeCall()"></a>
                                 </p>
                                 <p><strong>{{ __('products.operation_type') }}:</strong> <span
                                         id="operation-type"></span></p>
@@ -86,4 +86,12 @@
             $('#productModal').modal('show');
         });
     }
+
+    function makeCall() {
+        const phoneNumber = document.getElementById('customer-phone').textContent;
+        if (phoneNumber)
+            window.location.href = 'tel:' + phoneNumber; // Call the number
+
+    }
+
 </script>
