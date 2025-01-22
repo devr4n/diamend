@@ -22,7 +22,7 @@ class ProductController extends Controller
         'product_type_id' => ['required', 'exists:product_types,id'],
         'description' => 'required',
         'weight' => 'nullable',
-        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:15048',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg|max:10000',
         'receive_date' => 'required',
         'due_date' => 'required',
         'delivery_date' => 'nullable',
@@ -57,25 +57,46 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate($this->validateRules);
+        // Log the incoming request data
+        Log::info('Incoming request data:', $request->all());
+
+        // Validate the request
+        $this->validate($request, [
+            'image' => [
+                'nullable',
+                'image',
+                'mimes:jpg,png,jpeg',
+                'max:5048'
+            ],
+        ]);
 
         try {
-
             $product = new Product($request->all());
             $product->status_id = 0;
 
             if ($request->hasFile('image')) {
-                $imagePath = $request->file('image')->store('products', 'public');
+                $file = $request->file('image');
+                Log::info('Uploaded file details:', [
+                    'original_name' => $file->getClientOriginalName(),
+                    'size' => $file->getSize(),
+                    'mime_type' => $file->getMimeType(),
+                ]);
+
+                // Proceed with storing the file
+                $imagePath = $file->store('products', 'public');
                 $product->image = $imagePath;
+            } else {
+                Log::warning('No file was uploaded for the image field.');
             }
+
 
             $product->save();
 
             Alert::success(__('products.success'), __('products.product_created'));
             return redirect()->route('products.index');
         } catch (\Exception $e) {
+            Log::error('File upload error: ' . $e->getMessage());
             Alert::error(__('products.error'), __('products.product_created_error'));
-            Log::error($e->getMessage());
             return redirect()->back();
         }
     }
@@ -121,32 +142,46 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
+        // Validation kurallarını kontrol et
         $request->validate($this->validateRules);
 
         try {
             $product = Product::findOrFail($id);
 
+            // Eğer dosya yüklenmişse
             if ($request->hasFile('image')) {
+                // Eski resmi sil
                 if ($product->image && Storage::disk('public')->exists($product->image)) {
                     Storage::disk('public')->delete($product->image);
                 }
 
+                // Yeni resmi kaydet
                 $imagePath = $request->file('image')->store('products', 'public');
-                $product->image = $imagePath;
+                $product->image = $imagePath; // Yeni görsel yolunu ayarla
             }
 
+            // Diğer verileri güncelle
             $data = $request->except('image');
             $data['status_id'] = $request->has('status_id') ? 1 : 0;
 
+            // Ürün verilerini güncelle
             $product->update($data);
+
+            // Eğer yeni görsel yüklendiyse, bunu da kaydet
+            if ($request->hasFile('image')) {
+                $product->save(); // Bu satırı ekleyin
+            }
 
             Alert::success(__('products.success'), __('products.product_updated'));
             return redirect()->route('products.index');
         } catch (\Exception $e) {
             Alert::error(__('products.error'), __('products.product_updated_error'));
             Log::error($e->getMessage());
+            return response()->json(['success' => false, 'message' => __('products.product_updated_error')], 500);
         }
     }
+
+
 
     public function destroy($id)
     {

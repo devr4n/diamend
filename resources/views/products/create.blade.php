@@ -3,6 +3,9 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">{{ __('general.products') }}</h1>
     @if ($errors->any())
+        @php
+            \Illuminate\Support\Facades\Log::error('Validation errors:', $errors->all());
+        @endphp
         <div class="alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $error)
@@ -11,6 +14,9 @@
             </ul>
         </div>
     @elseif (session()->has('error'))
+        @php
+            \Illuminate\Support\Facades\Log::error('Session error:', ['error' => session('error')]);
+        @endphp
         <div class="alert alert-danger">
             {{ session('error') }}
         </div>
@@ -217,7 +223,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label  class="form-control-label">{{ __('products.image') }}</label>
-                                <input class="form-control" id="image" type="file" name="image">
+                                <input type="file" class="form-control" id="image" name="image" accept="image/*">
                             </div>
                         </div>
                     </div>
